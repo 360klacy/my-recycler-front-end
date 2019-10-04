@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './Home.css';
 import Categories from '../Categories';
-import SignIn from '../Quotes/RequestQuote'
+import SignIn from '../Quotes/SignIn'
 
 
 class Home extends Component{

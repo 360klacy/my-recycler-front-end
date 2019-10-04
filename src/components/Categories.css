@@ -1,6 +1,9 @@
 .waypoint{
     padding: 70px 0;
-    border: 3px solid green;
+    border: 3px solid black;
+    border-top: none;
+    border-left: none;
+    border-right: none;
     text-align: center;
     display: flex;
     justify-content: center;

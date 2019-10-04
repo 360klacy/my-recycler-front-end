@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './Home.css';
 import Categories from '../Categories';
+import SignIn from '../Quotes/SignIn'
 
 
 class Home extends Component{
@@ -21,6 +22,14 @@ class Home extends Component{
                         <Categories />
                     </div>
                 </div>
+            </div>
+            <div className="container-fluid">
+                <div className="row">
+                    <div className="home col s12">
+                        <SignIn />
+                    </div>
+                </div>
+
             </div>
             
             </>

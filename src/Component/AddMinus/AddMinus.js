@@ -2,6 +2,9 @@ import React, { Component } from 'react'
 import './../Item/Item.css'
 
 class AddMinus extends Component {
+
+    hello = ()=>console.log("++++++",this.props.handleUpdate)
+
     render(){
         return(<>
             <div className="add-minus">

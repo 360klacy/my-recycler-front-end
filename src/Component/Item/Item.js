@@ -1,120 +1,121 @@
 import React, { Component } from 'react'
 import AddMinus from '../AddMinus/AddMinus'
+import ClickCategories from '../Categories/ClickCategories'
 
+//seed data 
 
 class Item extends Component {
-    render(){
+    constructor(props){
+        super(props);
+        this.state = {
+            auto:{
+                tires: 0, 
+                gas: 0,
+                carParts: 0,
+            }
+        };
+    }
+    componentDidMount(){
+        // Call the db, ask for all the subcategories (tires, mattresses, chairs...)
+        // setState and initalize state with keys of all the subcategories
+        // // and all the values as 0;
+        // const subcategories = ["tires", "gas", ...]
 
-        function showSubCategories(){
-            let show = document.querySelectorAll('.show-subs')
-            if (true){
-                show.style.display = 'block'
-                console.log('this is working')
-                } else {
-                    console.log('oops')
-                }
+        
+        // subcategories.forEach(subCategory=> {
+        //     this.setState({
+        //     //     subCategory: {
+        //     //         tires : 0,
+        //     //         carParts : 0,
+        //     //         mattresses : 0,
+        //     //     }
+        //     // })
+        // })
+
+        // the updateCount will setState to move that count +/- for each subcategory in state
+    }
+     updateCount = (e) => {
+         console.log('hello world')
+         console.log(e.target.name)
+     
+        if(e.target.value === "+"){
+            let val = this.state[e.target.name]
+           const upper = val++
         }
+        this.setState({
+            
+    }
+    )
+    }
 
+    render(){
+        // this.state.subcategories.map((subCategory) => {
+        //     <SubCategory kind={"carParts"} updateCount={this.updateCount} />
+        // })
+        // <SubCategory type={subcategory} handleUpdate={this.updateCount} />
+        // <Tires />
+        // <Mattresses />
+        const putStuff = mainCategory.map((mainCat,i)=>{
+          const otherStuff = mainCat.subCategory.map((stuff,i)=>{
+            return(<>
+            <li key={i} >
+                {stuff}.....{this.state[stuff]}
+            </li>
+            <input onClick={this.updateCount} className="add-button" type="button"  name={stuff}value="+" />
+            <input className="subtract-button" type="button" value="-" />
+           </> )
+          })
+          return(<>
+          <div key={i}>
+            {mainCat.name}
+          <ul className={mainCat.name}>
+            {otherStuff}
+          </ul>
+          </div>
+          </>)
+            
+        })
 
-        return (<>
-
-            <div className="category-container">
-                <div className="categories">
-                            <div className="accordion">
-                                    <h2>Automotive</h2>
-                                        <button onClick={showSubCategories} className="button">+</button>
-                                </div>
-
-                           <div className="show-subs">
-                                <div className="sub-category">
-                                    <div className="sub-title">
-                                        <h3>Auto Parts</h3>
-                                        <div className="spacer"></div>
-                                    </div>
-
-                                <div className="quantity">
-                                    <AddMinus />
-                                    <h3>Quantity</h3>
-                                </div>
-
-                                <div className="sub-category">
-                                    <div className="sub-title">
-                                        <h3>Tires</h3>
-                                        <div className="spacer"></div>
-                                    </div>
-                                            
-                                    <div className="quantity">
-                                        <AddMinus />
-                                        <h3>Quantity</h3>
-                                    </div>
-                                </div>
-
-                                <div className="sub-category">
-                                        <div className="sub-title">
-                                            <h3>Gas/Oil Mixture</h3>
-                                            <div className="spacer"></div>
-                                        </div>
-
-                                        <div className="quantity">
-                                            <AddMinus />
-                                            <h3>Quantity</h3>
-                                        </div>
-                                    </div>
-                                </div>
-                           </div>
-
-                          
-
-                                <div className="accordion">
-                                    <h2>Batteries</h2>
-                                        <button onClick={showSubCategories} className="button">+</button>
-                                </div>
-                           
-                           <div className="show-subs">
-                                <div className="sub-category">
-                                        <div className="sub-title">
-                                            <h3>Car Batteries</h3>
-                                            <div className="spacer"></div>
-                                        </div>
-
-                                    <div className="quantity">
-                                        <AddMinus />
-                                        <h3>Quantity</h3>
-                                    </div>
-
-                                    <div className="sub-category">
-                                        <div className="sub-title">
-                                            <h3>Lithium Batteries</h3>
-                                            <div className="spacer"></div>
-                                        </div>
-                                                
-                                        <div className="quantity">
-                                            <AddMinus />
-                                            <h3>Quantity</h3>
-                                        </div>
-                                    </div>
-
-                                    <div className="sub-category">
-                                            <div className="sub-title">
-                                                <h3>Zinc-air Batteries</h3>
-                                                <div className="spacer"></div>
-                                            </div>
-
-                                            <div className="quantity">
-                                                <AddMinus />
-                                                <h3>Quantity</h3>
-                                            </div>
-                                        </div>
-                                    </div>
-                            </div>
-                          
-              
-
+        return (
+                <div className="category-container">
+                    <div>
+                        {/* {<ClickCategories/>} */}
+                        {putStuff}
+                    </div>
                 </div>
-            </div>
-        </>)
+        )
     }
 }
 
 
 export default Item
+
+
+
+
+
+
+// function SubCategory(props){
+//     return(
+//         <div>
+//             <h2>{props.kind}</h2>
+//             <button onClick={props.updateCount}>+</button>
+//             <button onClick={props.updateCount}>-</button>
+//         </div>
+//     )
+// }
+
+// class SubCategory extends React.Component{
+//     render(){
+//         return(
+//             <div>
+//                 <h2>{this.props.kind}</h2>
+//                 <button onClick={this.props.updateCount}>+</button>
+//                 <button onClick={this.props.updateCount}>-</button>
+//             </div>
+//         )
+//     }
+// }
+
+
+

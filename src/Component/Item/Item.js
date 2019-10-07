@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import AddMinus from '../AddMinus/AddMinus'
-import ClickCategories from '../Categories/ClickCategories'
+import AddCategories from '../AddCategories/AddCategories'
+import axios from 'axios'
 
 //seed data 
 
@@ -8,83 +9,86 @@ class Item extends Component {
     constructor(props){
         super(props);
         this.state = {
-            auto:{
-                tires: 0, 
-                gas: 0,
-                carParts: 0,
-            }
+
         };
     }
-    componentDidMount(){
+    async componentDidMount(){
+        const catResp = await axios.get(`${window.apiHost}/recycle`);
+        console.log("+++++",catResp.data);
+        const preState = {categories:{}}
+        const x = catResp.data.forEach((subCategory)=>{
+            console.log(subCategory)
+            return preState.categories[subCategory.name]= subCategory.sub_categories
+        })
+        console.log("+++++", preState)
+        this.setState({
+            ...preState
+        })
+
+
         // Call the db, ask for all the subcategories (tires, mattresses, chairs...)
         // setState and initalize state with keys of all the subcategories
         // // and all the values as 0;
         // const subcategories = ["tires", "gas", ...]
 
-        
-        // subcategories.forEach(subCategory=> {
-        //     this.setState({
-        //     //     subCategory: {
-        //     //         tires : 0,
-        //     //         carParts : 0,
-        //     //         mattresses : 0,
-        //     //     }
-        //     // })
-        // })
 
-        // the updateCount will setState to move that count +/- for each subcategory in state
     }
      updateCount = (e) => {
-         console.log('hello world')
-         console.log(e.target.name)
+        //  console.log('hello world')
+        //  console.log(e.target.name)
      
         if(e.target.value === "+"){
             let val = this.state[e.target.name]
            const upper = val++
         }
         this.setState({
-            
+            tires: 0
     }
     )
     }
 
+    quantityUpdate = (e) =>{
+        this.setState({
+            quantity: Number(e.target.value)
+        });
+        
+    }
+
     render(){
-        // this.state.subcategories.map((subCategory) => {
-        //     <SubCategory kind={"carParts"} updateCount={this.updateCount} />
-        // })
-        // <SubCategory type={subcategory} handleUpdate={this.updateCount} />
-        // <Tires />
-        // <Mattresses />
-        const putStuff = mainCategory.map((mainCat,i)=>{
-          const otherStuff = mainCat.subCategory.map((stuff,i)=>{
-            return(<>
-            <li key={i} >
-                {stuff}.....{this.state[stuff]}
-            </li>
-            <input onClick={this.updateCount} className="add-button" type="button"  name={stuff}value="+" />
-            <input className="subtract-button" type="button" value="-" />
-           </> )
-          })
-          return(<>
-          <div key={i}>
-            {mainCat.name}
-          <ul className={mainCat.name}>
-            {otherStuff}
-          </ul>
-          </div>
-          </>)
+        // console.log("#######", this.state)
+
+            if(!this.state.categories){
+              return  null
+            } 
+
+                // let x = ""
+                //   x = Object.keys(this.state.categories).map((category)=>{
+                //     //   console.log(category)
+
+                //     // debugger
+
+                //       return(<>
+                //         <h2>{category}</h2>
+                //         {this.state.categories[category].map((subCategory)=>{
+                //             // console.log(subCategory)
+                            
+                //             return <h3>{subCategory.name}</h3>
+                //         })}
+                        
+                //     </>)
+                // })
             
-        })
+                // console.log("llll", x)
 
         return (
                 <div className="category-container">
                     <div>
-                        {/* {<ClickCategories/>} */}
-                        {putStuff}
+                        {<AddCategories categories={this.state.categories} updateCount={this.updateCount} />}
+                        {/* {x} */}
                     </div>
                 </div>
         )
-    }
+}
 }
 
 

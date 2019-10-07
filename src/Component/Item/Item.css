@@ -6,6 +6,11 @@ body {
     height: 10px;
 } */
 
+thead {
+    padding: 1rem;
+    border:1px solid black;
+}
+
 .card {
     background: none;
     border: none;

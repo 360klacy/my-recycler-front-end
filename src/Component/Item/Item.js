@@ -55,32 +55,32 @@ class Item extends Component {
         // <SubCategory type={subcategory} handleUpdate={this.updateCount} />
         // <Tires />
         // <Mattresses />
-        const putStuff = mainCategory.map((mainCat,i)=>{
-          const otherStuff = mainCat.subCategory.map((stuff,i)=>{
-            return(<>
-            <li key={i} >
-                {stuff}.....{this.state[stuff]}
-            </li>
-            <input onClick={this.updateCount} className="add-button" type="button"  name={stuff}value="+" />
-            <input className="subtract-button" type="button" value="-" />
-           </> )
-          })
-          return(<>
-          <div key={i}>
-            {mainCat.name}
-          <ul className={mainCat.name}>
-            {otherStuff}
-          </ul>
-          </div>
-          </>)
+        // const putStuff = mainCategory.map((mainCat,i)=>{
+        //   const otherStuff = mainCat.subCategory.map((stuff,i)=>{
+        //     return(<>
+        //     <li key={i} >
+        //         {stuff}.....{this.state[stuff]}
+        //     </li>
+        //     <input onClick={this.updateCount} className="add-button" type="button"  name={stuff}value="+" />
+        //     <input className="subtract-button" type="button" value="-" />
+        //    </> )
+        //   })
+        //   return(<>
+        //   <div key={i}>
+        //     {mainCat.name}
+        //   <ul className={mainCat.name}>
+        //     {otherStuff}
+        //   </ul>
+        //   </div>
+        //   </>)
             
-        })
+        // })
 
         return (
                 <div className="category-container">
                     <div>
                         {/* {<ClickCategories/>} */}
-                        {putStuff}
+                        {/* {putStuff} */}
                     </div>
                 </div>
         )

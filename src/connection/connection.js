@@ -7,6 +7,11 @@ function sayHi(){
     console.log('msg sent')
     socket.emit('msg', 'hello')
 }
-sayHi();
+function subTickets(){
+    socket.emit('sub-tickets','321')
+}
+function ticketInfo(cb){
+    socket.on('ticket-info',ticketInfo=>cb(null,ticketInfo))
+}
 
-export { sayHi }
+export { sayHi, ticketInfo, subTickets }

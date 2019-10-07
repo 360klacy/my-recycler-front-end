@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import NavBar from '../NavBar/NavBar'
 import './Home.css'
-
+import Categories from '../Categories/Categories'
 class Home extends Component {
 
     render (){
@@ -33,6 +33,7 @@ class Home extends Component {
 
                 </div>
             </div>
+                {<Categories />}
 
             <footer className="footer"> 
             Copyright &copy; 2019 MyRecycler All Rights Reserved.

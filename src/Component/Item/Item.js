@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import AddMinus from '../AddMinus/AddMinus'
 import AddCategories from '../AddCategories/AddCategories'
 import axios from 'axios'
 
@@ -14,13 +13,11 @@ class Item extends Component {
     }
     async componentDidMount(){
         const catResp = await axios.get(`${window.apiHost}/recycle`);
-        console.log("+++++",catResp.data);
+        // console.log("+++++",catResp.data);
         const preState = {categories:{}}
-        const x = catResp.data.forEach((subCategory)=>{
-            console.log(subCategory)
+        catResp.data.forEach((subCategory)=>{
             return preState.categories[subCategory.name]= subCategory.sub_categories
         })
-        console.log("+++++", preState)
         this.setState({
             ...preState
         })
@@ -58,33 +55,13 @@ class Item extends Component {
         // console.log("#######", this.state)
 
             if(!this.state.categories){
-              return  null
+              return  <div>Loading</div>
             } 
 
-                // let x = ""
-                //   x = Object.keys(this.state.categories).map((category)=>{
-                //     //   console.log(category)
-
-                //     // debugger
-
-                //       return(<>
-                //         <h2>{category}</h2>
-                //         {this.state.categories[category].map((subCategory)=>{
-                //             // console.log(subCategory)
-                            
-                //             return <h3>{subCategory.name}</h3>
-                //         })}
-                        
-                //     </>)
-                // })
-            
-                // console.log("llll", x)
-
-        return (
+            return (
                 <div className="category-container">
                     <div>
                         {<AddCategories categories={this.state.categories} updateCount={this.updateCount} />}
-                        {/* {x} */}
                     </div>
                 </div>
         )

@@ -31,6 +31,7 @@ class UserDashboard extends Component {
         }
     }
     getItems = (items)=>{
+        console.log(items)
         if(items !== this.state.subCatItems){
             this.setState({
                 subCatItems: items
@@ -65,7 +66,7 @@ class UserDashboard extends Component {
             </section> 
             </div>
 
-            <Item getItemFunc={this.getItems}/>
+            <Item getItemsFunc={this.getItems}/>
 
             <div className="wrapper">
                 <div>
@@ -93,7 +94,7 @@ class UserDashboard extends Component {
                     </div>
             </div>
 
-            
+            {/* <Item getItemsFunc={this.getItems}/> */}
            {modal}
        </> )
     }

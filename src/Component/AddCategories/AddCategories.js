@@ -67,7 +67,8 @@ componentDidMount(){
             })
         }
         console.log(rows)
-       this.props.getItemsFunc(this.state.subCategory)
+        console.log(typeof this.props.getItemsFunc)
+        this.props.getItemsFunc(this.state.subCategory)
         if(this.state.rows.length === 0){
             this.setState({
                 rows
@@ -76,14 +77,14 @@ componentDidMount(){
         
         return(<>
              <div className="table">
-                <div className="title1">
+                {/* <div className="title1"> */}
                     {rows.map((row)=>
                         <div className="category-cont">
                             {row}
                         </div>
                     )}
                 </div>
-                </div>
+                {/* </div> */}
 
         </>)
 

@@ -56,7 +56,8 @@ class Item extends Component {
                 subCatItems: items
             })
         }
-        this.props.getItemfunc(items)
+        console.log(typeof this.props.getItemsFunc)
+        this.props.getItemsFunc(items)
     }
 
     render(){
@@ -72,6 +73,7 @@ class Item extends Component {
                         {<AddCategories getItemsFunc={this.getItems} categories={this.state.categories} updateCount={this.updateCount} />}
                     </div>
                 </div>
+
         )
 }
 }

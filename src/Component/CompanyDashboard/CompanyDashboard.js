@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import './../../App.css'
 import CompanyNavBar from '../NavBar/CompanyNavBar'
-import Order from './Order'
+// import Order from './Order'
 
 
 
@@ -24,7 +24,7 @@ class CompanyDashboard extends Component {
             <div className="current-orders">
                 <div className="container">
                     <h2>Current Orders</h2>
-                    <Order />
+                    {/* <Order /> */}
                 </div>
             </div>
             </div>

@@ -31,6 +31,7 @@ class UserDashboard extends Component {
         }
     }
     getItems = (items)=>{
+        console.log(items)
         if(items !== this.state.subCatItems){
             this.setState({
                 subCatItems: items
@@ -65,7 +66,35 @@ class UserDashboard extends Component {
             </section> 
             </div>
 
-            <Item getItemfunc={this.getItems}/>
+            <Item getItemsFunc={this.getItems}/>
+
+            <div className="wrapper">
+                <div>
+                    <h1>Time Available for Pick-up</h1>
+                </div>
+                <div className="pickup-container">
+                        <div className="date-where-time">
+                            <div className="box">
+                            <h3>Date</h3>
+                            <input type="text" className="input-field" name="input" placeholder="MM-DD-YYYY"  title="Enter a date in this format MM-DD-YYYY" />                    
+                            </div>
+                            <div className="box">
+                                <h3>Where</h3>
+                                <input type="text" className="input-field" placeholder="Address"  title="Enter a valid address" />                    
+                                <input type="text" className="input-field" placeholder="City/State/Zip Code"  title="Enter a valid city/state/zip" />                    
+                            </div>
+                            <div className="box">
+                                <h3>Time</h3>
+                                <input type="text" className="input-field" name="input" placeholder="00:00PM"  title="Enter a time" />                    
+                            </div>
+                        </div>
+                            <div className="box">
+                                <button className="submit-btn">Submit</button>
+                            </div>
+                    </div>
+            </div>
+
+            {/* <Item getItemsFunc={this.getItems}/> */}
            {modal}
        </> )
     }

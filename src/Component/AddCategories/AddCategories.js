@@ -67,7 +67,8 @@ componentDidMount(){
             })
         }
         console.log(rows)
-       this.props.getItemsFunc(this.state.subCategory)
+        console.log(typeof this.props.getItemsFunc)
+        this.props.getItemsFunc(this.state.subCategory)
         if(this.state.rows.length === 0){
             this.setState({
                 rows

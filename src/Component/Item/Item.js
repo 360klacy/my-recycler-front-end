@@ -56,7 +56,7 @@ class Item extends Component {
                 subCatItems: items
             })
         }
-        this.props.getItemfunc(items)
+        this.props.getItemFunc(items)
     }
 
     render(){

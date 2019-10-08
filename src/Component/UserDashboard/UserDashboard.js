@@ -65,7 +65,7 @@ class UserDashboard extends Component {
             </section> 
             </div>
 
-            <Item />
+            <Item getItemFunc={this.getItems}/>
 
             <div className="wrapper">
                 <div>
@@ -93,7 +93,7 @@ class UserDashboard extends Component {
                     </div>
             </div>
 
-            <Item getItemfunc={this.getItems}/>
+            
            {modal}
        </> )
     }

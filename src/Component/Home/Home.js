@@ -5,16 +5,9 @@ import Categories from '../Categories/Categories'
 import Login from '../Auth/Login'
 import SignUp from '../Auth/Signup'
 class Home extends Component {
-    constructor(){
-        super()
-        this.state = {
-            showAuthModal : false,
-            authModalStatus: <Login/>
-        }
-    }
+    
     render (){
         return(<>
-        <NavBar/>
             <div className="main-container">
                 <div className="main">
                     <div className="left">

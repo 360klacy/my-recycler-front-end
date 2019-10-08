@@ -7,7 +7,7 @@ class Login extends React.Component{
     render(){
         return(
             <div>
-                <input type=""/>
+                <h1>yall good</h1>
             </div>
         )
     }

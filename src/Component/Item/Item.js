@@ -8,7 +8,7 @@ class Item extends Component {
     constructor(props){
         super(props);
         this.state = {
-
+            subCatItems: {}
         };
     }
     async componentDidMount(){
@@ -50,6 +50,15 @@ class Item extends Component {
         
     }
 
+    getItems = (items)=>{
+        if(items !== this.state.subCatItems){
+            this.setState({
+                subCatItems: items
+            })
+        }
+        this.props.getItemfunc(items)
+    }
+
     render(){
         // console.log("#######", this.state)
 
@@ -58,10 +67,9 @@ class Item extends Component {
             } 
 
             return (
-
-                <div className="categories">
-                    <div className="category-container">
-                            {<AddCategories categories={this.state.categories} updateCount={this.updateCount} />}
+                <div className="category-container">
+                    <div>
+                        {<AddCategories getItemsFunc={this.getItems} categories={this.state.categories} updateCount={this.updateCount} />}
                     </div>
                 </div>
 

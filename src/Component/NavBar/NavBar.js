@@ -1,9 +1,52 @@
 import React, { Component } from 'react'
+import Login from '../Auth/Login'
+import Signup from '../Auth/Signup'
+import ModalSplash from '../Auth/modalSplash'
 // import { Link } from 'react-router-dom'
 import './NavBar.css'
 
 class NavBar extends Component {
+    constructor(){
+        super()
+        this.state = {
+            showAuthModal : false,
+            authModalStatus: <Login/>
+        }
+    }
 
+    componentDidMount(){
+        this.setState({
+            authModalStatus: <ModalSplash changeModalContent={this.changeModalContent}/>
+        })
+    }
+    signup=(e)=>{
+        document.querySelector('body').className = 'body-modal-show'
+         this.setState({
+           showAuthModal: true
+         })
+       }
+       closeModal=()=>{
+         document.querySelector('body').className = ''
+         this.setState({
+           showAuthModal: false,
+           authModalStatus: <ModalSplash changeModalContent={this.changeModalContent}/>
+         })
+       }
+       changeModalContent = (newContent)=>{
+         console.log(newContent)
+         let modalContent = <ModalSplash changeModalContent={this.changeModalContent}/>
+         if (newContent === 'login'){
+           modalContent = <Login  changeModalContent={this.changeModalContent} closeModal={this.closeModal}/>
+         } else if(newContent === 'signup'){
+           modalContent = <Signup changeModalContent={this.changeModalContent} closeModal={this.closeModal}/>
+         }
+         this.setState({
+           modalContent
+         })
+       }
+    showAuthModal = ()=> {
+        //do auth
+    }
 
     render (){
         return(<>

@@ -56,16 +56,18 @@ componentDidMount(){
         console.log(this.state.subCategory, this.props.categories)
         if(this.state.subCategory !== {}){
              Object.keys(this.props.categories).forEach((category,i)=>{
+                let newArray = []
             //   console.log(category)
-            rows.push(<h1 key={i}>{category.toUpperCase()}</h1>)
-            console.log(category)
-            console.log(category.charAt(0).toUpperCase())
-            this.props.categories[category].forEach((subCategory,j)=>{
-                rows.push(<CatButtons  kprop={`${j}+${i}`} fnAdd={this.addBtn} fnSubtract={this.subtractBtn} quantity={this.state.subCategory}button={subCategory.name} subCatState={this.state.subCategory} />)
+                newArray.push(<h1 key={i}>{category}</h1>)
+            // console.log(category)
+                this.props.categories[category].forEach((subCategory,j)=>{
+                    newArray.push(<CatButtons  kprop={`${j}+${i}`} fnAdd={this.addBtn} fnSubtract={this.subtractBtn} quantity={this.state.subCategory}button={subCategory.name} subCatState={this.state.subCategory} />)
+                })
+                rows.push(newArray)
             })
-        })
         }
-       
+        console.log(rows)
+       this.props.getItemsFunc(this.state.subCategory)
         if(this.state.rows.length === 0){
             this.setState({
                 rows
@@ -74,8 +76,15 @@ componentDidMount(){
         
         return(<>
              <div className="table">
-                {rows}
-            </div>
+                {/* <div className="title1"> */}
+                    {rows.map((row)=>
+                        <div className="category-cont">
+                            {row}
+                        </div>
+                    )}
+                </div>
+                {/* </div> */}
+
         </>)
 
     }

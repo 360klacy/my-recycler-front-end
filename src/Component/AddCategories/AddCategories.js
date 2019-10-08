@@ -20,7 +20,7 @@ componentDidMount(){
             //   console.log(category)
             newRows.push(<h1>{category}</h1>)
             this.props.categories[category].forEach((subCategory)=>{
-                tmpStateObj[subCategory.id] = 0
+                tmpStateObj[subCategory.sub_id] = 0
                 newRows.push(<CatButtons button={subCategory.name}  />)
             })
             console.log(newRows)

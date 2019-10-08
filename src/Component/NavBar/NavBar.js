@@ -9,7 +9,7 @@ class NavBar extends Component {
         return(<>
             <div className="container">
                 <nav className="nav-container">
-                    <div class="logo">
+                    <div className="logo">
                         <img className="logo-img" src="./012-van.png" alt="logo" />
                     </div>
                     <div className="nav">

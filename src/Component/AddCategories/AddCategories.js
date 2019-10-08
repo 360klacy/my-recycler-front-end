@@ -11,6 +11,7 @@ class AddCategories extends Component{
         rows:[]
     }
 }
+
 componentDidMount(){
     let tmpStateObj = Object.assign(this.state.subCategory)
     Object.keys(this.props.categories).forEach((category,i)=>{

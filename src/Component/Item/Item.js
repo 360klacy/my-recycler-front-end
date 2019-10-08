@@ -40,8 +40,7 @@ class Item extends Component {
         }
         this.setState({
             tires: 0
-    }
-    )
+      })
     }
 
     quantityUpdate = (e) =>{

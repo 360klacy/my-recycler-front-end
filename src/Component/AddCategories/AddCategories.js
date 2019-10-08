@@ -57,8 +57,9 @@ componentDidMount(){
         if(this.state.subCategory !== {}){
              Object.keys(this.props.categories).forEach((category,i)=>{
             //   console.log(category)
-            rows.push(<h1 key={i}>{category}</h1>)
+            rows.push(<h1 key={i}>{category.toUpperCase()}</h1>)
             console.log(category)
+            console.log(category.charAt(0).toUpperCase())
             this.props.categories[category].forEach((subCategory,j)=>{
                 rows.push(<CatButtons  kprop={`${j}+${i}`} fnAdd={this.addBtn} fnSubtract={this.subtractBtn} quantity={this.state.subCategory}button={subCategory.name} subCatState={this.state.subCategory} />)
             })
@@ -73,11 +74,8 @@ componentDidMount(){
         
         return(<>
              <div className="table">
-                <div className="title1">
-                    {rows}
-                </div>
-                </div>
-
+                {rows}
+            </div>
         </>)
 
     }

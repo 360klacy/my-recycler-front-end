@@ -1,6 +1,6 @@
 import openSocket from 'socket.io-client';
 
-const socket = openSocket('localhost:3100');
+const socket = openSocket(window.apiHost);
 
 
 function sayHi(){

@@ -58,11 +58,13 @@ class Item extends Component {
             } 
 
             return (
-                <div className="category-container">
-                    <div>
-                        {<AddCategories categories={this.state.categories} updateCount={this.updateCount} />}
+
+                <div className="categories">
+                    <div className="category-container">
+                            {<AddCategories categories={this.state.categories} updateCount={this.updateCount} />}
                     </div>
                 </div>
+
         )
 }
 }

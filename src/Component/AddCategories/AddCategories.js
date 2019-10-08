@@ -11,6 +11,7 @@ class AddCategories extends Component{
         newRows: []
     }
 }
+
 componentDidMount(){
     console.log("yall good")
     let newRows = [];

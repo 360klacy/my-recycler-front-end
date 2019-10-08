@@ -61,25 +61,26 @@ class Item extends Component {
               return  null
             } 
 
-                // let x = ""
-                //   x = Object.keys(this.state.categories).map((category)=>{
-                //     //   console.log(category)
+                let x = ""
+                  x = Object.keys(this.state.categories).map((category)=>{
+                    //   console.log(category)
 
-                //     // debugger
+                    // debugger
 
-                //       return(<>
-                //         <h2>{category}</h2>
-                //         {this.state.categories[category].map((subCategory)=>{
-                //             // console.log(subCategory)
+                      return(<>
+                        <h2>{category}</h2>
+                        {this.state.categories[category].map((subCategory)=>{
+                            // console.log(subCategory)
                             
-                //             return <h3>{subCategory.name}</h3>
-                //         })}
+                            return <h3>{subCategory.name}</h3>
+                        })}
                         
-                //     </>)
-                // })
+                    </>)
+                })
             
-                // console.log("llll", x)
+                console.log("llll", x)
 
+                console.log('testing')
         return (
                 <div className="category-container">
                     <div>

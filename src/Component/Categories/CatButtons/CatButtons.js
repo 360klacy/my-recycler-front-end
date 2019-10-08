@@ -5,29 +5,18 @@ import './CatButtons.css'
 
 class CatButtons extends Component{
 
-    constructor(props){
-        super(props);
-        this.state={ 
-            count: 0
-        }
-    }
-
-    onClick(type){
-        this.setState(prevState => {
-           return {count: type === 'add' ? prevState.count + 1: prevState.count - 1}
-        });
-    }
-        
-
     render(){
-        return(  <>    
-        <div class="category-container">
+        console.log(this.props.quantity)
+        return(<>    
+        <div key={this.props.kprop} className="category-container">
             <div className='left'><h2>{this.props.button}</h2></div>
                 <div className='right'>
                 <div className="add-minus">
-                    <input className="add-button" type='button' onClick={this.onClick.bind(this, 'add')} value='+'/>
-                    <input className="add-button" type='button' onClick={this.onClick.bind(this, 'sub')} value='-'/>
-                    <input type='text' className='counter' placeholder={this.state.count}/>
+
+                    <input className="add-button" name={this.props.button} onClick={this.props.fnAdd} type="button" value="+" />
+                    <input className="subtract-button" name={this.props.button} onClick={this.props.fnSubtract} type="button" value="-" />
+                    {/* <p>{this.props.quantity}</p> */}
+                    <input type='text' className='counter' value={this.props.quantity[this.props.button]}/>
                 </div>
             </div>
         </div>

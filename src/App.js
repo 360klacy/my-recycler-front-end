@@ -5,8 +5,6 @@ import Home from './Component/Home/Home'
 import UserDashboard from './Component/UserDashboard/UserDashboard';
 import CompanyDashboard from './Component/CompanyDashboard/CompanyDashboard';
 
-
-
 function App() {
   return (
 		<Router>

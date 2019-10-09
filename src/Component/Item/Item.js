@@ -1,7 +1,5 @@
 import React, { Component } from 'react'
-import AddMinus from '../AddMinus/AddMinus'
 import AddCategories from '../AddCategories/AddCategories'
-import axios from 'axios'
 
 //seed data 
 
@@ -9,21 +7,11 @@ class Item extends Component {
     constructor(props){
         super(props);
         this.state = {
-
+            subCatItems: {}
         };
     }
     async componentDidMount(){
-        const catResp = await axios.get(`${window.apiHost}/recycle`);
-        console.log("+++++",catResp.data);
-        const preState = {categories:{}}
-        const x = catResp.data.forEach((subCategory)=>{
-            console.log(subCategory)
-            return preState.categories[subCategory.name]= subCategory.sub_categories
-        })
-        console.log("+++++", preState)
-        this.setState({
-            ...preState
-        })
+      
 
 
         // Call the db, ask for all the subcategories (tires, mattresses, chairs...)
@@ -43,8 +31,7 @@ class Item extends Component {
         }
         this.setState({
             tires: 0
-    }
-    )
+      })
     }
 
     quantityUpdate = (e) =>{
@@ -54,39 +41,30 @@ class Item extends Component {
         
     }
 
+    getItems = (items)=>{
+        if(items !== this.state.subCatItems){
+            this.setState({
+                subCatItems: items
+            })
+        }
+        console.log(typeof this.props.getItemsFunc)
+        this.props.getItemsFunc(items)
+    }
+
     render(){
         // console.log("#######", this.state)
 
-            if(!this.state.categories){
-              return  null
+            if(this.props.categories === {}){
+              return  <div>Loading</div>
             } 
 
-                // let x = ""
-                //   x = Object.keys(this.state.categories).map((category)=>{
-                //     //   console.log(category)
-
-                //     // debugger
-
-                //       return(<>
-                //         <h2>{category}</h2>
-                //         {this.state.categories[category].map((subCategory)=>{
-                //             // console.log(subCategory)
-                            
-                //             return <h3>{subCategory.name}</h3>
-                //         })}
-                        
-                //     </>)
-                // })
-            
-                // console.log("llll", x)
-
-        return (
+            return (
                 <div className="category-container">
                     <div>
-                        {<AddCategories categories={this.state.categories} updateCount={this.updateCount} />}
-                        {/* {x} */}
+                        {<AddCategories getItemsFunc={this.getItems} categories={this.props.categories} updateCount={this.updateCount} fnAdd={this.props.fnAdd} fnSubtract={this.props.fnSubtract} quantity={this.props.quantity}/>}
                     </div>
                 </div>
+
         )
 }
 }

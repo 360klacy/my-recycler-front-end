@@ -8,44 +8,55 @@ class AddCategories extends Component{
     super()
     this.state = {
         subCategory : {},
-        newRows: []
+        rows:[]
     }
 }
-componentDidMount(){
-    console.log("yall good")
-    let newRows = [];
-        let x ="";
-        let tmpStateObj = Object.assign(this.state.subCategory)
-        Object.keys(this.props.categories).forEach((category)=>{
-            //   console.log(category)
-            newRows.push(<h1>{category}</h1>)
-            this.props.categories[category].forEach((subCategory)=>{
-                tmpStateObj[subCategory.id] = 0
-                newRows.push(<CatButtons button={subCategory.name}  />)
-            })
-            console.log(newRows)
-            this.setState({
-                subCategory: tmpStateObj,
-                newRows
-            })
-        })
-    }
 
+
+
+    updateValue = (e)=>{
+        let value=this.state.subCategory[e.target.name]
+    }
 
 
     render(){
-        console.log('hello')
-        
             // debugger
-
-             
+        let rows = []
+        // if(rows===[]){
+        //     return []
+        // }
+        // console.log(this.state.subCategory, this.props.categories)
+        let categoryList = Object.assign(this.props.categories.categories)
+             Object.keys(categoryList).forEach((category,i)=>{
+                let newArray = []
+            //   console.log(category)
+                newArray.push(<h1 key={i}>{category}</h1>)
+            // console.log(categoryList)
+                categoryList[category].forEach((subCategory,j)=>{
+                    newArray.push(<CatButtons  kprop={`${j}+${i}`} fnAdd={this.props.fnAdd} fnSubtract={this.props.fnSubtract} quantity={this.props.quantity} button={subCategory.name} subCatState={this.props.subCategory} />)
+                })
+                rows.push(newArray)
+            })
+        
+        console.log(rows)
+        console.log(typeof this.props.getItemsFunc)
+        this.props.getItemsFunc(this.state.subCategory)
+        if(this.state.rows.length === 0){
+            this.setState({
+                rows
+            })
+        }
         
         return(<>
              <div className="table">
-                <div className="title1">
-                    {this.state.newRows}
+                {/* <div className="title1"> */}
+                    {rows.map((row)=>
+                        <div className="category-cont">
+                            {row}
+                        </div>
+                    )}
                 </div>
-                </div>
+                {/* </div> */}
 
         </>)
 

@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import NavBar from '../NavBar/NavBar'
 import './Home.css'
 import Categories from '../Categories/Categories'
+import Login from '../Auth/Login'
+import SignUp from '../Auth/Signup'
 class Home extends Component {
-
+    
     render (){
         return(<>
-        {<NavBar/>}
             <div className="main-container">
                 <div className="main">
                     <div className="left">
@@ -33,7 +34,7 @@ class Home extends Component {
 
                 </div>
             </div>
-                {<Categories />}
+                <Categories />
 
             <footer className="footer"> 
             Copyright &copy; 2019 MyRecycler All Rights Reserved.

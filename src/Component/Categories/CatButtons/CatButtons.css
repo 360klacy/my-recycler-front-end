@@ -3,11 +3,8 @@
 }
 
 
-.left{
-    border: 2px solid black;
+.add-button,
+.subtract-button {
+    border: none;
+}
 
-}
-.right{
-border: 2px solid black;
-    
-}

@@ -52,3 +52,8 @@ componentDidMount(){
     }
 }
 export default AddCategories 
+
+
+
+
+

@@ -45,6 +45,7 @@ class UserDashboard extends Component {
         })
     }
     render(){
+        console.log(this.props.userInfo)
         var tickets = this.state.tickets.map(ticket=><TicketProp progress={ticket.progress} company={ticket.company} detail={ticket.details} />)
         // console.log(tickets);
         var modal = this.state.showItemModal ? <ItemModal items={this.state.subCatItems}/> : ""
@@ -57,7 +58,7 @@ class UserDashboard extends Component {
                     <h5>Dashboard —</h5>
 
                         <div className="title">
-                            <h1>Hello User!</h1>
+                            <h1>Hello {this.props.userInfo.name}!</h1>
                         </div>
                         <div className="ticket-cont"> 
                             {tickets}

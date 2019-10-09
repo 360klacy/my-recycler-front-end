@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import AddCategories from '../AddCategories/AddCategories'
-import axios from 'axios'
 
 //seed data 
 
@@ -12,15 +11,7 @@ class Item extends Component {
         };
     }
     async componentDidMount(){
-        const catResp = await axios.get(`${window.apiHost}/recycle`);
-        // console.log("+++++",catResp.data);
-        const preState = {categories:{}}
-        catResp.data.forEach((subCategory)=>{
-            return preState.categories[subCategory.name]= subCategory.sub_categories
-        })
-        this.setState({
-            ...preState
-        })
+      
 
 
         // Call the db, ask for all the subcategories (tires, mattresses, chairs...)
@@ -63,14 +54,14 @@ class Item extends Component {
     render(){
         // console.log("#######", this.state)
 
-            if(!this.state.categories){
+            if(this.props.categories === {}){
               return  <div>Loading</div>
             } 
 
             return (
                 <div className="category-container">
                     <div>
-                        {<AddCategories getItemsFunc={this.getItems} categories={this.state.categories} updateCount={this.updateCount} />}
+                        {<AddCategories getItemsFunc={this.getItems} categories={this.props.categories} updateCount={this.updateCount} fnAdd={this.props.fnAdd} fnSubtract={this.props.fnSubtract} quantity={this.props.quantity}/>}
                     </div>
                 </div>
 

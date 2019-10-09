@@ -26,6 +26,7 @@ class App extends React.Component{
   return (
 		<Router>
 			<div className="App">
+
   				<Route path="/" render={(props)=><NavBar {...props} authToken={this.state.authToken} setToken={this._setToken} /> }/>
 				<Route exact path="/" component={Home} />
 				{/* PROTECTED ROUTES GO HERE */}

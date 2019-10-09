@@ -1,24 +1,25 @@
 import React, { Component } from 'react'
-import './NavBar.css'
+import { tsPropertySignature } from '@babel/types';
 
 
+// Create Company NavBar for Company Dashboard
 
 
-function CompanyNavBar(){
+function CompanyNavBar(props){
     return (<>
         <nav className="nav-container">
             <div className="logo">
-                <img className="logo-img" src="./012-van.png" alt="logo" />
+                <a href="/"><img className="logo-img" src="./012-van.png" alt="logo" /></a>
             </div>
             <div className="nav">
                 <ul className="links">
-                    <li><a href="/">Current Orders</a></li>
-                    <li><a href="/">Order History</a></li>
-                    <li><a href="/">Settings</a></li>
+                    <li>Current Orders</li>
+                    <li><button onClick={()=>{props.changeDashboardContent('pending-approvals')}}>Pending Orders</button></li>
+                    <li>Settings</li>
                 </ul>
 
                 <div className="btn-container">
-                <button className="btn-border"><a href="/">Logout</a></button>
+                <button className="btn-border">Logout</button>
                 </div>
             </div>
         </nav>

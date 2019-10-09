@@ -11,6 +11,7 @@ class CatButtons extends Component{
         }
     }
     componentDidUpdate(){
+        console.log(this.props.quantity)
         if(this.state.value !== this.props.quantity[this.props.button]){
             this.setState({
                 value: this.props.quantity[this.props.button]

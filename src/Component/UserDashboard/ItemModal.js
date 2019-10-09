@@ -20,11 +20,28 @@ class ItemModal extends React.Component{
 
             return(
                 <div className="item-confirmation-modal">
-                    <ul>{itemList.map((item)=>
-                        <li>{`Name: ${item[0]}  Quantity:${item[1]}`}</li>
-                    )}</ul>
-                    <button onClick={this.props.closeModal} >X</button>
-                    <button onClick={this.props.submit}>Submit for a qoute</button>
+                    <div className="modal-logo">
+                        <img className="logo-img" src="./012-van.png" alt="logo" />
+                    </div>
+                    <div className="container">
+                        <div className="order-title">
+                            <h2>Order Summary</h2>
+                            <div className="spacer"></div>
+                            <p>Please confirm details below before submitting.</p>
+                        </div>
+                    
+                        <div className="order-details">
+                            <ul>{itemList.map((item)=>
+                                <li>{`Name: ${item[0]}  Quantity:${item[1]}`}</li>
+                            )}</ul>
+
+                            <button className="exit-btn" onClick={this.props.closeModal}>X</button>
+                            <button className="request-btn" onClick={this.props.submit}>Request Quote</button>
+
+                        </div>
+
+
+                    </div>
                 </div>
             )
         }

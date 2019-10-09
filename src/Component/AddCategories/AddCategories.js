@@ -12,35 +12,7 @@ class AddCategories extends Component{
     }
 }
 
-componentDidMount(){
-    let tmpStateObj = Object.assign(this.state.subCategory)
-    Object.keys(this.props.categories).forEach((category,i)=>{
-        //   console.log(category)
-        this.props.categories[category].forEach((subCategory,j)=>{
-            tmpStateObj[subCategory.name] = 0
-        })
-        // console.log(newRows)
-        })
-    console.log(this.state)
-    }
-    addBtn =  (e)=>{
-        let newState = Object.assign(this.state.subCategory)
-        let subCatVal = e.target.name
-        console.log(newState)
-        newState[subCatVal]++        
-        this.setState({
-            subCategory: newState
-        })
-    }  
-    subtractBtn =  (e)=>{
-        let newState = Object.assign(this.state.subCategory)
-        let subCatVal = e.target.name
-        console.log(newState)
-        newState[subCatVal]--      
-        this.setState({
-            subCategory: newState
-        })
-    }  
+
 
     updateValue = (e)=>{
         let value=this.state.subCategory[e.target.name]
@@ -53,19 +25,19 @@ componentDidMount(){
         // if(rows===[]){
         //     return []
         // }
-        console.log(this.state.subCategory, this.props.categories)
-        if(this.state.subCategory !== {}){
-             Object.keys(this.props.categories).forEach((category,i)=>{
+        // console.log(this.state.subCategory, this.props.categories)
+        let categoryList = Object.assign(this.props.categories.categories)
+             Object.keys(categoryList).forEach((category,i)=>{
                 let newArray = []
             //   console.log(category)
                 newArray.push(<h1 key={i}>{category}</h1>)
-            // console.log(category)
-                this.props.categories[category].forEach((subCategory,j)=>{
-                    newArray.push(<CatButtons  kprop={`${j}+${i}`} fnAdd={this.addBtn} fnSubtract={this.subtractBtn} quantity={this.state.subCategory}button={subCategory.name} subCatState={this.state.subCategory} />)
+            // console.log(categoryList)
+                categoryList[category].forEach((subCategory,j)=>{
+                    newArray.push(<CatButtons  kprop={`${j}+${i}`} fnAdd={this.props.fnAdd} fnSubtract={this.props.fnSubtract} quantity={this.props.quantity} button={subCategory.name} subCatState={this.props.subCategory} />)
                 })
                 rows.push(newArray)
             })
-        }
+        
         console.log(rows)
         console.log(typeof this.props.getItemsFunc)
         this.props.getItemsFunc(this.state.subCategory)

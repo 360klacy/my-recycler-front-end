@@ -365,4 +365,9 @@ Categories
   .bottom-text {
     width: 90%;
   }
+
+  .table-container{
+    display: flex;
+    flex-wrap: wrap;
+  }
 }

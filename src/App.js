@@ -30,7 +30,8 @@ class App extends React.Component{
   				<Route path="/" render={(props)=><NavBar {...props} authToken={this.state.authToken} setToken={this._setToken} /> }/>
 				<Route exact path="/" component={Home} />
 				{/* PROTECTED ROUTES GO HERE */}
-				{this.state.authToken ?
+				{/* {this.state.authToken ? */}
+				{true ?
 				<>
 					<Route path="/userdashboard" render={(props)=><UserDashboard {...props} userInfo={{...this.state}}/>} />
 					<Route path="/company/dashboard" component={CompanyDashboard}  />

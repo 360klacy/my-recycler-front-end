@@ -13,6 +13,8 @@ import './UserDashboard.css'
 
 
 
+
+
 class UserDashboard extends Component {
     constructor(){
         super();
@@ -142,8 +144,10 @@ class UserDashboard extends Component {
         }
     }
     render(){
+
         console.log(this.state.subCategoryQuantity)
         var showItems = this.isEmpty(this.state.categories) || this.isEmpty(this.state.subCategoryQuantity) ? "" :  <Item getItemsFunc={this.getItems} fnAdd={this.addBtn} fnSubtract={this.subtractBtn} categories={this.state.categories} quantity={this.state.subCategoryQuantity}/>
+
 
 
         var tickets = this.state.tickets.map(ticket=><TicketProp progress={ticket.progress} company={ticket.company} detail={ticket.details} />)
@@ -161,7 +165,7 @@ class UserDashboard extends Component {
                     <h5>Dashboard —</h5>
 
                         <div className="title">
-                            <h1>Hello User!</h1>
+                            <h1>Hello {this.props.userInfo.name}!</h1>
                         </div>
                         {/* <div className="ticket-cont"> 
                             {tickets}
@@ -201,6 +205,7 @@ class UserDashboard extends Component {
             {/* <Item getItemsFunc={this.getItems}/> */}
            {modal}
        </> )
+       
     }
 }
 

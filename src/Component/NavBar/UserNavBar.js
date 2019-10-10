@@ -6,7 +6,7 @@ function UserNavBar(){
     return (<>
         <nav className="nav-container">
             <div className="logo">
-                <img className="logo-img" src="./012-van.png" alt="logo" />
+                <a href="/"><img className="logo-img" src="./012-van.png" alt="logo" /></a>
             </div>
             <div className="nav">
                 <ul className="links">

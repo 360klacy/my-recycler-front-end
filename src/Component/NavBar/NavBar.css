@@ -9,7 +9,6 @@ a {
     display: none;
 }
 
-
 .logo-img {
     width: 100px;
     max-width: 100;
@@ -111,7 +110,7 @@ ul li {
     font-size: 24px;
     cursor: pointer;
     background-color: transparent;
-    border: none;
+    border: 1px solid black;
 }
 .body-modal-show{
     position: fixed;
@@ -203,6 +202,11 @@ ul li {
     background: rgb(255, 90, 95);
     border-color: transparent;
 }    
+.login-modal{
+    border: 1px black solid;
+    height: 300px;
+    width: 400px;
+}
 .login-modal span{
     margin: 20px 0px;
     display: inline-block;
@@ -245,6 +249,7 @@ ul li {
 .login-modal .register-form input::-webkit-input-placeholder, .login-modal .login-form input::-webkit-input-placeholder  { /* Chrome/Opera/Safari */
     color: #484848;
 }
+
 .sign-up-button{
     display: inline-block !important;
     position: relative !important;

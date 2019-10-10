@@ -95,6 +95,10 @@ li a {
   display: flex;
 }
 
+.spacer {
+  height: 20px;
+}
+
 
 .box {
   padding: 1rem;
@@ -132,3 +136,233 @@ input {
 }
 
 
+/********************************
+Home Page
+*********************************/
+
+h2 {
+  color: #93BF00;
+  font-size: 1.3rem;
+}
+
+.main-container {
+  width: 80%;
+  margin: auto;
+  /* position: absolute; */
+}
+
+.hero-bkg{
+  width: 100%;
+  height: auto;
+  background: url('./../src/recycle-hero.jpg') center no-repeat;
+  background-size: cover;
+  /* z-index: -1;
+  position: absolute;
+  left: 0px;
+  top: 0px; */
+}
+
+
+
+.main{
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
+.intro {
+  margin-right: auto;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 250px;
+}
+
+.title {
+  font-size: 2.3rem;
+}
+
+.our-story-section {
+  background: #F8FCFD;
+  padding: 60px 0;
+}
+
+.our-story-details {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: auto;
+  line-height: 1.8;
+}
+
+.our-story-details > a{
+  color: #93BF00;
+  margin-left: auto;
+  margin-top: 50px;
+}
+
+
+.info {
+  width: 90%;
+  line-height: 1.5;
+}
+
+img {
+  width: 50%;
+  max-width: 100%;
+}
+
+.hero-img {
+  display: none;
+}
+
+.footer {
+  width: 100%;
+  margin: auto;
+  text-align: center;
+  background: #f8fcfd;
+  padding: 2rem 3rem;
+}
+
+/********************************
+Categories
+*********************************/
+
+.categories-section {
+  margin: auto;
+}
+
+.icon-img{
+  max-width: 60px;
+  display: center;
+  margin: 30px;
+  align-content: center;
+  list-style-type: none;
+}
+
+.cat-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  justify-content: center;
+}
+
+.icon-flex{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 1.5rem;
+}
+
+#center-h1{
+  text-align: center;
+  padding: 1.5rem 0;
+}
+
+
+
+.bottom-text{
+  line-height: 1.8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: auto; 
+  text-align: center;
+  padding: 2rem;
+  width: 90%;
+}
+
+.btn-1{
+  margin-top: 3rem;
+}
+
+@media screen and (min-width: 640px  ){
+
+  .mobile-container {
+    display: none;
+}
+
+  h2 {
+    color: #93BF00;
+    font-size: 24px;
+  }
+
+  .intro {
+      padding-left: 50px;
+      margin-bottom: 150px;
+      width: 500px;
+  }
+
+  .bottom-text {
+    width: 100%;
+  }
+
+}
+
+
+
+
+
+@media only screen and (min-width : 768px) and (max-width : 1024px) and (orientation : portrait) {
+
+
+
+}
+
+@media only screen and (min-width : 768px) and (max-width : 1024px) and (orientation : landscape) {
+
+  .title {
+    font-size: 3rem;
+  }
+  
+  .main-container {
+    padding: 100px 0;
+  }
+
+  
+  .img-right > img {
+    width: 40%;
+  }
+  
+  .main {
+    padding-top: 0;
+  }
+
+  .our-story-section {
+    padding: 150px 0;
+  }
+
+}
+
+
+
+@media only screen  and (min-width : 768px) {
+
+  .categories-section {
+    padding: 100px 0;
+    width: 90%;
+  }
+
+
+
+}
+
+@media only screen and (min-width: 1024px) {
+  /* .categories-section {
+    padding: 100px 0;
+  } */
+
+  .hero-img {
+    display: block;
+    position: absolute;
+    right: 0;
+    bottom: 150px;
+    width: 40%;
+  }
+  
+
+  .bottom-text {
+    width: 90%;
+  }
+}

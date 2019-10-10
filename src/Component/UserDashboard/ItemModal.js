@@ -24,20 +24,41 @@ class ItemModal extends React.Component{
                         <img className="logo-img" src="./012-van.png" alt="logo" />
                     </div>
                     <div className="container">
-                        <div className="order-title">
+                        <div className="order-details">
                             <h2>Order Summary</h2>
                             <div className="spacer"></div>
                             <p>Please confirm details below before submitting.</p>
                         </div>
                     
                         <div className="order-details">
-                            <ul>{itemList.map((item)=>
-                                <li>{`Name: ${item[0]}  Quantity:${item[1]}`}</li>
-                            )}</ul>
+                            <div className="list">
+                                <ul>
+                                    <li>Date: {this.props.date}</li>  <br />
+                                    <li>Address: {this.props.address1}</li> <br />
+                                    <li>City/State/Zip: {this.props.address2}</li> <br />
+                                    <li>Requested Time: {this.props.time}</li> <br />
+                                </ul>
+                            </div>
+                                <div className="spacer"></div>
+                            
+                            <div className="list">
+                                <ul>{itemList.map((item)=>
+                                   <> 
+                                    <li>{`${item[0]}`} </li> <br />
+                                    <li>{`Quantity:${item[1]}`}</li> 
+                                    <div className="spacer"></div>
+                                   </>
+                                )}
+                                
+                                </ul> 
+                                
 
+                            </div>
+                        </div>
+
+                        <div className="order-details">
                             <button className="exit-btn" onClick={this.props.closeModal}>X</button>
                             <button className="request-btn" onClick={this.props.submit}>Request Quote</button>
-
                         </div>
 
 

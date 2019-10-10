@@ -9,7 +9,6 @@ import ItemModal from './ItemModal'
 import { subTickets, ticketInfo } from '../../connection/connection';
 import { thisTypeAnnotation } from '@babel/types';
 import axios from 'axios'
-import './UserDashboard.css'
 
 
 
@@ -25,7 +24,11 @@ class UserDashboard extends Component {
             subCategoryQuantity:{},
             modalLoading: false,
             modalErrorMsg: "",
-            requestSent: false
+            requestSent: false,
+            pickupDate: "",
+            address1: "",
+            address2: "",
+            time: ""
 
         }
         // subTickets((err, ticketInfo)=>this.setState({
@@ -41,7 +44,9 @@ class UserDashboard extends Component {
             return false;
     }
     return true;
-}
+    }
+
+    
     async componentDidMount(){
         if(this.isEmpty(this.state.categories)){
             console.log('finding categories')
@@ -73,15 +78,10 @@ class UserDashboard extends Component {
             }
 
         }
+
+    
         
-    componentDidUpdate(prevProps, prevState){
-        if(this.state.showItemModal === true){
-            document.querySelector('body').classList.add('body-show-item-modal')
-        }else{
-            document.querySelector('body').classList.remove('body-show-item-modal')
-        }
-        console.log('prevstate',prevState)
-    }
+
     addBtn =  (e)=>{
         let newState = Object.assign(this.state.subCategoryQuantity)
         let subCatVal = e.target.name
@@ -120,17 +120,48 @@ class UserDashboard extends Component {
         })
     }
 
+    changeDate = (e) => {
+        console.log(e.target.value)
+        this.setState({pickupDate: e.target.value})
+    }
+
+    changeAddress1 = (e) => {
+        console.log(e.target.value)
+        this.setState({address1: e.target.value})
+    }
+
+    changeAddress2 = (e) => {
+        console.log(e.target.value)
+        this.setState({address2: e.target.value})
+    }
+
+    changeTime = (e) => {
+        console.log(e.target.value)
+        this.setState({time: e.target.value})
+    }
+
     submitForm = async (e)=>{
+        e.preventDefault()
+        console.log('I SUBMITTED!')
         this.setState({
-            modalLoading: true
+            modalLoading: false
         })
+
+        
         let payload = JSON.stringify(this.state.subCategoryQuantity)
-        let postResp = await axios.post(`${window.apiHost}/ticket/create-ticket`,{
+        let {data : postResp} = await axios.post(`${window.apiHost}/ticket/create-ticket`,{
             token: '321',
             progress:0,
             payload,
+            pickupDate: this.state.pickupDate,
+            address1: this.state.address1,
+            address2: this.state.address2,
+            time: this.state.time,
             userid: '1'
         })
+
+        console.log("data: ",postResp)
+        
 
         if(postResp.msg === 'success'){
             this.setState({
@@ -148,14 +179,12 @@ class UserDashboard extends Component {
         console.log(this.state.subCategoryQuantity)
         var showItems = this.isEmpty(this.state.categories) || this.isEmpty(this.state.subCategoryQuantity) ? "" :  <Item getItemsFunc={this.getItems} fnAdd={this.addBtn} fnSubtract={this.subtractBtn} categories={this.state.categories} quantity={this.state.subCategoryQuantity}/>
 
-
-
         var tickets = this.state.tickets.map(ticket=><TicketProp progress={ticket.progress} company={ticket.company} detail={ticket.details} />)
         // console.log(tickets);
-        var modal = this.state.showItemModal ? <ItemModal items={this.state.subCategoryQuantity} closeModal={this.closeModal} submit={this.submitForm} modalLoading={this.state.modalLoading}/> : ""
-        if(this.state.requestSent){
-            return(<Redirect to="/"/>)
-        }
+        var modal = this.state.showItemModal ? <ItemModal date={this.state.pickupDate} address1={this.state.address1} address2={this.state.address2} time={this.state.time} items={this.state.subCategoryQuantity} closeModal={this.closeModal} submit={this.submitForm} modalLoading={this.state.modalLoading}/> : ""
+        // if(this.state.requestSent){
+        //     return(<Redirect to="/userdashboard"/>)
+        // }
         return(<>
             <div className="container">
                 {/* <UserNavBar /> */}
@@ -165,7 +194,7 @@ class UserDashboard extends Component {
                     <h5>Dashboard —</h5>
 
                         <div className="title">
-                            <h1>Hello {this.props.userInfo.name}!</h1>
+                            <h1>Hello, {this.props.userInfo.name}.</h1>
                         </div>
                         {/* <div className="ticket-cont"> 
                             {tickets}
@@ -180,26 +209,28 @@ class UserDashboard extends Component {
                 <div>
                     <h1>Time Available for Pick-up</h1>
                 </div>
-                <div className="pickup-container">
-                        <div className="date-where-time">
-                            <div className="box">
-                            <h3>Date</h3>
-                            <input type="text" className="input-field" name="input" placeholder="MM-DD-YYYY"  title="Enter a date in this format MM-DD-YYYY" />                    
+                <form onSubmit={this.submitForm}>
+                    <div className="pickup-container">
+                            <div className="date-where-time">
+                                <div className="box">
+                                <h3>Date</h3>
+                                <input type="text" value={this.state.pickupDate}  onChange={this.changeDate} className="input-field" name="input" placeholder="MM-DD-YYYY"  title="Enter a date in this format MM-DD-YYYY" />                    
+                                </div>
+                                <div className="box">
+                                    <h3>Where</h3>
+                                    <input type="text" value={this.state.address1} onChange={this.changeAddress1} className="input-field" placeholder="Address"  title="Enter a valid address" />                    
+                                    <input type="text" value={this.state.address2} onChange={this.changeAddress2} className="input-field" placeholder="City/State/Zip Code"  title="Enter a valid city/state/zip" />                    
+                                </div>
+                                <div className="box">
+                                    <h3>Time</h3>
+                                    <input type="text" value={this.state.time} onChange={this.changeTime} className="input-field" name="input" placeholder="00:00PM"  title="Enter a time" />                    
+                                </div>
                             </div>
-                            <div className="box">
-                                <h3>Where</h3>
-                                <input type="text" className="input-field" placeholder="Address"  title="Enter a valid address" />                    
-                                <input type="text" className="input-field" placeholder="City/State/Zip Code"  title="Enter a valid city/state/zip" />                    
-                            </div>
-                            <div className="box">
-                                <h3>Time</h3>
-                                <input type="text" className="input-field" name="input" placeholder="00:00PM"  title="Enter a time" />                    
-                            </div>
-                        </div>
                             <div className="box">
                                 <button className="submit-btn" onClick={this.showItemModalEvent}>Submit</button>
                             </div>
                     </div>
+                </form>
             </div>
 
             {/* <Item getItemsFunc={this.getItems}/> */}

@@ -8,19 +8,15 @@ import { tsPropertySignature } from '@babel/types';
 function CompanyNavBar(props){
     return (<>
         <nav className="nav-container">
-            <div className="logo">
-                <a href="/"><img className="logo-img" src="./012-van.png" alt="logo" /></a>
-            </div>
+            
             <div className="nav">
                 <ul className="links">
-                    <li>Current Orders</li>
+                    <li><button onClick={()=>{props.changeDashboardContent()}}>Current Orders</button></li>
                     <li><button onClick={()=>{props.changeDashboardContent('pending-approvals')}}>Pending Orders</button></li>
-                    <li>Settings</li>
+                    <li><button onClick={()=>{props.changeDashboardContent('scheduled-approvals')}}>Scheduled</button></li>
                 </ul>
 
-                <div className="btn-container">
-                <button className="btn-border">Logout</button>
-                </div>
+                
             </div>
         </nav>
     </>)

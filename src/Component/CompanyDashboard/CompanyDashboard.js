@@ -34,17 +34,17 @@ class CompanyDashboard extends Component {
 
         componentDidMount(){
             this.setState({
-                dashboardContent: <PendingQuotes changeDashboardContent={this.changeDashboardContent}/>
+                dashboardContent: <PendingQuotes tickets={this.state.tickets}changeDashboardContent={this.changeDashboardContent}/>
             })
         }
 
          changeDashboardContent = (newContent)=>{
         //  console.log(newContent)
-         let dashboardContent = <PendingQuotes changeDashboardContent={this.changeDashboardContent}/>
+         let dashboardContent = <PendingQuotes tickets={this.state.tickets} changeDashboardContent={this.changeDashboardContent}/>
          if (newContent === 'pending-approvals'){
-            dashboardContent = <PendingApprovals setToken={this.props.token}  />
+            dashboardContent = <PendingApprovals tickets={this.state.tickets} setToken={this.props.token}  />
          } else if(newContent === 'scheduled-approvals'){
-            dashboardContent = <Scheduled changeDashboardContent={this.changeDashboardContent} />
+            dashboardContent = <Scheduled tickets={this.state.tickets} changeDashboardContent={this.changeDashboardContent} />
          }
          this.setState({
             dashboardContent

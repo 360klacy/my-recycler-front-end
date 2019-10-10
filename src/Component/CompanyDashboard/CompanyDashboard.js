@@ -24,18 +24,28 @@ class CompanyDashboard extends Component {
                 dashboardContent: null
     
             }
-            subTickets((err, ticketInfo)=>this.setState({
-                tickets : ticketInfo
-            }))
-            ticketInfo((err, ticketInfo)=>this.setState({
-                tickets : ticketInfo
-            }))
+            // subTickets((err, ticketInfo)=>this.setState({
+            //     tickets : ticketInfo
+            // }))
+            // ticketInfo((err, ticketInfo)=>{
+            //     console.log('it did it')
+            //     this.setState({
+            //     tickets : ticketInfo
+            // })})
         }
 
         componentDidMount(){
-            this.setState({
-                dashboardContent: <PendingQuotes tickets={this.state.tickets}changeDashboardContent={this.changeDashboardContent}/>
-            })
+            subTickets((err, ticketInfo)=>this.setState({
+                tickets : ticketInfo
+            }))
+            ticketInfo((err, ticketInfo)=>{
+                console.log('it did it')
+                this.setState({
+                tickets : ticketInfo
+            },()=> {
+                this.changeDashboardContent()
+            })})
+           
         }
 
          changeDashboardContent = (newContent)=>{
@@ -48,12 +58,23 @@ class CompanyDashboard extends Component {
          }
          this.setState({
             dashboardContent
-         })
+         },
+         ()=>{
+             console.log("CHANGEDASHBOARDCONTENT: ",this.state.tickets, this.state.dashboardContent)
+         }
+         )
        }
 
 
     render(){
-        return(<>
+        console.log(this.state.tickets)
+        if(this.state.tickets.length === 0){
+            console.log('loading')
+            return <div>Loadiing</div>
+        }else{
+
+        
+        return(
             <div className="container">
                 <CompanyNavBar changeDashboardContent={this.changeDashboardContent} />
 
@@ -86,7 +107,8 @@ class CompanyDashboard extends Component {
                 </div>
             </div> */}
             </div>
-       </> )
+    )
+    }
     }
 }
 

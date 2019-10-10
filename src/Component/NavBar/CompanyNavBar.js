@@ -7,7 +7,7 @@ import { tsPropertySignature } from '@babel/types';
 
 function CompanyNavBar(props){
     return (<>
-        <nav className="nav-container">
+        <nav className="nav1-container">
             
             <div className="nav">
                 <ul className="links">

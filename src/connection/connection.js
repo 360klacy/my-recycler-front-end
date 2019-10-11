@@ -1,6 +1,6 @@
 import openSocket from 'socket.io-client';
 
-const socket = openSocket(window.apiHost);
+const socket = openSocket(`http://10.150.41.181:3100`);
 
 
 function sayHi(){
@@ -8,10 +8,17 @@ function sayHi(){
     socket.emit('msg', 'hello')
 }
 function subTickets(){
-    socket.emit('sub-tickets','321')
+    socket.emit('sub-tickets',)
+}
+function subUserTickets(id,token){
+    console.log(id, token)
+    socket.emit('sub-user-ticket', [id,token])
 }
 function ticketInfo(cb){
     socket.on('ticket-info',ticketInfo=>cb(null,ticketInfo))
+}
+function userTicketInfo(cb){
+    socket.on('user-ticket-info', userTicketInfo=>cb(null,userTicketInfo))
 }
 function setTicket(cb){
     socket.on('ticket-data',ticketInfo=>cb(null, ticketInfo))
@@ -20,4 +27,5 @@ function getTicket(id){
     socket.emit('need-ticket-info', id)
 }
 
-export { sayHi, ticketInfo, subTickets, setTicket, getTicket }
+
+export { sayHi, ticketInfo, subTickets, setTicket, getTicket, subUserTickets, userTicketInfo }

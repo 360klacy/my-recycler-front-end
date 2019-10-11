@@ -26,7 +26,7 @@ class App extends React.Component{
 	}
 	//condidtional rendring. 
 	render(){
-		console.log('++++',this.props)
+		console.log('++++',this.state)
   return (
 		<Router>
 			<div className="App">

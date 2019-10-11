@@ -1,6 +1,6 @@
 import openSocket from 'socket.io-client';
 
-const socket = openSocket(window.apiHost);
+const socket = openSocket(`http://10.150.41.181:3100`);
 
 
 function sayHi(){

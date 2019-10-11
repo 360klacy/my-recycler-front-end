@@ -16,7 +16,7 @@ class Login extends React.Component{
         const axiosResp = await axios.post(url, formData);
 
         console.log("LOGIN IN RESPONSE",axiosResp.data)
-        this.props.setToken(axiosResp.data.token,axiosResp.data.name,axiosResp.data.email)
+        this.props.setToken(axiosResp.data.token,axiosResp.data.name,axiosResp.data.email,axiosResp.data.id)
         if(axiosResp.data.token){
             this.props.closeModal()
         }

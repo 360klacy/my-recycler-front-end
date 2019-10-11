@@ -26,9 +26,9 @@ class Scheduled extends Component {
             <div className="table-container">
                 {filterTicket.map((ticket)=>{ 
                     return <div class="divTableCell">Customer Name: {ticket.name} 
-                    <div class="divTableCell">Order: {ticket.id}</div>
-                    <div class="divTableCell">Address: {ticket.address}</div>
-                    <div class="divTableCell">Time: {ticket.time}</div>
+                    <div className="divTableCell">Order: {ticket.id}</div>
+                    <div className="divTableCell">Address: {ticket.address}</div>
+                    <div className="divTableCell">Time: {ticket.time}</div>
                 </div>
                 })}
             </div>

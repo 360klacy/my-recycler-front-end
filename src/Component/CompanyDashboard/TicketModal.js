@@ -7,6 +7,7 @@ class TicketModal extends React.Component{
         this.state = {
             modalData:[0],
             price: 0,
+            quotes:""
         }
     }
     componentDidUpdate(prevProps,prevState){
@@ -20,11 +21,16 @@ class TicketModal extends React.Component{
     handleInputChange=(e)=>{
         let type = e.target.id
         let newData = [...this.state.modalData]
-        if(type !== 'time' && type !== 'date'){        
+        if(type !== 'time' && type !== 'date' && type !== 'quotes'){        
             newData[0][type] = e.target.value
             this.setState({
                 modalData: newData
             })
+        }else if(type === 'quotes'){
+            this.setState({
+                quotes: e.target.value
+            })
+
         }else{
             let { time, date } = JSON.parse(newData[0].customer_prefer_timeframe);
             time = type === 'time' ? e.target.value : time
@@ -64,6 +70,10 @@ class TicketModal extends React.Component{
                     <div className="form-field">
                         <label for="price">Price: </label>
                         <input name="price" id="time" value={time} onChange={this.handleInputChange}/>
+                    </div>
+                    <div className="form-field"> 
+                        <label for="quotes">Quote</label>
+                        <input name="quotes" id='quotes' value={this.state.quotes} onChange={this.handleInputChange} />
                     </div>
                 </div>
                 

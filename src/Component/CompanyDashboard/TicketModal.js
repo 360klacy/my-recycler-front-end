@@ -1,13 +1,13 @@
 import React from 'react';
 import '../../App.css'
+import axios from 'axios';
 
 class TicketModal extends React.Component{
     constructor(){
         super();
         this.state = {
             modalData:[0],
-            price: 0,
-            quotes:""
+            quotes:"",
         }
     }
     componentDidUpdate(prevProps,prevState){
@@ -41,10 +41,45 @@ class TicketModal extends React.Component{
             })
         }
     }
+
+    // handleSubmit(e){
+    //     alert("Your quote has been sent $" + this.state.value);
+    //     e.preventDefault()
+    // }
+    /* <button>Submit Quotes</button>
+                        <input type="text" value={this.state.value} onChange={this.handleInputChange} /> */
+
+
+        submitQuote = async ()=>{
+            console.log(this.state.modalData[0])
+            let { progress, userId, token, pickup_address, pickup_address2, id} = this.state.modalData[0]
+            const {time, date} = JSON.parse(this.state.modalData[0].customer_prefer_timeframe)
+            
+            const custQuote = {progress, userId, token, time, date, address: pickup_address , address2: pickup_address2, price: this.state.quotes, ticketId: id}
+            let axiosResponse = await axios.put(`${window.apiHost}/ticket/add-ticket-quote`, custQuote)
+        console.log("dkfjkldjfa", axiosResponse)
+        }
+        
+
     render(){
         let { date, time } = this.state.modalData[0].customer_prefer_timeframe ? JSON.parse(this.state.modalData[0].customer_prefer_timeframe): {date:'null', time:'null'}
         console.log(date,time)
-        console.log('ticketdata',this.state)
+        console.log('ticketdata',this.state);
+        let filteredItems= [];
+        if(this.state.modalData[0].order_items !== undefined){
+            console.log(this.state.modalData[0].order_items)
+            let orderItemsObject = JSON.parse(this.state.modalData[0].order_items)
+        console.log(orderItemsObject)
+        const orderItemsArray = Object.entries(orderItemsObject)
+        console.log(orderItemsArray)
+        filteredItems = orderItemsArray.filter((item)=>{
+            return item[1] !== 0
+            
+        })
+
+        console.log(filteredItems)
+        }
+        
         if(this.state.modalData === "loading"){
             return <div className="ticket-modal">Loading...</div>
         }
@@ -73,11 +108,27 @@ class TicketModal extends React.Component{
                     </div>
                     <div className="form-field"> 
                         <label for="quotes">Quote</label>
-                        <input name="quotes" id='quotes' value={this.state.quotes} onChange={this.handleInputChange} />
+                        <input name="quotes" id='quotes' value={this.state.value} onChange={this.handleInputChange} />
                     </div>
                 </div>
-                
-                <button>Submit Quote</button>
+                    <div className="table-container">
+                        <label for="name">Name:</label>
+                        <input name="name" id="name" value={this.state.modalData[0].name} onChange={this.handleInputChange} />
+                    </div>
+                    <div >
+                        <label for="order_items">Order Details:</label>
+                        <p name="order_items" id="order_items">{filteredItems.map((item)=>{
+                            return(<div>
+                                <div>{item[0]}</div> <div>{item[1]}</div>
+                            </div>
+                        )})} </p>
+                    </div>
+                    <div className="table-container">
+                        <button onClick={this.submitQuote}>Submit Quote</button>
+                    </div>
+                        
+
+                    
             </div>
         )
     }

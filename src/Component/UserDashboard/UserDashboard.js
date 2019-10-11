@@ -7,6 +7,7 @@ import TicketProp from './TicketProp'
 import ItemModal from './ItemModal'
 import { subTickets, ticketInfo } from '../../connection/connection';
 import axios from 'axios'
+import DisplayUserTickets from './DisplayUserTickets';
 
 
 
@@ -194,6 +195,7 @@ class UserDashboard extends Component {
 
                         <div className="title">
                             <h1>Hello, {this.props.userInfo.name}.</h1>
+                            <DisplayUserTickets userInfo={{...this.props.userInfo}}/>
             {/* OPEN CREATE NEW QUOTE MODAL */}
               
                             <section>

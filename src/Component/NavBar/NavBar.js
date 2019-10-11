@@ -97,9 +97,11 @@ class NavBar extends Component {
     {/* <a href="/">Home</a>
     <a href="/">Our Story</a>
     <a href="/">Blog</a>
-    <a href="/">Contact Us</a>
-    <button className="mobile-btn"><a href="/">Log in</a></button> */}
+
+    <a href="/">Contact Us</a> */}
     {navLinks}
+    <button className="mobile-btn" onClick={()=>{}}  >Log in</button>
+    
   </div>
   <div className="icon" onClick={this.displayMobile}>
     <div className="hamburger"></div>
@@ -117,17 +119,20 @@ class NavBar extends Component {
                         <p>MyRycycler</p>
                     </div>
                     <div className="nav">
-                        {/* <ul className="links"> */}
-                            {/* <li><a href="/">Home</a></li>
+
+                        {/* <ul className="links">
+                            <li><a href="/">Home</a></li>
                             <li><a href="/">Our Story</a></li>
                             <li><a href="/">Blog</a></li>
                             <li><a href="/">Contact Us</a></li> */}
-                            {/* <div className="btn-container"> */}
-                                {/* <button className="btn-border" onClick={this.signup}>Log in</button> */}
+                            {/* <div className="btn-container"
+                                <button className="btn-border"><a href="/">Log in</a></button>
                                 {/* <button className="btn"><a href="/">Create Account</a></button> */}
                             {/* </div> */}
                         {/* </ul> */}
+
                         {navLinks}
+
                     </div>
                 </nav>
             </div>

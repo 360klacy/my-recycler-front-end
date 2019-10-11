@@ -27,13 +27,28 @@ class CompanyDashboard extends Component {
                 dashDisplayId: 0
                 
             }
+            // subTickets((err, ticketInfo)=>this.setState({
+            //     tickets : ticketInfo
+            // }))
+            // ticketInfo((err, ticketInfo)=>{
+            //     console.log('it did it')
+            //     this.setState({
+            //     tickets : ticketInfo
+            // })})
+        }
+
+        componentDidMount(){
             subTickets((err, ticketInfo)=>this.setState({
                 dashboardContent: this.state.dashboardContent,
                 tickets : ticketInfo
             }))
-            ticketInfo((err, ticketInfo)=>this.setState({
+            ticketInfo((err, ticketInfo)=>{
+                console.log('it did it')
+                this.setState({
                 tickets : ticketInfo
-            }))
+           },()=> {
+                this.changeDashboardContent()
+            })})
             setTicket((err, ticketInfo)=>{
                 console.log(ticketInfo)
                 this.setState({
@@ -45,6 +60,7 @@ class CompanyDashboard extends Component {
             this.setState({
                 dashboardContent: <PendingQuotes tickets={this.state.tickets}changeDashboardContent={this.changeDashboardContent}/>
             })
+
         }
         closeTicketModal = ()=>{
             this.setState({
@@ -79,7 +95,10 @@ class CompanyDashboard extends Component {
          this.setState({
             dashboardContent,
             dashDisplayId
+         },()=>{
+             console.log("CHANGEDASHBOARDCONTENT: ",this.state.tickets, this.state.dashboardContent)
          })
+
        }
 
 
@@ -95,6 +114,27 @@ class CompanyDashboard extends Component {
             <div className="comp-ticket-cont">
                 {this.state.dashboardContent}
             </div>
+//         console.log(this.state.tickets)
+//         if(this.state.tickets.length === 0){
+//             console.log('loading')
+//             return <div>Loadiing</div>
+//         }else{
+
+        
+//         return(
+//             <div className="container">
+//                 <CompanyNavBar changeDashboardContent={this.changeDashboardContent} />
+
+//             <section className="top">
+//                 <div className="container">
+//                     <h5>Dashboard —</h5>
+
+//                         <div className="title">
+//                             <h1>Hello Company</h1>
+//                         </div>
+//                 </div>
+//             </section> 
+//             {this.state.dashboardContent}
             {/* <div className="current-orders">
                 <div className="container">
                     <h2>Pending Quotes</h2>
@@ -116,6 +156,7 @@ class CompanyDashboard extends Component {
             </div>            
             {ticketModal}
        </> )
+
     }
 }
 

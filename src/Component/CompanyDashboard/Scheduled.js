@@ -28,7 +28,7 @@ class Scheduled extends Component {
                     return <div class="divTableCell">Customer Name: {ticket.name} 
                     <div class="divTableCell">Order: {ticket.id}</div>
                     <div class="divTableCell">Address: {ticket.address}</div>
-                    <div class="divTableCell">Time: {ticket.order_items}</div>
+                    <div class="divTableCell">Time: {ticket.time}</div>
                 </div>
                 })}
             </div>

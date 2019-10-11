@@ -323,12 +323,14 @@ Categories
 }
 .comp-ticket-cont{
   display:flex;
+  width:77%
 
 }
 .table-container{
   display: flex;
-  flex:wrap;
+  flex-wrap:wrap;
   /* border:solid; */
+  overflow-y: scroll;
 }
 .company-ticket-table{
   display: flex;

@@ -17,7 +17,7 @@ class CompanyDashboard extends Component {
             this.state = {
                 tickets: [],
                 showTicketModal: false,
-                ticketModalData: [],
+                ticketModalData: <TicketModal ticketData={[]}/>,
                 categories:{},
                 subCategoryQuantity:{},
                 modalLoading: false,
@@ -28,14 +28,17 @@ class CompanyDashboard extends Component {
                 
             }
             subTickets((err, ticketInfo)=>this.setState({
+                dashboardContent: this.state.dashboardContent,
                 tickets : ticketInfo
             }))
             ticketInfo((err, ticketInfo)=>this.setState({
                 tickets : ticketInfo
             }))
-            setTicket((err, ticketInfo)=>this.setState({
-                ticketModalData : ticketInfo
-            }))
+            setTicket((err, ticketInfo)=>{
+                console.log(ticketInfo)
+                this.setState({
+                ticketModalData : <TicketModal ticketData={ticketInfo}/>
+            })})
         }
 
         componentDidMount(){
@@ -52,12 +55,14 @@ class CompanyDashboard extends Component {
         findTicket = (id)=>{
             getTicket(id);
             this.setState({
-                ticketModalData: "Loading"
+                ticketModalData: <TicketModal ticketData={"loading"}/>,
+                showTicketModal: true
             })
         }
 
         pendingQuotesClickEvent = (e)=>{
             console.log(e.target.id)
+            this.findTicket(e.target.id)
         }
 
          changeDashboardContent = (newContent)=>{
@@ -79,7 +84,7 @@ class CompanyDashboard extends Component {
 
 
     render(){
-        let ticketModal = this.state.showTicketModal ? <TicketModal ticketData={this.state.ticketModalData}/>: ""
+        let ticketModal = this.state.showTicketModal ?this.state.ticketModalData: ""
         return(<>
         <h5>Dashboard —</h5>
             <div className="title">

@@ -5,13 +5,16 @@ class TicketModal extends React.Component{
     constructor(){
         super();
         this.state = {
-            modalData: ""
+            modalData:[0]
         }
     }
-    componentDidMount(){
-        this.setState({
-            modalData: this.props.ticketData
-        })
+    componentDidUpdate(prevProps,prevState){
+        console.log(prevProps)
+        if(prevProps.ticketData !== this.state.modalData){
+            this.setState({
+                modalData: prevProps.ticketData
+            })
+        }
     }
     render(){
         console.log('ticketdata',this.state)
@@ -19,7 +22,14 @@ class TicketModal extends React.Component{
             return <div className="ticket-modal">Loading...</div>
         }
         return(
-            <div className="ticket-modal">{this.state.modalData}</div>
+            <div className="ticket-modal">
+                <input>
+                </input>
+                <input>
+                </input>
+                <input>
+                </input>
+            </div>
         )
     }
 }

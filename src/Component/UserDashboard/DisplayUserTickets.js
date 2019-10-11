@@ -10,7 +10,7 @@ class DisplayUserTickets extends React.Component{
     };
   }
 
-  componentDidMount(id,token){
+  componentDidMount(){
     subUserTickets(this.props.userInfo.id, this.props.userInfo.token);
     userTicketInfo((err,ticketInfo)=>this.setState({
         tickets: ticketInfo

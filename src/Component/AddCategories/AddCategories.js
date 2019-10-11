@@ -48,6 +48,7 @@ class AddCategories extends Component{
         }
         
         return(<>
+        <div className="container">
              <div className="table">
                 {/* <div className="title1"> */}
                     {rows.map((row)=>
@@ -56,6 +57,7 @@ class AddCategories extends Component{
                         </div>
                     )}
                 </div>
+        </div>
                 {/* </div> */}
 
         </>)

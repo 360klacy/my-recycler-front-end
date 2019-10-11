@@ -10,6 +10,7 @@ class PendingQuotes extends Component {
         console.log(this.props.tickets)
         const filterTicket = this.props.tickets.filter((ticket)=>{
             return ticket.progress === 1
+
         })
         return (<>
             <div className="table-container">

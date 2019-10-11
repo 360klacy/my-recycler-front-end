@@ -21,6 +21,8 @@ code {
 
 ul li {
   list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 li a {
@@ -386,6 +388,69 @@ Categories
 .border-right{border-right:solid;}
 .border-top{border-top:solid;}
 .border-bottom{border-bottom: solid;}
+
+
+/********************************
+User Dashboard
+*********************************/
+
+.item-confirmation-modal{
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  width: 500px;
+  background: #FFF;
+  padding: 2rem 0;
+  border: 2px solid #eee;
+}
+
+
+.modal-logo {
+  display: flex;
+  justify-content: center;
+}
+
+.exit-btn {
+  color: #3e5859;
+  background: none;
+  border: none;
+  position: absolute;
+  top: 30px;
+  right: -50px;
+  padding: 0;
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+
+.request-btn {
+  background: #81a713;
+  border-radius: 30px;
+  border: none;
+  padding: 1rem 2rem;
+  margin: 0;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.spacer {
+  height: 10px;
+}
+
+.order-details {
+  padding: 2rem;
+}
+
+.list > ul li {
+  padding: 0;
+}
+
+.list {
+  display: flex;
+  justify-content: space-between;
+}
 
 @media screen and (min-width: 640px  ){
 

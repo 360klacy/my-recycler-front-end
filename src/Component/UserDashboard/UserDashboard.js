@@ -48,6 +48,7 @@ class UserDashboard extends Component {
 
     
     async componentDidMount(){
+        console.log('this.ran')
         if(this.isEmpty(this.state.categories)){
             console.log('finding categories')
             const catResp = await axios.get(`${window.apiHost}/recycle`);
@@ -186,6 +187,7 @@ class UserDashboard extends Component {
         //     return(<Redirect to="/userdashboard"/>)
         // }
         return(<>
+            
             <div className="container">
                 {/* <UserNavBar /> */}
 

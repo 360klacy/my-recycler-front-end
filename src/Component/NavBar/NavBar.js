@@ -4,6 +4,9 @@ import Signup from '../Auth/Signup'
 import ModalDefault from '../Auth/ModalDefault'
 import { Link } from 'react-router-dom'
 import './NavBar.css'
+import HomeNav from './HomeNav'
+import CompanyNav from './CompanyNav'
+import UserNav from './UserNav'
 
 class NavBar extends Component {
     constructor(){
@@ -19,7 +22,7 @@ class NavBar extends Component {
             modalContent: <ModalDefault changeModalContent={this.changeModalContent}/>
         })
     }
-    signup=(e)=>{
+    signup=()=>{
          this.setState({
            showModal: true
          })
@@ -31,6 +34,7 @@ class NavBar extends Component {
            modalContent: <ModalDefault changeModalContent={this.changeModalContent}/>
          })
        }
+
        changeModalContent = (newContent)=>{
         //  console.log(newContent)
          let modalContent = <ModalDefault changeModalContent={this.changeModalContent}/>
@@ -43,32 +47,21 @@ class NavBar extends Component {
            modalContent
          })
        }
+
        buildNavLinks = ()=>{
            let navBarLinks = ""
 
-           if(!this.props.authToken){
-            navBarLinks = <>
-                <ul className="links">
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/">Our Story</Link></li>
-                    <li><Link to="/">Contact</Link></li>
-                </ul>
-                <div className="btn-container">
-                    <button className="btn-border" onClick={this.signup}>Login</button>
-                    <button className="btn" onClick={this.signup}>Create Account</button>
-                </div>
-            </> 
+           if(!this.props.userInfo.authToken){
+            navBarLinks =
+              <HomeNav signup={this.signup}/>   
+           } else if ((this.props.userInfo.authToken) && (this.props.userInfo.isCompany)) {
+            navBarLinks =  
+            <CompanyNav logout={this.props.logout}/>
            } else {
             navBarLinks =  
-            <>
-            <ul className="links">
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/">Our Story</Link></li>
-                <li><Link to="/">Contact</Link></li>
-                <li><Link to="/userdashboard">Dashboard</Link></li>
-            </ul>
-            </>
+             <UserNav logout={this.props.logout}/>
            }
+           console.log('+++++',navBarLinks )
            return navBarLinks
        }    
 
@@ -81,9 +74,9 @@ class NavBar extends Component {
       }
     }
 
-    render (){
+
+    render (){        
         const navLinks = this.buildNavLinks()
-        console.log(navLinks)
         return(<>
 
 <div className="mobile-container">
@@ -137,10 +130,13 @@ class NavBar extends Component {
                 </nav>
             </div>
 
+{/* LOGIN AND SIGN-UP PROCESS */}
             <div className="login-modal" style={this.state.showModal ? {"display": "block"} : {}} >
               <button id="close-modal" onClick={this.closeModal}>x</button>
               <div className="modal-content">
+
                 {this.state.modalContent}
+              
               </div>
             </div>
 

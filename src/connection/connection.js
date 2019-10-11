@@ -10,8 +10,8 @@ function sayHi(){
 function subTickets(){
     socket.emit('sub-tickets',)
 }
-function subUserTickets(id){
-    socket.emit('sub-user-ticket', id)
+function subUserTickets(id,token){
+    socket.emit('sub-user-ticket', [id,token])
 }
 function ticketInfo(cb){
     socket.on('ticket-info',ticketInfo=>cb(null,ticketInfo))

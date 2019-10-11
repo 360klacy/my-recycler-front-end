@@ -61,7 +61,7 @@ li a {
 .divTableCell, .divTableHead {
 	border: 1px solid #999999;
 	display: table-cell;
-	padding: 3px 10px;
+  padding: 3px 10px;
 }
 .divTableHeading {
 	background-color: #EEE;
@@ -277,6 +277,108 @@ Categories
   margin-top: 3rem;
 }
 
+/**********************************
+
+      Ticket Modal
+
+***********************************/
+.ticket-modal{
+  position: fixed;
+  left: 50%;
+  top:50%;
+  transform: translate(-50%,-50%);
+  background-color: white;
+  border:solid;
+  width:50%;
+  height:50%
+}
+.company-nav{
+  display: flex;
+  flex-flow: column;
+  width: 25%;
+  background-color: green;
+  position: relative;
+  justify-content: space-around
+}
+.company-nav > div{
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  margin: 0;
+  border-right: solid;
+  background-color: green;
+}
+.company-nav > div.active{
+  background-color: gold;
+  border-right: none
+}
+.company-dash-cont{
+  display:flex;
+  background-color:white;
+  height: 90vh;
+  margin: 20px;
+  border: solid;
+}
+.comp-ticket-cont{
+  display:flex;
+
+}
+.table-container{
+  display: flex;
+  flex:wrap;
+  /* border:solid; */
+}
+.company-ticket-table{
+  display: flex;
+  border:solid;
+  flex-wrap: wrap;
+  width: 44%;
+  margin: 3%;
+  height:200px;
+
+}
+.company-ticket-table-header{
+  display: block;
+  width: 70%;
+  background-color: #93BF00;
+ 
+
+}
+.company-ticket-table-id{
+  display: block;
+  width: 30%;
+  /* border-left:solid; */
+
+}
+.company-ticket-table-cell{
+  display:table-cell
+}
+.company-ticket-table-user-pref{
+  display:block;
+  width:50%;
+}
+
+.company-ticket-table-details-btn{
+  width: 90%;
+  height: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  border-radius: 10px;
+  margin-left: 5%;
+  background-color: #93BF00;
+}
+.company-ticket-table-details-btn:hover{
+  cursor: hand
+}
+.border-left{border-left:solid;}
+.border-right{border-right:solid;}
+.border-top{border-top:solid;}
+.border-bottom{border-bottom: solid;}
+
 @media screen and (min-width: 640px  ){
 
   .mobile-container {
@@ -366,8 +468,5 @@ Categories
     width: 90%;
   }
 
-  .table-container{
-    display: flex;
-    flex-wrap: wrap;
-  }
+
 }

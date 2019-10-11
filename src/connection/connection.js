@@ -13,5 +13,11 @@ function subTickets(){
 function ticketInfo(cb){
     socket.on('ticket-info',ticketInfo=>cb(null,ticketInfo))
 }
+function setTicket(cb){
+    socket.on('ticket-data',ticketInfo=>cb(null, ticketInfo))
+}
+function getTicket(id){
+    socket.emit('need-ticket-info', id)
+}
 
-export { sayHi, ticketInfo, subTickets }
+export { sayHi, ticketInfo, subTickets, setTicket, getTicket }

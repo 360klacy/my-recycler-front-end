@@ -97,6 +97,7 @@ class NavBar extends Component {
     {/* <a href="/">Home</a>
     <a href="/">Our Story</a>
     <a href="/">Blog</a>
+
     <a href="/">Contact Us</a> */}
     {navLinks}
     <button className="mobile-btn" onClick={()=>{}}  >Log in</button>
@@ -118,6 +119,7 @@ class NavBar extends Component {
                         <p>MyRycycler</p>
                     </div>
                     <div className="nav">
+
                         {/* <ul className="links">
                             <li><a href="/">Home</a></li>
                             <li><a href="/">Our Story</a></li>

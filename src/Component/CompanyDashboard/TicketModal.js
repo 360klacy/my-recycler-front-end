@@ -6,6 +6,7 @@ class TicketModal extends React.Component{
         super();
         this.state = {
             modalData:[0],
+            price: 0,
             quotes:""
         }
     }
@@ -51,20 +52,24 @@ class TicketModal extends React.Component{
             <div className="ticket-modal">
                 <div className="deliveryForm">
                     <div className="form-field"> 
-                        <label for="pickup_address1">Address1</label>
+                        <label for="pickup_address1">Address1: </label>
                         <input name="pickup_address1" id='pickup_address' value={this.state.modalData[0].pickup_address} onChange={this.handleInputChange}/>
                     </div>
                     <div className="form-field">
-                        <label for="pickup_address2">Address2</label>
+                        <label for="pickup_address2">Address2: </label>
                         <input name="pickup_address2" id='pickup_address2' value={this.state.modalData[0].pickup_address2} onChange={this.handleInputChange}/>
                     </div>
                     <div className="form-field">
-                        <label for="date">Date</label>
+                        <label for="date">Date: </label>
                         <input name="date" id='date' value={date} onChange={this.handleInputChange}/>
                     </div>
                     <div className="form-field">                
-                        <label for="time" >time</label>
+                        <label for="time" >Time: </label>
                         <input name="time" id='time' value={time} onChange={this.handleInputChange}/>
+                    </div>
+                    <div className="form-field">
+                        <label for="price">Price: </label>
+                        <input name="price" id="time" value={time} onChange={this.handleInputChange}/>
                     </div>
                     <div className="form-field"> 
                         <label for="quotes">Quote</label>

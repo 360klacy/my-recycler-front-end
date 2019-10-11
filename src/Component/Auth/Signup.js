@@ -30,6 +30,8 @@ class Signup extends React.Component{
         password:''
     })
     this.props.setToken(axiosResp.data.token,axiosResp.data.name,axiosResp.data.email,axiosResp.data.id)
+    
+    
     if(axiosResp.data.token){
         this.props.closeModal()
     }

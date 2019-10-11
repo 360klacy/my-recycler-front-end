@@ -8,6 +8,7 @@ import ItemModal from './ItemModal'
 import { subTickets, ticketInfo } from '../../connection/connection';
 import axios from 'axios'
 import DisplayUserTickets from './DisplayUserTickets';
+import UserNav from './../NavBar/UserNav'
 
 
 

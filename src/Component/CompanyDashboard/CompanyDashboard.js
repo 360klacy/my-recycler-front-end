@@ -103,12 +103,13 @@ class CompanyDashboard extends Component {
 
 
     render(){
+        console.log('APP PROPS', this.props )
         let ticketModal = this.state.showTicketModal ?this.state.ticketModalData: "";
         console.log('hello1')
         return(<>
         <h5>Dashboard —</h5>
             <div className="title">
-                <h1>Hello Company</h1>
+                <h1>Hello {this.props.userInfo.name}</h1>
             </div>
             <div className="company-dash-cont">
                 <CompanyNavBar displayId={this.state.dashDisplayId} changeDashboardContent={this.changeDashboardContent} />

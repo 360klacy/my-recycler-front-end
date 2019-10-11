@@ -284,13 +284,18 @@ Categories
 ***********************************/
 .ticket-modal{
   position: fixed;
+  display: flex;
   left: 50%;
   top:50%;
   transform: translate(-50%,-50%);
   background-color: white;
   border:solid;
-  width:50%;
+  width:60%;
   height:50%
+}
+
+.form-field > *{
+  height: 30px
 }
 .company-nav{
   display: flex;
@@ -376,6 +381,7 @@ Categories
 .company-ticket-table-details-btn:hover{
   cursor: hand
 }
+
 .border-left{border-left:solid;}
 .border-right{border-right:solid;}
 .border-top{border-top:solid;}

@@ -293,11 +293,16 @@ Categories
   background-color: white;
   border:solid;
   width:60%;
-  height:60%
+  height:74%
 }
 
 .form-field > *{
   height: 30px
+}
+.table-container{
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
 }
 .company-nav{
   display: flex;

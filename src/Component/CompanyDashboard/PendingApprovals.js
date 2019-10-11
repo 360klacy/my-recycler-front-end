@@ -7,7 +7,7 @@ class PendingApprovals extends Component{
     
 render() {
     const filterTicket = this.props.tickets.filter((ticket)=>{
-        return ticket.progress === 2
+        return ticket.progress === 1
     })
     console.log('filterTickets',filterTicket)
     return (<>

@@ -11,6 +11,7 @@ function subTickets(){
     socket.emit('sub-tickets',)
 }
 function subUserTickets(id,token){
+    console.log(id, token)
     socket.emit('sub-user-ticket', [id,token])
 }
 function ticketInfo(cb){

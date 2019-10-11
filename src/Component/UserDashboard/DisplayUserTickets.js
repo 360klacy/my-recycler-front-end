@@ -1,6 +1,5 @@
 import React from 'react';
 import {subUserTickets,userTicketInfo} from '../../connection/connection'
-import { ticketInfo } from '../../connection/connection';
 
 class DisplayUserTickets extends React.Component{
   constructor(props){
@@ -11,10 +10,10 @@ class DisplayUserTickets extends React.Component{
   }
 
   componentDidMount(id,token){
-    subUserTickets(this.props.userInfo.id, this.props.userInfo.token);
-    userTicketInfo((err,ticketInfo)=>this.setState({
+    subUserTickets(this.props.userInfo.id, this.props.userInfo.authToken);
+    userTicketInfo((err,ticketInfo)=>{this.setState({
         tickets: ticketInfo
-    }))
+    })})
   }
 
 

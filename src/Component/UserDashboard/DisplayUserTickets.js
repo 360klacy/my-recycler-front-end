@@ -17,7 +17,7 @@ class DisplayUserTickets extends React.Component{
     })})
   }
 
-   fuckingbuttonMrReidhahahahaAccept =async (e) =>{
+   acceptDeclinebtn =async (e) =>{
     let userValue 
     
     switch(e.target.value){
@@ -51,8 +51,8 @@ class DisplayUserTickets extends React.Component{
     <>
       <div>{this.state.tickets[0].name}</div>
       <div>{this.state.tickets[0].order_items}</div>
-      <button onClick={this.fuckingbuttonMrReidhahahahaAccept} value="accept">Accept</button>
-      <button onClick={this.fuckingbuttonMrReidhahahahaAccept} value="decline">Decline</button>
+      <button onClick={this.acceptDeclinebtn} value="accept">Accept</button>
+      <button onClick={this.acceptDeclinebtn} value="decline">Decline</button>
     </>
       console.log(this.state.tickets)
       console.log(this.props)

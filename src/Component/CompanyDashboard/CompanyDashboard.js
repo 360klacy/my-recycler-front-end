@@ -24,7 +24,8 @@ class CompanyDashboard extends Component {
                 modalErrorMsg: "",
                 requestSent: false,
                 dashboardContent: null,
-                dashDisplayId: 0
+                dashDisplayId: 0,
+                pendingTickets: {}
                 
             }
             // subTickets((err, ticketInfo)=>this.setState({
@@ -40,13 +41,13 @@ class CompanyDashboard extends Component {
         componentDidMount(){
             console.log('component did mount')
             subTickets((err, ticketInfo)=>{
-                console.log('hello?',ticketInfo)
+                // console.log('hello?',ticketInfo)
                 this.setState({
                 dashboardContent: this.state.dashboardContent,
                 tickets : ticketInfo
             })})
             ticketInfo((err, ticketInfo)=>{
-                console.log('hello',ticketInfo)
+                // console.log('hello',ticketInfo)
                 this.setState({
                 tickets : ticketInfo
            },()=> {
@@ -55,25 +56,43 @@ class CompanyDashboard extends Component {
             setTicket((err, ticketInfo)=>{
                 console.log(ticketInfo)
                 this.setState({
-                ticketModalData : <TicketModal ticketData={ticketInfo}/>
+                ticketModalData : <TicketModal ticketData={ticketInfo} closeModal={this.closeTicketModal}/>
             })})
             this.setState({
                 dashboardContent: <PendingQuotes tickets={this.state.tickets}changeDashboardContent={this.changeDashboardContent}/>
             })
         }
 
-        closeTicketModal = ()=>{
+        closeTicketModal = (e)=>{
+            console.log('closing')            
+            let id = e.target.id
             this.setState({
                 showTicketModal: false,
                 ticketModalData: []
-            })
+            })            
+
+            setTimeout(()=>{            
+                console.log(id)
+
+                let newPendingState = Object.assign(this.state.pendingTickets)
+                delete newPendingState[id]
+                this.setState({
+                    pendingTickets:newPendingState,
+                    dashboardContent: <PendingApprovals tickets={this.state.tickets} setToken={this.props.token} clickFunc={this.pendingQuotesClickEvent} pending={newPendingState} />
+                })
+            },10000)
         }
         findTicket = (id)=>{
             getTicket(id);
+            let newPendingState = Object.assign(this.state.pendingTickets)
+            newPendingState[id] = true
             this.setState({
-                ticketModalData: <TicketModal ticketData={"loading"}/>,
-                showTicketModal: true
+                ticketModalData: <TicketModal ticketData={"loading"} closeModal={this.closeTicketModal}/>,
+                showTicketModal: true,
+                newPendingState,
+                dashboardContent: <PendingApprovals tickets={this.state.tickets} setToken={this.props.token} clickFunc={this.pendingQuotesClickEvent} pending={newPendingState} />
             })
+            
         }
 
         pendingQuotesClickEvent = (e)=>{
@@ -87,7 +106,7 @@ class CompanyDashboard extends Component {
          let dashboardContent = <PendingQuotes tickets={this.state.tickets} changeDashboardContent={this.changeDashboardContent}/>
          if (newContent === 'pending-approvals' || newContent === 1){
             dashDisplayId = 1
-            dashboardContent = <PendingApprovals tickets={this.state.tickets} setToken={this.props.token} clickFunc={this.pendingQuotesClickEvent} />
+            dashboardContent = <PendingApprovals tickets={this.state.tickets} setToken={this.props.token} clickFunc={this.pendingQuotesClickEvent} pending={this.state.pendingTickets} />
          } else if(newContent === 'scheduled-approvals' || newContent === 2 ){
              dashDisplayId = 2
             dashboardContent = <Scheduled tickets={this.state.tickets} changeDashboardContent={this.changeDashboardContent} />
@@ -96,7 +115,7 @@ class CompanyDashboard extends Component {
             dashboardContent,
             dashDisplayId
          },()=>{
-             console.log("CHANGEDASHBOARDCONTENT: ",this.state.tickets, this.state.dashboardContent)
+            //  console.log("CHANGEDASHBOARDCONTENT: ",this.state.tickets, this.state.dashboardContent)
          })
 
        }
@@ -104,9 +123,7 @@ class CompanyDashboard extends Component {
        
 
     render(){
-        console.log('APP PROPS', this.props )
         let ticketModal = this.state.showTicketModal ?this.state.ticketModalData: "";
-        console.log('hello1')
         return(<>
         <h5>Dashboard —</h5>
             <div className="title">

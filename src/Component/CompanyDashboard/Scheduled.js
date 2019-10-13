@@ -20,7 +20,7 @@ class Scheduled extends Component {
     render() {
         console.log(this.props.tickets)
         const filterTicket = this.props.tickets.filter((ticket)=>{
-            return ticket.progress === 2
+            return ticket.progress >= 3
         })
         return (<>
             <div className="table-container">

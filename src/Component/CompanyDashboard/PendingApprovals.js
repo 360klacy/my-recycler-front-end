@@ -12,14 +12,21 @@ render() {
     console.log('filterTickets',filterTicket)
     return (<>
         <div className="table-container">
-            {filterTicket.map((ticket)=>{ 
+            {filterTicket.map((ticket)=>{
+                let isPending = this.props.pending[ticket.id] === true;
+                let btn
+                let btnClass = isPending ? "company-ticket-table-details-btn pending" : "company-ticket-table-details-btn"
+                let btnText = isPending?"Pending...":"Click to give Quote!"
+                let overlayClass = isPending?"company-ticket-table-overlay": "";
+                let btnEvent =isPending ? null :this.props.clickFunc
                 return (
-                <div onClick={this.props.clickFunc} className="company-ticket-table" key={ticket.id}>
+                <div className="company-ticket-table" key={ticket.id}>
+                    <div className={overlayClass}></div>
                     <div className="company-ticket-table-header border-bottom border-right"> Customer Name: {ticket.name} </div>
                     <div className="company-ticket-table-id border-bottom">Order: {ticket.id}</div>
                     <div className="company-ticket-table-user-pref border-right border-bottom">Address: {ticket.pickup_address} {ticket.pickup_address2}</div>
                     <div className="company-ticket-table-user-pref border-bottom">Time: {Object.entries(JSON.parse(ticket.customer_prefer_timeframe))}</div>
-                    <div className="company-ticket-table-details-btn" onClick={this.props.clickFunc} id={ticket.id}>Click to give Quote!</div>
+                    <div className={btnClass} onClick={btnEvent} id={ticket.id}>{btnText}</div>
                 </div>
             )})}
         </div>

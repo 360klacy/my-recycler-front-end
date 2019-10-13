@@ -60,10 +60,10 @@ class TicketModal extends React.Component{
         }
         submitQuote = async ()=>{
             console.log(this.state.formData[0])
-            let { progress, userId, token, pickup_address, pickup_address2, id} = this.state.formData[0]
+            let { progress, pickup_address, pickup_address2, ticket_id} = this.state.formData[0]
             const {time, date} = JSON.parse(this.state.formData[0].customer_prefer_timeframe)
             
-            const custQuote = {progress, userId, token, time, date, address: pickup_address , address2: pickup_address2, price: this.state.quotes, ticketId: id}
+            const custQuote = {progress, userId:this.props.companyUser.id, token: this.props.companyUser.authToken, time, date, address: pickup_address , address2: pickup_address2, price: this.state.quotes, ticketId: ticket_id}
             let axiosResponse = await axios.put(`${window.apiHost}/ticket/add-ticket-quote`, custQuote)
         console.log("dkfjkldjfa", axiosResponse)
         }

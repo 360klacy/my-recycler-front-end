@@ -354,6 +354,7 @@ Categories
   flex-wrap:wrap;
   /* border:solid; */
   overflow-y: scroll;
+  width:100%;
 }
 .company-ticket-table{
   display: flex;
@@ -362,6 +363,7 @@ Categories
   width: 44%;
   margin: 3%;
   height:200px;
+  background-color: lightgray
 
 }
 .form-left-side{
@@ -413,10 +415,20 @@ Categories
 }
 .company-ticket-table-header{
   display: block;
-  width: 70%;
+  width: 70%;  
   background-color: #93BF00;
- 
-
+}
+.status-row{
+  display: flex;
+}
+.text-orange{
+  color:orange
+}
+.text-red{
+  color:red
+}
+.text-green{
+  color:green
 }
 .company-ticket-table-id{
   display: block;
@@ -443,11 +455,19 @@ Categories
   margin-left: 5%;
   background-color: #93BF00;
 }
+/* .company-ticket-table-details-bottom-cont{
+  display:flex;
+  justify-content: space-evenly;
+  width: 100%
+}
+.company-ticket-table-details-bottom-cont > *{
+  width: 40%
+} */
 .company-ticket-table-details-btn.pending{
   background-color: orange
 }
 .company-ticket-table-details-btn:hover{
-  cursor: hand
+  cursor: pointer;
 }
 
 .border-left{border-left:solid;}

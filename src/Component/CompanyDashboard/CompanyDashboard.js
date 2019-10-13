@@ -4,8 +4,8 @@ import CompanyNavBar from '../NavBar/CompanyNavBar'
 import { subTickets, ticketInfo, getTicket, setTicket } from '../../connection/connection';
 import { thisTypeAnnotation } from '@babel/types';
 import axios from 'axios'
-import PendingQuotes from './PendingQuotes'
-import PendingApprovals from './PendingApprovals';
+import AllTickets from './AllTickets'
+import PendingQuotes from './PendingQuotes';
 import Scheduled from './Scheduled';
 import TicketModal from './TicketModal'
 
@@ -56,10 +56,10 @@ class CompanyDashboard extends Component {
             setTicket((err, ticketInfo)=>{
                 console.log(ticketInfo)
                 this.setState({
-                ticketModalData : <TicketModal ticketData={ticketInfo} closeModal={this.closeTicketModal}/>
+                ticketModalData : <TicketModal companyUser={this.props.userInfo} ticketData={ticketInfo} closeModal={this.closeTicketModal}/>
             })})
             this.setState({
-                dashboardContent: <PendingQuotes tickets={this.state.tickets}changeDashboardContent={this.changeDashboardContent}/>
+                dashboardContent: <AllTickets tickets={this.state.tickets} changeDashboardContent={this.changeDashboardContent} setToken={this.props.token} clickFunc={this.pendingQuotesClickEvent} pending={this.state.pendingTickets}/>
             })
         }
 
@@ -78,7 +78,7 @@ class CompanyDashboard extends Component {
                 delete newPendingState[id]
                 this.setState({
                     pendingTickets:newPendingState,
-                    dashboardContent: <PendingApprovals tickets={this.state.tickets} setToken={this.props.token} clickFunc={this.pendingQuotesClickEvent} pending={newPendingState} />
+                    dashboardContent: <PendingQuotes tickets={this.state.tickets} setToken={this.props.token} clickFunc={this.pendingQuotesClickEvent} pending={newPendingState} />
                 })
             },10000)
         }
@@ -87,10 +87,10 @@ class CompanyDashboard extends Component {
             let newPendingState = Object.assign(this.state.pendingTickets)
             newPendingState[id] = true
             this.setState({
-                ticketModalData: <TicketModal ticketData={"loading"} closeModal={this.closeTicketModal}/>,
+                ticketModalData: <TicketModal companyUser={this.props.userInfo} ticketData={"loading"} closeModal={this.closeTicketModal}/>,
                 showTicketModal: true,
                 newPendingState,
-                dashboardContent: <PendingApprovals tickets={this.state.tickets} setToken={this.props.token} clickFunc={this.pendingQuotesClickEvent} pending={newPendingState} />
+                dashboardContent: <PendingQuotes tickets={this.state.tickets} setToken={this.props.token} clickFunc={this.pendingQuotesClickEvent} pending={newPendingState} />
             })
             
         }
@@ -103,10 +103,10 @@ class CompanyDashboard extends Component {
          changeDashboardContent = (newContent)=>{
         //  console.log(newContent)
          let dashDisplayId = 0
-         let dashboardContent = <PendingQuotes tickets={this.state.tickets} changeDashboardContent={this.changeDashboardContent}/>
+         let dashboardContent = <AllTickets tickets={this.state.tickets} changeDashboardContent={this.changeDashboardContent} setToken={this.props.token} clickFunc={this.pendingQuotesClickEvent} pending={this.state.pendingTickets}/>
          if (newContent === 'pending-approvals' || newContent === 1){
             dashDisplayId = 1
-            dashboardContent = <PendingApprovals tickets={this.state.tickets} setToken={this.props.token} clickFunc={this.pendingQuotesClickEvent} pending={this.state.pendingTickets} />
+            dashboardContent = <PendingQuotes tickets={this.state.tickets} setToken={this.props.token} clickFunc={this.pendingQuotesClickEvent} pending={this.state.pendingTickets} />
          } else if(newContent === 'scheduled-approvals' || newContent === 2 ){
              dashDisplayId = 2
             dashboardContent = <Scheduled tickets={this.state.tickets} changeDashboardContent={this.changeDashboardContent} />
@@ -158,13 +158,13 @@ class CompanyDashboard extends Component {
             {/* <div className="current-orders">
                 <div className="container">
                     <h2>Pending Quotes</h2>
-                    <PendingQuotes tickets = {this.state.tickets} />
+                    <AllTickets tickets = {this.state.tickets} />
                 </div>
             </div>
             <div className="current-orders">
                 <div className="container">
                     <h2>Pending Approvals</h2>
-                    <PendingApprovals tickets = {this.state.tickets} />
+                    <es tickets = {this.state.tickets} />
                 </div>
             </div>
             <div className="current-orders">

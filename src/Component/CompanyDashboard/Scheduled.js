@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import './../../App.css'
+import './../../App.css';
+import ScheduledTicket from './ticketStructures/ScheduledTickets'
 
 
 class Scheduled extends Component {
@@ -25,11 +26,7 @@ class Scheduled extends Component {
         return (<>
             <div className="table-container">
                 {filterTicket.map((ticket)=>{ 
-                    return <div class="divTableCell">Customer Name: {ticket.name} 
-                    <div className="divTableCell">Order: {ticket.id}</div>
-                    <div className="divTableCell">Address: {ticket.address}</div>
-                    <div className="divTableCell">Time: {ticket.time}</div>
-                </div>
+                    return <ScheduledTicket ticket={ticket}/>
                 })}
             </div>
             <div className="app-container">

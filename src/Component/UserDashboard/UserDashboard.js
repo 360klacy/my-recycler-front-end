@@ -50,6 +50,12 @@ class UserDashboard extends Component {
     
     async componentDidMount(){
         console.log('this.ran')
+        subTickets(this.props.userInfo.id)
+        ticketInfo((err, ticketInfo)=>{
+            this.setState({
+                tickets: ticketInfo
+            })
+        })
         if(this.isEmpty(this.state.categories)){
             const catResp = await axios.get(`${window.apiHost}/recycle`);
             // console.log("+++++",catResp.data);

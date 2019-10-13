@@ -7,8 +7,8 @@ function sayHi(){
     console.log('msg sent')
     socket.emit('msg', 'hello')
 }
-function subTickets(){
-    socket.emit('sub-tickets',)
+function subTickets(id){
+    socket.emit('sub-tickets', id)
 }
 function subUserTickets(id,token){
     console.log(id, token)

@@ -1,12 +1,13 @@
 import React, { Component } from 'react'
 import './NavBar.css'
+import { Link } from 'react-router-dom'
 
 
 function UserNavBar(){
     return (<>
         <nav className="nav-container">
             <div className="logo">
-                <a href="/"><img className="logo-img" src="./012-van.png" alt="logo" /></a>
+                <Link to="/"><img className="logo-img" src="./012-van.png" alt="logo" /></Link>
             </div>
             <div className="nav">
                 <ul className="links">

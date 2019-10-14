@@ -34,15 +34,11 @@ class UserDashboard extends Component {
             address1: "",
             address2: "",
             time: "",
+            msg: false,
             showModal: false
 
         }
-        // subTickets((err, ticketInfo)=>this.setState({
-        //     tickets : ticketInfo
-        // }))
-        // ticketInfo((err, ticketInfo)=>this.setState({
-        //     tickets : ticketInfo
-        // }))
+            
     }
     isEmpty = function(obj) {
     for(var key in obj) {
@@ -89,7 +85,6 @@ class UserDashboard extends Component {
 
         }
 
-    
         
 
     addBtn =  (e)=>{
@@ -142,14 +137,16 @@ class UserDashboard extends Component {
         this.setState({time: e.target.value})
     }
 
+
+
     submitForm = async (e)=>{
-        e.preventDefault()
         console.log('I SUBMITTED!')
         this.setState({
-            modalLoading: false
+            modalLoading: true
         })
 
         
+       
         let payload = JSON.stringify(this.state.subCategoryQuantity)
         let {data : postResp} = await axios.post(`${window.apiHost}/ticket/create-ticket`,{
             token: this.props.userInfo.authToken,
@@ -161,19 +158,23 @@ class UserDashboard extends Component {
             time: this.state.time,
             userid: this.props.userInfo.id
         })
+        
 
-        console.log("data: ",postResp)
-    
+        console.log(postResp)
         if(postResp.msg === 'success'){
+            console.log('SUCCESSSSS')
             this.setState({
-                requestSent:true
+                requestSent:true,
             })
+
         }else{
             this.setState({
                 modalLoading: false,
                 modalErrorMsg: postResp.msg
             })
         }
+
+    
     }
     openModal = (e)=>{
         this.setState({
@@ -218,8 +219,8 @@ class UserDashboard extends Component {
         //     return(<Redirect to="/userdashboard"/>)
         // }
         console.log(this.state.tickets)
+
         return(<>
-            
             <div className="container">
 
             <section className="top">
@@ -297,6 +298,7 @@ class UserDashboard extends Component {
              </div>          
 
             {/* <Item getItemsFunc={this.getItems}/> */}
+           {/* {modal} */}
        </> )
        
     }

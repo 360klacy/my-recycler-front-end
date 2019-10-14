@@ -13,6 +13,10 @@ function PendingConfirmation(props){
             <div>Date: {props.ticket.pickup_date}</div>
             <div>Time: {props.ticket.pickup_time}</div>
         </div>
+        <div className="ticket-table-details-bottom-cont" id={props.ticket.id}>
+            <div className="ticket-table-confirm-btn bg-color-green">Accept</div>
+            <div className="ticket-table-confirm-btn bg-color-red">Decline</div>
+        </div>
     </div>
     )
 }

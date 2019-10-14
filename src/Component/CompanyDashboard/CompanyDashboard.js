@@ -7,7 +7,7 @@ import axios from 'axios'
 import AllTickets from './AllTickets'
 import PendingQuotes from './PendingQuotes';
 import Scheduled from './Scheduled';
-import TicketModal from './TicketModal'
+import TicketModal from './TicketModal';
 
 
 

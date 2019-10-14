@@ -10,18 +10,18 @@ class Categories extends Component{
                     <h1 id="center-h1" className="title">What can be recycled?</h1>
                 {/* <div className="row"> */}
                     <div className="cat-container container">
-                        <div className="icon-flex"><img className="icon-img"src="./Images/automobile.png" alt="auto" />Automotive</div>
-                        <div className="icon-flex"><img className="icon-img"src="./Images/battery.png" alt="battery"/>Batteries</div>
-                        <div className="icon-flex"><img className="icon-img"src="./Images/construction.png" alt="construction"/>Construction</div>
-                        <div className="icon-flex"><img className="icon-img"src="./Images/electronics.png" alt="electronics"/>Electonics</div>
-                        <div className="icon-flex"><img className="icon-img"src="./Images/furniture.png" alt="furniture"/>Furniture</div>
-                        <div className="icon-flex"><img className="icon-img"src="./Images/glass.png" alt="glass"/>Glass</div>
-                        <div className="icon-flex"><img className="icon-img"src="./Images/gardening.png" alt="gardening"/>Garden</div>
-                        <div className="icon-flex"><img className="icon-img"src="./Images/holiday.png" alt="holiday"/>Holiday</div>
-                        <div className="icon-flex"><img className="icon-img"src="./Images/metal.png" alt="metal"/>Metal</div>
-                        <div className="icon-flex"><img className="icon-img"src="./Images/paint.png" alt="paint"/>Paint</div>
-                        <div className="icon-flex"><img className="icon-img"src="./Images/paper.png" alt="paper"/>Paper</div>
-                        <div className="icon-flex"><img className="icon-img"src="./Images/plastic.png" alt="plastic"/>Plastic</div>
+                        <div className="icon-flex"><img className="icon-img"src="./images/automobile.png" alt="auto" />Automotive</div>
+                        <div className="icon-flex"><img className="icon-img"src="./images/battery.png" alt="battery"/>Batteries</div>
+                        <div className="icon-flex"><img className="icon-img"src="./images/construction.png" alt="construction"/>Construction</div>
+                        <div className="icon-flex"><img className="icon-img"src="./images/electronics.png" alt="electronics"/>Electonics</div>
+                        <div className="icon-flex"><img className="icon-img"src="./images/furniture.png" alt="furniture"/>Furniture</div>
+                        <div className="icon-flex"><img className="icon-img"src="./images/glass.png" alt="glass"/>Glass</div>
+                        <div className="icon-flex"><img className="icon-img"src="./images/gardening.png" alt="gardening"/>Garden</div>
+                        <div className="icon-flex"><img className="icon-img"src="./images/holiday.png" alt="holiday"/>Holiday</div>
+                        <div className="icon-flex"><img className="icon-img"src="./images/metal.png" alt="metal"/>Metal</div>
+                        <div className="icon-flex"><img className="icon-img"src="./images/paint.png" alt="paint"/>Paint</div>
+                        <div className="icon-flex"><img className="icon-img"src="./images/paper.png" alt="paper"/>Paper</div>
+                        <div className="icon-flex"><img className="icon-img"src="./images/plastic.png" alt="plastic"/>Plastic</div>
                     </div>
                 {/* </div> */}
                     <div className="bottom-text">

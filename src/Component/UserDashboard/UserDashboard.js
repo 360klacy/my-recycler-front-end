@@ -195,7 +195,8 @@ class UserDashboard extends Component {
         console.log("0000", this.props.userInfo)
         var showItems = this.isEmpty(this.state.categories) || this.isEmpty(this.state.subCategoryQuantity) ? "" :  <Item getItemsFunc={this.getItems} fnAdd={this.addBtn} fnSubtract={this.subtractBtn} categories={this.state.categories} quantity={this.state.subCategoryQuantity}/>
 
-        var tickets = this.state.tickets.map(ticket=><TicketProp progress={ticket.progress} company={ticket.company} detail={ticket.details} />)
+        // var tickets = 
+        // var tickets = this.state.tickets.map(ticket=><TicketProp progress={ticket.progress} company={ticket.company} detail={ticket.details} />)
         // console.log(tickets);
         var modal = this.state.showItemModal ? <ItemModal date={this.state.pickupDate} address1={this.state.address1} address2={this.state.address2} time={this.state.time} items={this.state.subCategoryQuantity} closeModal={this.closeModal} submit={this.submitForm} modalLoading={this.state.modalLoading}/> : ""
 

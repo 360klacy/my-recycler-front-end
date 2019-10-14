@@ -1,6 +1,7 @@
 import React from 'react';
 import {subUserTickets,userTicketInfo} from '../../connection/connection'
 import axios from 'axios';
+import { CLIENT_RENEG_LIMIT } from 'tls';
 
 class DisplayUserTickets extends React.Component{
   constructor(props){
@@ -54,8 +55,16 @@ class DisplayUserTickets extends React.Component{
       <button onClick={this.acceptDeclinebtn} value="accept">Accept</button>
       <button onClick={this.acceptDeclinebtn} value="decline">Decline</button>
     </>
-      console.log(this.state.tickets)
-      console.log(this.props)
+      // console.log(this.state.tickets)
+      // console.log(this.props)
+      // let newArr = this.state.tickets.map((ticket, i) => {
+      //   return ticket.order_items.split(',').map((ticket) => {
+      //     return ticket.split(":")[1]
+      //   });
+      // })
+      // if (newArr.length > 0) {
+
+      // }
     return(<>
       {ticketInfo}
       {/* <h1> {} </h1> */}

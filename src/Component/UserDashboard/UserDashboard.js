@@ -9,6 +9,11 @@ import { subTickets, ticketInfo } from '../../connection/connection';
 import axios from 'axios'
 import DisplayUserTickets from './DisplayUserTickets';
 import UserNav from './../NavBar/UserNav'
+import UserTabBar from './UserTabBar';
+// import AllTickets from './AllTickets';
+// import PendingQuotes from './PendingQuotes';
+// import Scheduled from './Scheduled';
+
 
 
 
@@ -182,7 +187,6 @@ class UserDashboard extends Component {
         })
     }
 
-
     render(){
         console.log("0000", this.props.userInfo)
         var showItems = this.isEmpty(this.state.categories) || this.isEmpty(this.state.subCategoryQuantity) ? "" :  <Item getItemsFunc={this.getItems} fnAdd={this.addBtn} fnSubtract={this.subtractBtn} categories={this.state.categories} quantity={this.state.subCategoryQuantity}/>
@@ -190,9 +194,9 @@ class UserDashboard extends Component {
         var tickets = this.state.tickets.map(ticket=><TicketProp progress={ticket.progress} company={ticket.company} detail={ticket.details} />)
         // console.log(tickets);
         var modal = this.state.showItemModal ? <ItemModal date={this.state.pickupDate} address1={this.state.address1} address2={this.state.address2} time={this.state.time} items={this.state.subCategoryQuantity} closeModal={this.closeModal} submit={this.submitForm} modalLoading={this.state.modalLoading}/> : ""
-        if(this.state.requestSent){
-            return(<Redirect to="/"/>)
-        }
+  
+        console.log(this.state.tickets)
+
         return(<>
             <div className="container">
 
@@ -209,11 +213,14 @@ class UserDashboard extends Component {
                                 PUT MY PENDING ORDERS HERE!! <button className="submit-btn" onClick={this.openModal}>+</button> 
                             </section>
                         
-                        </div>
-                
+                        </div>                       
+                        
                 </div>
             </section> 
             </div>
+
+
+
             {/* NEW QUOTE FORM BEGIN  */}
              <div className="container" style={this.state.showModal ? {"display": "block"} : {}} >
                  <button className="btn btn-2" onClick={this.closeModal}>x</button>

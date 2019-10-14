@@ -105,7 +105,7 @@ ul li {
     background-color: initial;    
 }
 .login-modal{
-    
+    border: 3px solid #3E5959;
     display: none;
     background-color: white;
     width: auto;

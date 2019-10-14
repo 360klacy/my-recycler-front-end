@@ -190,27 +190,6 @@ class UserDashboard extends Component {
             showModal:false
         })
     }
-    // changeDashboardContent = (newContent)=>{
-    //     //  console.log(newContent)
-        
-    //      let dashDisplayId = 0
-    //      let dashboardContent = <AllTickets tickets={this.state.tickets} changeDashboardContent={this.changeDashboardContent} setToken={this.props.token} clickFunc={this.pendingQuotesClickEvent} pending={this.state.pendingTickets}/>
-    //      if (newContent === 'pending-approvals' || newContent === 1){
-    //         dashDisplayId = 1
-    //         dashboardContent = <PendingQuotes tickets={this.state.tickets} setToken={this.props.token} clickFunc={this.pendingQuotesClickEvent} pending={this.state.pendingTickets} />
-    //      } else if(newContent === 'scheduled-approvals' || newContent === 2 ){
-    //          dashDisplayId = 2
-    //         dashboardContent = <Scheduled tickets={this.state.tickets} changeDashboardContent={this.changeDashboardContent} />
-    //      }
-    //      this.setState({
-    //         dashboardContent,
-    //         dashDisplayId
-    //      },()=>{
-    //         //  console.log("CHANGEDASHBOARDCONTENT: ",this.state.tickets, this.state.dashboardContent)
-    //      })
-
-    //    }
-
 
     render(){
         console.log("0000", this.props.userInfo)
@@ -219,7 +198,7 @@ class UserDashboard extends Component {
         var tickets = this.state.tickets.map(ticket=><TicketProp progress={ticket.progress} company={ticket.company} detail={ticket.details} />)
         // console.log(tickets);
         var modal = this.state.showItemModal ? <ItemModal date={this.state.pickupDate} address1={this.state.address1} address2={this.state.address2} time={this.state.time} items={this.state.subCategoryQuantity} closeModal={this.closeModal} submit={this.submitForm} modalLoading={this.state.modalLoading}/> : ""
-   
+
         console.log(this.state.tickets)
 
         return(<>
@@ -237,27 +216,8 @@ class UserDashboard extends Component {
                                 PUT MY PENDING ORDERS HERE!! <button className="submit-btn" onClick={this.openModal}>+</button> 
                             </section>
                         
-                        </div>
+                        </div>                       
                         
-                        <div className="company-dash-cont">
-                            <UserTabBar changeDashboardContent={this.changeDashboardContent}/>
-                            <div className="comp-ticket-cont">
-                                
-                            </div>
-                                {/* console.log(this.state.tickets) */}
-                        </div>
-                    
-                        {/* <div className="user-dash-cont">
-                                <div className="user-nav"onClick>All Orders</div>
-                                <div className="user-nav"onClick>Pending Quotes</div>
-                                <div className="user-nav"onClick>Scheduled</div>
-                            </div> 
-                            <div className="user-ticket-cont">
-                                <h1>Yall good</h1>
-                            </div> */}
-                        {/* <div className="ticket-cont"> 
-                            {tickets}
-                      </div> */}
                 </div>
             </section> 
             </div>
@@ -265,8 +225,8 @@ class UserDashboard extends Component {
 
 
             {/* NEW QUOTE FORM BEGIN  */}
-             <div className="login-modal" style={this.state.showModal ? {"display": "block"} : {}} >
-                 <button className="submit-btn" onClick={this.closeModal}>x</button>
+             <div className="container" style={this.state.showModal ? {"display": "block"} : {}} >
+                 <button className="btn btn-2" onClick={this.closeModal}>x</button>
                 {showItems}
             <div className="wrapper">
                 <div>
@@ -290,16 +250,13 @@ class UserDashboard extends Component {
                                 </div>
                             </div>
                             <div className="box">
-                                <button className="submit-btn" onClick={this.showItemModalEvent}>Submit</button>
+                                <button className="btn btn-2" onClick={this.showItemModalEvent}>Submit</button>
                             </div>
                     </div>
                 </form>
             </div>
            {modal}
              </div>          
-
-            {/* <Item getItemsFunc={this.getItems}/> */}
-           {/* {modal} */}
        </> )
        
     }

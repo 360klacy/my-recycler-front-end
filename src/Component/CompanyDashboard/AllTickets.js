@@ -28,7 +28,6 @@ class AllTickets extends Component {
             )}
             </div>
             <div className="app-container">
-            {/* <h1>Yall good home company page</h1> */}
             </div>
      </>)
     }

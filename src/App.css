@@ -283,9 +283,7 @@ Categories
 }
 
 /**********************************
-
       Ticket Modal
-
 ***********************************/
 .ticket-modal{
   position: fixed;
@@ -357,20 +355,19 @@ Categories
 .table-container{
   display: flex;
   flex-wrap:wrap;
-  /* border:solid; */
   overflow-y: scroll;
   width:100%;
 }
-.company-ticket-table{
+.ticket-table{
   display: flex;
-  border:solid;
-  flex-wrap: wrap;
-  width: 44%;
+  border: solid;
+  flex-direction: column;
   margin: 3%;
-  height:200px;
-  background-color: lightgray
-
+  height: 200px;
+  width: auto;
+  padding: 1rem;
 }
+
 .form-left-side{
   width: 50%;
   height: 70%;
@@ -414,20 +411,18 @@ Categories
   width: 50%;
   border-bottom: solid
 }
-.company-ticket-table-overlay{
+.ticket-table-overlay{
   width: 0px;
   height: 0px;
 }
-.company-ticket-table-header{
+.ticket-table-header{
   display: block;
-  width: 70%;  
-  background-color: #93BF00;
 }
 .status-row{
   display: flex;
 }
 .text-orange{
-  color:orange
+  color:#93BF00;
 }
 .text-red{
   color:red
@@ -435,21 +430,21 @@ Categories
 .text-green{
   color:green
 }
-.company-ticket-table-id{
+.ticket-table-id{
   display: block;
   width: 30%;
   /* border-left:solid; */
 
 }
-.company-ticket-table-cell{
+.ticket-table-cell{
   display:table-cell
 }
-.company-ticket-table-user-pref{
+.ticket-table-user-pref{
   display:block;
   width:50%;
 }
 
-.company-ticket-table-details-btn{
+.ticket-table-details-btn{
   width: 90%;
   height: 30%;
   display: flex;
@@ -460,35 +455,35 @@ Categories
   margin-left: 5%;
   background-color: #93BF00;
 }
-/* .company-ticket-table-details-bottom-cont{
+/* .ticket-table-details-bottom-cont{
   display:flex;
   justify-content: space-evenly;
   width: 100%
 }
-.company-ticket-table-details-bottom-cont > *{
+.ticket-table-details-bottom-cont > *{
   width: 40%
 } */
-.company-ticket-table-details-btn.pending{
+.ticket-table-details-btn.pending{
   background-color: orange
 }
-.company-ticket-table-details-btn:hover{
+.ticket-table-details-btn:hover{
   cursor: pointer;
 }
 
-.border-left{border-left:solid;}
+/* .border-left{border-left:solid;}
 .border-right{border-right:solid;}
 .border-top{border-top:solid;}
-.border-bottom{border-bottom: solid;}
+.border-bottom{border-bottom: solid;} */
 
 
 /********************************
 Sign up & Login Modal
 *********************************/
 .action-btn{
-    background: #deecf1;
+    background: #3e5959 ;
     border: none;
     margin: 0;
-    color: #3e5959;
+    color: #deecf1;
     font-size: 1.1rem;
     font-weight: bold;
     margin-top: 20px;
@@ -598,6 +593,70 @@ User Dashboard
   display: flex;
   justify-content: space-between;
 }
+
+
+
+/*
+request modal
+
+*/
+
+.request-modal {
+  border: 3px solid #3e5859;
+  background: #fff;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50% )
+
+}
+
+
+/*
+Subcategories
+*/
+
+.subcategory-flex {
+  display: flex;
+  margin: 1rem;
+}
+
+.table {
+  display: flex;
+  width: 90VW;
+  flex-wrap: wrap;
+}
+.left,
+.right {
+  padding: 1rem;
+}
+.subcat-container {
+  display: flex;
+  border-bottom: 2px solid #eee;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+}
+
+.left >h5 {
+  color: #93bf00;
+}
+.right {
+  display: flex;
+  align-items: center;
+}
+
+.add-button,
+.subtract-button {
+  border: none;
+  background: none;
+  color: #3e5859;
+  font-weight: bolder;
+}
+
+
 
 @media screen and (min-width: 640px  ){
 

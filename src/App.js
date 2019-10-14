@@ -14,6 +14,21 @@ class App extends React.Component{
 		authToken : null, name : null, email: null, id: null, isCompany: null
 	}
 	}
+	componentDidMount(){
+		console.log('initial state', this.state)
+		let sessionState = JSON.parse(window.sessionStorage.getItem('state'))
+		console.log("=====",sessionState)
+		if(sessionState){
+			this.setState({
+				authToken : sessionState.token,
+				name :sessionState.name,
+				id: sessionState.id, 
+				email: sessionState.email,
+				isCompany: sessionState.is_company
+			})
+		} else {console.log('this is empty')
+			}
+	}
 	_setToken=(authToken,name,email, id, isCompany)=>{
 		this.setState({
 			authToken,

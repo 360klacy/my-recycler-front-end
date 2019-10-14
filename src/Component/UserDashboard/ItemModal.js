@@ -26,7 +26,7 @@ class ItemModal extends React.Component{
         }else{
 
             return(
-                <div className="modal">
+                <div className="request-modal">
                     <div className="modal-logo">
                         <img className="logo-img" src="./012-van.png" alt="logo" />
                     </div>
@@ -34,7 +34,7 @@ class ItemModal extends React.Component{
                         <div className="details">
                             <h2>Order Summary</h2>
                             <div className="spacer"></div>
-                            <p  id="msg">{!this.state.thankYou ? "Please confirm details before submitting." : "Thanks for your order! We will reach back out to you shortly." }</p>
+                            <p id="msg">{!this.state.thankYou ? "Please confirm details before submitting." : "Thanks for your order! We will reach back out to you shortly." }</p>
                         </div>
                         <div className="details">
                             <div className="list">
@@ -57,10 +57,10 @@ class ItemModal extends React.Component{
                                 )}       
                                 </ul> 
                             </div>
-                        </div>
-                        <div className="details">
-                            <button className="exit-btn" onClick={this.props.closeModal}>X</button>
-                            <button className="request-btn" onClick={this.handleClick}>Request Quote</button>
+                            <div className="">
+                                <button id="close-modal" onClick={this.props.closeModal}>X</button>
+                                <button className="btn btn-2" onClick={this.handleClick}>Request Quote</button>
+                            </div>
                         </div>
                     </div>
                 </div>

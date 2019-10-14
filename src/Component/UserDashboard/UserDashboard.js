@@ -39,7 +39,8 @@ class UserDashboard extends Component {
             time: "",
             msg: false,
             showModal: false,
-            dashboardContent: null
+            dashboardContent: null,
+            dashDisplayId: 0
 
         }
             
@@ -140,7 +141,35 @@ class UserDashboard extends Component {
     changeTime = (e) => {
         this.setState({time: e.target.value})
     }
-
+    handleInputChange = (type, value) => {
+        let newObj = {}
+        newObj[type] = value
+        console.log(value, newObj)
+        this.setState(newObj)
+    }
+    acceptDeclinebtn =async (e) =>{
+        let userValue 
+        console.log(e.target.id)
+        switch(e.target.value){
+          case 'accept':
+            userValue = true
+            break;
+          case 'decline':
+            userValue = false
+        }
+        let url =`${window.apiHost}/ticket/confirm-ticket-quote`
+        let axiosResponse = await axios.put(url,{
+          userValue,
+          token: this.props.userInfo.authToken, 
+          userId: this.props.userInfo.id,
+          ticketId: e.target.id,
+          progress: this.state.tickets[0].progress 
+    
+        }
+        )
+          
+        console.log(axiosResponse)
+      }
 
 
     submitForm = async (e)=>{
@@ -163,7 +192,7 @@ class UserDashboard extends Component {
             address1: this.state.address1,
             address2: this.state.address2,
             time: this.state.time,
-            userid: this.props.userInfo.id
+            userid: this.props.userInfo.id,
         })
         
 
@@ -198,19 +227,15 @@ class UserDashboard extends Component {
         //  console.log(newContent)
         
          let dashDisplayId = 0
-         let dashboardContent = <AddOrder tickets={this.state.tickets} changeDashboardContent={this.changeDashboardContent} userInfo={this.props.userInfo}/>
          
          if (newContent === 'pending-approvals' || newContent === 1){
             dashDisplayId = 1
             console.log('helllllloo')
-            dashboardContent = <PendingOrders tickets={this.state.tickets} />
          } else if(newContent === 'scheduled-approvals' || newContent === 2 ){
              dashDisplayId = 2
              console.log('helllllllll2222222')
-            dashboardContent = <Scheduled tickets={this.state.tickets} changeDashboardContent={this.changeDashboardContent} />
          }
          this.setState({
-            dashboardContent,
             dashDisplayId
          },()=>{
             //  console.log("CHANGEDASHBOARDCONTENT: ",this.state.tickets, this.state.dashboardContent)
@@ -222,14 +247,21 @@ class UserDashboard extends Component {
 
     render(){
         console.log("0000", this.props.userInfo)
-        var showItems = this.isEmpty(this.state.categories) || this.isEmpty(this.state.subCategoryQuantity) ? "" :  <Item getItemsFunc={this.getItems} fnAdd={this.addBtn} fnSubtract={this.subtractBtn} categories={this.state.categories} quantity={this.state.subCategoryQuantity}/>
 
         // var tickets = 
         // var tickets = this.state.tickets.map(ticket=><TicketProp progress={ticket.progress} company={ticket.company} detail={ticket.details} />)
         // console.log(tickets);
         var modal = this.state.showItemModal ? <ItemModal date={this.state.pickupDate} address1={this.state.address1} address2={this.state.address2} time={this.state.time} items={this.state.subCategoryQuantity} closeModal={this.closeModal} submit={this.submitForm} modalLoading={this.state.modalLoading}/> : ""
-
-        console.log(this.state.tickets)
+        let dashboardContent = this.state.tickets.length === 0
+            ? ""
+            :this.state.dashDisplayId === 0 
+            ?<AddOrder handleInputChange={this.handleInputChange} changeDashboardContent={this.changeDashboardContent} userInfo={this.props.userInfo} getItemsFunc={this.getItems} fnAdd={this.addBtn} fnSubtract={this.subtractBtn} categories={this.state.categories} quantity={this.state.subCategoryQuantity} pickupDate={this.state.pickupDate} address1={this.state.address1} address2={this.state.address2} time={this.state.time} showItemModalEvent={this.showItemModalEvent}/>
+            :this.state.dashDisplayId === 1
+            ? <PendingOrders adFn={this.acceptDeclinebtn} tickets={this.state.tickets} />
+            :<Scheduled tickets={this.state.tickets} changeDashboardContent={this.changeDashboardContent} />;
+         
+        
+        console.log(dashboardContent,<AddOrder handleInputChange={this.handleInputChange} changeDashboardContent={this.changeDashboardContent} userInfo={this.props.userInfo} getItemsFunc={this.getItems} fnAdd={this.addBtn} fnSubtract={this.subtractBtn} categories={this.state.categories} quantity={this.state.subCategoryQuantity} pickupDate={this.state.pickupDate} address1={this.state.address1} address2={this.state.address2} time={this.state.time} showItemModalEvent={this.showItemModalEvent}/>)
 
         return(<>
     
@@ -243,17 +275,13 @@ class UserDashboard extends Component {
                             <h1>Hello, {this.props.userInfo.name}.</h1>
             {/* OPEN CREATE NEW QUOTE MODAL */}
               
-                            <section>
-                                PUT MY PENDING ORDERS HERE!! <button className="submit-btn" onClick={this.openModal}>+</button> 
-                            </section>
-                        
+                           
                         </div>                       
                         
                         <div className="company-dash-cont">
-                            {this.state.dashboardContent}
                             <UserTabBar changeDashboardContent={this.changeDashboardContent}/>
-                            <div className="comp-ticket-cont">
-                                
+                            <div className="user-ticket-cont">
+                                {dashboardContent}
                             </div>
                                 {/* console.log(this.state.tickets) */}
                         </div>
@@ -279,34 +307,7 @@ class UserDashboard extends Component {
             {/* NEW QUOTE FORM BEGIN  */}
              <div className="container" style={this.state.showModal ? {"display": "block"} : {}} >
                  <button className="btn btn-2" onClick={this.closeModal}>x</button>
-                {showItems}
-            <div className="wrapper">
-                <div>
-                    <h1>Time Available for Pick-up</h1>
-                </div>
-                <form onSubmit={this.submitForm}>
-                    <div className="pickup-container">
-                            <div className="date-where-time">
-                                <div className="box">
-                                <h3>Date</h3>
-                                <input type="text" value={this.state.pickupDate}  onChange={this.changeDate} className="input-field" name="input" placeholder="MM-DD-YYYY"  title="Enter a date in this format MM-DD-YYYY" />                    
-                                </div>
-                                <div className="box">
-                                    <h3>Where</h3>
-                                    <input type="text" value={this.state.address1} onChange={this.changeAddress1} className="input-field" placeholder="Address"  title="Enter a valid address" />                    
-                                    <input type="text" value={this.state.address2} onChange={this.changeAddress2} className="input-field" placeholder="City/State/Zip Code"  title="Enter a valid city/state/zip" />                    
-                                </div>
-                                <div className="box">
-                                    <h3>Time</h3>
-                                    <input type="text" value={this.state.time} onChange={this.changeTime} className="input-field" name="input" placeholder="00:00PM"  title="Enter a time" />                    
-                                </div>
-                            </div>
-                            <div className="box">
-                                <button className="btn btn-2" onClick={this.showItemModalEvent}>Submit</button>
-                            </div>
-                    </div>
-                </form>
-            </div>
+            
            {modal}
              </div>          
        </> )

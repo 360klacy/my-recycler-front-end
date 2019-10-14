@@ -26,8 +26,14 @@ class Login extends React.Component{
             axiosResp.data.is_company
         )
         if(axiosResp.data.token){
+            let sessionObj = JSON.stringify(axiosResp.data)
+            window.sessionStorage.setItem("state",sessionObj)
+        }
+        if(axiosResp.data.token){
             this.props.closeModal()
         }
+
+        
 
     }
     

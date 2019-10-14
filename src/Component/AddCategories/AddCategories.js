@@ -30,7 +30,7 @@ class AddCategories extends Component{
              Object.keys(categoryList).forEach((category,i)=>{
                 let newArray = []
             //   console.log(category)
-                newArray.push(<h1 key={i}>{category}</h1>)
+                newArray.push(<h4 key={i}>{category}</h4>)
             // console.log(categoryList)
                 categoryList[category].forEach((subCategory,j)=>{
                     newArray.push(<CatButtons  kprop={`${j}+${i}`} fnAdd={this.props.fnAdd} fnSubtract={this.props.fnSubtract} quantity={this.props.quantity} button={subCategory.name} subCatState={this.props.subCategory} />)
@@ -48,18 +48,16 @@ class AddCategories extends Component{
         }
         
         return(<>
-        <div className="container">
+        
              <div className="table">
-                {/* <div className="title1"> */}
                     {rows.map((row)=>
+                    <div className="subcategory-flex">                    
                         <div className="category-cont">
                             {row}
                         </div>
+                    </div>
                     )}
                 </div>
-        </div>
-                {/* </div> */}
-
         </>)
 
     }

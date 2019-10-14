@@ -12,7 +12,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build && cp -R ./build/* ../my-recycler/public/",
+    "build": "react-scripts build && cp -R ./build/* ../my-recycler-back-end/public/",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

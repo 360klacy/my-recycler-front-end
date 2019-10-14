@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './CatButtons.css'
+// import './CatButtons.css'
 
 
 
@@ -21,18 +21,15 @@ class CatButtons extends Component{
     render(){
         // console.log(this.props.quantity)
         return(<>    
-            <div key={this.props.kprop} className="category-container">
-                <div className='left'><h2>{this.props.button}</h2></div>
-                    <div className='right'>
-                        <div className="add-minus">
-
+            <div key={this.props.kprop} className="subcat-container">
+                <div className='left'><h5>{this.props.button}</h5></div>
+                    <div className="right">
                         <input className="add-button" name={this.props.button} onClick={this.props.fnAdd} type="button" value="+" />
                         <input className="subtract-button" name={this.props.button} onClick={this.props.fnSubtract} type="button" value="-" />
                         {/* <p>{this.props.quantity}</p> */}
-                        <p>{this.state.value}</p>
+                        <div className="value">Quantity: {this.state.value}</div>
                         </div>
                     </div>
-            </div>
         </>)
     }
 }

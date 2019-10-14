@@ -5,7 +5,7 @@ import './../../App.css';
 import { Redirect } from "react-router";
 import TicketProp from './TicketProp'
 import ItemModal from './ItemModal'
-import { subTickets, ticketInfo } from '../../connection/connection';
+import {subUserTickets,userTicketInfo} from '../../connection/connection'
 import axios from 'axios'
 import DisplayUserTickets from './DisplayUserTickets';
 import UserNav from './../NavBar/UserNav'
@@ -15,6 +15,7 @@ import PendingQuotes from '../CompanyDashboard/PendingQuotes';
 import Scheduled from '../CompanyDashboard/Scheduled';
 import AddOrder from './AddOrder';
 import PendingOrders from './PendingOrders';
+
 
 
 
@@ -55,13 +56,10 @@ class UserDashboard extends Component {
     
     async componentDidMount(){
         console.log('this.ran')
-        subTickets(this.props.userInfo.id)
-        ticketInfo((err, ticketInfo)=>{
-            this.setState({
-                dashboardContent: this.state.dashboardContent,
-                tickets: ticketInfo
-            })
-        })
+        subUserTickets(this.props.userInfo.id, this.props.userInfo.authToken);
+        userTicketInfo((err,ticketInfo)=>{this.setState({
+            tickets: ticketInfo
+        })})
         if(this.isEmpty(this.state.categories)){
             const catResp = await axios.get(`${window.apiHost}/recycle`);
             // console.log("+++++",catResp.data);
@@ -116,11 +114,13 @@ class UserDashboard extends Component {
         }
     }
     showItemModalEvent = (e)=>{
+        e.preventDefault()
         this.setState({
             showItemModal:true
         })
     }
     closeModal = (e)=>{
+        console.log('closing')
         this.setState({
             showItemModal: false
         })
@@ -147,7 +147,10 @@ class UserDashboard extends Component {
     submitForm = async (e)=>{
         console.log('I SUBMITTED!')
         this.setState({
-            modalLoading: true
+            modalLoading: true,
+            showItemModal: false,
+            showModal: false
+
         })
 
         
@@ -168,6 +171,7 @@ class UserDashboard extends Component {
         console.log(postResp)
         if(postResp.msg === 'success'){
             console.log('SUCCESSSSS')
+
             this.setState({
                 requestSent:true,
             })
@@ -188,7 +192,7 @@ class UserDashboard extends Component {
     }
     closeModal = (e)=>{
         this.setState({
-            showModal:false
+            showItemModal:false
         })
     }
     changeDashboardContent = (newContent)=>{
@@ -216,16 +220,16 @@ class UserDashboard extends Component {
        }
 
 
+
     render(){
         console.log("0000", this.props.userInfo)
         var showItems = this.isEmpty(this.state.categories) || this.isEmpty(this.state.subCategoryQuantity) ? "" :  <Item getItemsFunc={this.getItems} fnAdd={this.addBtn} fnSubtract={this.subtractBtn} categories={this.state.categories} quantity={this.state.subCategoryQuantity}/>
 
-        var tickets = this.state.tickets.map(ticket=><TicketProp progress={ticket.progress} company={ticket.company} detail={ticket.details} />)
+        // var tickets = 
+        // var tickets = this.state.tickets.map(ticket=><TicketProp progress={ticket.progress} company={ticket.company} detail={ticket.details} />)
         // console.log(tickets);
         var modal = this.state.showItemModal ? <ItemModal date={this.state.pickupDate} address1={this.state.address1} address2={this.state.address2} time={this.state.time} items={this.state.subCategoryQuantity} closeModal={this.closeModal} submit={this.submitForm} modalLoading={this.state.modalLoading}/> : ""
-        // if(this.state.requestSent){
-        //     return(<Redirect to="/userdashboard"/>)
-        // }
+
         console.log(this.state.tickets)
 
         return(<>
@@ -238,14 +242,13 @@ class UserDashboard extends Component {
 
                         <div className="title">
                             <h1>Hello, {this.props.userInfo.name}.</h1>
-                            <DisplayUserTickets userInfo={{...this.props.userInfo}}/>
             {/* OPEN CREATE NEW QUOTE MODAL */}
               
                             <section>
                                 PUT MY PENDING ORDERS HERE!! <button className="submit-btn" onClick={this.openModal}>+</button> 
                             </section>
                         
-                        </div>
+                        </div>                       
                         
                         <div className="company-dash-cont">
                             {this.state.dashboardContent}
@@ -267,6 +270,7 @@ class UserDashboard extends Component {
                         {/* <div className="ticket-cont"> 
                             {tickets}
                       </div> */}
+
                 </div>
             </section> 
             </div>
@@ -274,8 +278,8 @@ class UserDashboard extends Component {
 
 
             {/* NEW QUOTE FORM BEGIN  */}
-             <div className="login-modal" style={this.state.showModal ? {"display": "block"} : {}} >
-                 <button className="submit-btn" onClick={this.closeModal}>x</button>
+             <div className="container" style={this.state.showModal ? {"display": "block"} : {}} >
+                 <button className="btn btn-2" onClick={this.closeModal}>x</button>
                 {showItems}
             <div className="wrapper">
                 <div>
@@ -299,16 +303,13 @@ class UserDashboard extends Component {
                                 </div>
                             </div>
                             <div className="box">
-                                <button className="submit-btn" onClick={this.showItemModalEvent}>Submit</button>
+                                <button className="btn btn-2" onClick={this.showItemModalEvent}>Submit</button>
                             </div>
                     </div>
                 </form>
             </div>
            {modal}
              </div>          
-
-            {/* <Item getItemsFunc={this.getItems}/> */}
-           {/* {modal} */}
        </> )
        
     }

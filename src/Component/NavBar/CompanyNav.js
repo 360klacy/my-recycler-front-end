@@ -8,7 +8,7 @@ function CompanyNav(props){
             <li><Link to="/">Settings</Link></li>
         </ul>
         <div className="btn-container">
-            <button className="btn" onClick={props.logout}>Log out</button>
+            <button className="btn-border" onClick={props.logout}>Log out</button>
         </div>
   </>)
 }

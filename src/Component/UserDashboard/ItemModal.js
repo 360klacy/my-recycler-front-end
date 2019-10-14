@@ -26,18 +26,17 @@ class ItemModal extends React.Component{
         }else{
 
             return(
-                <div className="item-confirmation-modal">
+                <div className="modal">
                     <div className="modal-logo">
                         <img className="logo-img" src="./012-van.png" alt="logo" />
                     </div>
                     <div className="container">
-                        <div className="order-details">
+                        <div className="details">
                             <h2>Order Summary</h2>
                             <div className="spacer"></div>
                             <p id="msg">{!this.state.thankYou ? "Please confirm details before submitting." : "Thanks for your order! We will reach back out to you shortly." }</p>
                         </div>
-                    
-                        <div className="order-details">
+                        <div className="details">
                             <div className="list">
                                 <ul>
                                     <li>Date: {this.props.date}</li>  <br />
@@ -55,20 +54,14 @@ class ItemModal extends React.Component{
                                     <li>{`Quantity:${item[1]}`}</li> 
                                     <div className="spacer"></div>
                                    </>
-                                )}
-                                
+                                )}       
                                 </ul> 
-                                
-
                             </div>
                         </div>
-
-                        <div className="order-details">
+                        <div className="details">
                             <button className="exit-btn" onClick={this.props.closeModal}>X</button>
                             <button className="request-btn" onClick={this.handleClick}>Request Quote</button>
                         </div>
-
-
                     </div>
                 </div>
             )

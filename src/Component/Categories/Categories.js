@@ -28,7 +28,13 @@ class Categories extends Component{
                         <p>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex eadolor sit amet, exercitation ullamco laboris nisi ut aliquip ex eadolor sit amet.
                         </p>
-                        <button className="btn btn-1">Get Started</button>
+                        <div className="spacer"></div>
+                        <div className="spacer"></div>
+                        <div className="spacer"></div>
+                        <div className="spacer"></div>
+                        <div className="spacer"></div>
+                        <div className="spacer"></div>
+                        <button className="btn btn-2">Get Started</button>
                     </div>
             </section>
        </> )

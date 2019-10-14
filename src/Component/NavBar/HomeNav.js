@@ -9,10 +9,10 @@ function HomeNav(props){
                     <li><Link to="/">Blog</Link></li>
                     <li><Link to="/">Contact Us</Link></li>
                 </ul>
-                <div className="btn-container">
-                    <button className="btn-border" onClick={props.signup}>Login</button>
-                    <button className="btn" onClick={props.signup}>Create Account</button>
-                </div>
+                {/* <div className="btn-container"> */}
+                    <button className="btn btn-1" onClick={props.signup}>Login</button>
+                    <button className="btn btn-2" onClick={props.signup}>Sign Up</button>
+                {/* </div> */}
 
   </>)
 }

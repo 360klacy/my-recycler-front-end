@@ -8,6 +8,7 @@ class ItemModal extends React.Component{
         }
     }
     handleClick = () => {
+        this.props.submit()
         this.setState({
             thankYou : true
         })
@@ -33,7 +34,7 @@ class ItemModal extends React.Component{
                         <div className="order-details">
                             <h2>Order Summary</h2>
                             <div className="spacer"></div>
-                            <p  id="msg">{!this.state.thankYou ? "Please confirm details before submitting." : "Thanks for your order! We will reach back out to you shortly." }</p>
+                            <p id="msg">{!this.state.thankYou ? "Please confirm details before submitting." : "Thanks for your order! We will reach back out to you shortly." }</p>
                         </div>
                     
                         <div className="order-details">
@@ -64,12 +65,7 @@ class ItemModal extends React.Component{
 
                         <div className="order-details">
                             <button className="exit-btn" onClick={this.props.closeModal}>X</button>
-                            <button className="request-btn" onClick={()=>{
-                                this.handleClick()
-                                return(
-                                    this.props.submit
-                                )
-                            }}>Request Quote</button>
+                            <button className="request-btn" onClick={this.handleClick}>Request Quote</button>
                         </div>
 
 

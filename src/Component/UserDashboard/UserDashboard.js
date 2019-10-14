@@ -9,6 +9,11 @@ import { subTickets, ticketInfo } from '../../connection/connection';
 import axios from 'axios'
 import DisplayUserTickets from './DisplayUserTickets';
 import UserNav from './../NavBar/UserNav'
+import UserTabBar from './UserTabBar';
+// import AllTickets from './AllTickets';
+// import PendingQuotes from './PendingQuotes';
+// import Scheduled from './Scheduled';
+
 
 
 
@@ -181,6 +186,26 @@ class UserDashboard extends Component {
             showModal:false
         })
     }
+    // changeDashboardContent = (newContent)=>{
+    //     //  console.log(newContent)
+        
+    //      let dashDisplayId = 0
+    //      let dashboardContent = <AllTickets tickets={this.state.tickets} changeDashboardContent={this.changeDashboardContent} setToken={this.props.token} clickFunc={this.pendingQuotesClickEvent} pending={this.state.pendingTickets}/>
+    //      if (newContent === 'pending-approvals' || newContent === 1){
+    //         dashDisplayId = 1
+    //         dashboardContent = <PendingQuotes tickets={this.state.tickets} setToken={this.props.token} clickFunc={this.pendingQuotesClickEvent} pending={this.state.pendingTickets} />
+    //      } else if(newContent === 'scheduled-approvals' || newContent === 2 ){
+    //          dashDisplayId = 2
+    //         dashboardContent = <Scheduled tickets={this.state.tickets} changeDashboardContent={this.changeDashboardContent} />
+    //      }
+    //      this.setState({
+    //         dashboardContent,
+    //         dashDisplayId
+    //      },()=>{
+    //         //  console.log("CHANGEDASHBOARDCONTENT: ",this.state.tickets, this.state.dashboardContent)
+    //      })
+
+    //    }
 
 
     render(){
@@ -190,9 +215,11 @@ class UserDashboard extends Component {
         var tickets = this.state.tickets.map(ticket=><TicketProp progress={ticket.progress} company={ticket.company} detail={ticket.details} />)
         // console.log(tickets);
         var modal = this.state.showItemModal ? <ItemModal date={this.state.pickupDate} address1={this.state.address1} address2={this.state.address2} time={this.state.time} items={this.state.subCategoryQuantity} closeModal={this.closeModal} submit={this.submitForm} modalLoading={this.state.modalLoading}/> : ""
-        if(this.state.requestSent){
-            return(<Redirect to="/"/>)
-        }
+        // if(this.state.requestSent){
+        //     return(<Redirect to="/userdashboard"/>)
+        // }
+        console.log(this.state.tickets)
+
         return(<>
             <div className="container">
 
@@ -210,13 +237,32 @@ class UserDashboard extends Component {
                             </section>
                         
                         </div>
+                        
+                        <div className="company-dash-cont">
+                            <UserTabBar changeDashboardContent={this.changeDashboardContent}/>
+                            <div className="comp-ticket-cont">
+                                
+                            </div>
+                                {/* console.log(this.state.tickets) */}
+                        </div>
                     
+                        {/* <div className="user-dash-cont">
+                                <div className="user-nav"onClick>All Orders</div>
+                                <div className="user-nav"onClick>Pending Quotes</div>
+                                <div className="user-nav"onClick>Scheduled</div>
+                            </div> 
+                            <div className="user-ticket-cont">
+                                <h1>Yall good</h1>
+                            </div> */}
                         {/* <div className="ticket-cont"> 
                             {tickets}
                       </div> */}
                 </div>
             </section> 
             </div>
+
+
+
             {/* NEW QUOTE FORM BEGIN  */}
              <div className="login-modal" style={this.state.showModal ? {"display": "block"} : {}} >
                  <button className="submit-btn" onClick={this.closeModal}>x</button>

@@ -5,7 +5,7 @@ import './../../App.css';
 import { Redirect } from "react-router";
 import TicketProp from './TicketProp'
 import ItemModal from './ItemModal'
-import { subTickets, ticketInfo } from '../../connection/connection';
+import {subUserTickets,userTicketInfo} from '../../connection/connection'
 import axios from 'axios'
 import DisplayUserTickets from './DisplayUserTickets';
 import UserNav from './../NavBar/UserNav'
@@ -13,6 +13,7 @@ import UserTabBar from './UserTabBar';
 // import AllTickets from './AllTickets';
 // import PendingQuotes from './PendingQuotes';
 // import Scheduled from './Scheduled';
+
 
 
 
@@ -51,12 +52,10 @@ class UserDashboard extends Component {
     
     async componentDidMount(){
         console.log('this.ran')
-        subTickets(this.props.userInfo.id)
-        ticketInfo((err, ticketInfo)=>{
-            this.setState({
-                tickets: ticketInfo
-            })
-        })
+        subUserTickets(this.props.userInfo.id, this.props.userInfo.authToken);
+        userTicketInfo((err,ticketInfo)=>{this.setState({
+            tickets: ticketInfo
+        })})
         if(this.isEmpty(this.state.categories)){
             const catResp = await axios.get(`${window.apiHost}/recycle`);
             // console.log("+++++",catResp.data);
@@ -111,6 +110,7 @@ class UserDashboard extends Component {
         }
     }
     showItemModalEvent = (e)=>{
+        e.preventDefault()
         this.setState({
             showItemModal:true
         })
@@ -142,7 +142,10 @@ class UserDashboard extends Component {
     submitForm = async (e)=>{
         console.log('I SUBMITTED!')
         this.setState({
-            modalLoading: true
+            modalLoading: true,
+            showItemModal: false,
+            showModal: false
+
         })
 
         
@@ -163,6 +166,7 @@ class UserDashboard extends Component {
         console.log(postResp)
         if(postResp.msg === 'success'){
             console.log('SUCCESSSSS')
+
             this.setState({
                 requestSent:true,
             })
@@ -194,7 +198,7 @@ class UserDashboard extends Component {
         var tickets = this.state.tickets.map(ticket=><TicketProp progress={ticket.progress} company={ticket.company} detail={ticket.details} />)
         // console.log(tickets);
         var modal = this.state.showItemModal ? <ItemModal date={this.state.pickupDate} address1={this.state.address1} address2={this.state.address2} time={this.state.time} items={this.state.subCategoryQuantity} closeModal={this.closeModal} submit={this.submitForm} modalLoading={this.state.modalLoading}/> : ""
-  
+
         console.log(this.state.tickets)
 
         return(<>
@@ -206,7 +210,6 @@ class UserDashboard extends Component {
 
                         <div className="title">
                             <h1>Hello, {this.props.userInfo.name}.</h1>
-                            <DisplayUserTickets userInfo={{...this.props.userInfo}}/>
             {/* OPEN CREATE NEW QUOTE MODAL */}
               
                             <section>

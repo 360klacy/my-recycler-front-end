@@ -34,7 +34,7 @@ class ItemModal extends React.Component{
                         <div className="details">
                             <h2>Order Summary</h2>
                             <div className="spacer"></div>
-                            <p  id="msg">{!this.state.thankYou ? "Please confirm details before submitting." : "Thanks for your order! We will reach back out to you shortly." }</p>
+                            <p id="msg">{!this.state.thankYou ? "Please confirm details before submitting." : "Thanks for your order! We will reach back out to you shortly." }</p>
                         </div>
                         <div className="details">
                             <div className="list">

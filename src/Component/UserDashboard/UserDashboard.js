@@ -116,6 +116,7 @@ class UserDashboard extends Component {
         })
     }
     closeModal = (e)=>{
+        console.log('closing')
         this.setState({
             showItemModal: false
         })
@@ -187,7 +188,7 @@ class UserDashboard extends Component {
     }
     closeModal = (e)=>{
         this.setState({
-            showModal:false
+            showItemModal:false
         })
     }
 

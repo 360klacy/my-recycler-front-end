@@ -480,10 +480,10 @@ Categories
 Sign up & Login Modal
 *********************************/
 .action-btn{
-    background: #deecf1;
+    background: #3e5959 ;
     border: none;
     margin: 0;
-    color: #3e5959;
+    color: #deecf1;
     font-size: 1.1rem;
     font-weight: bold;
     margin-top: 20px;
@@ -596,7 +596,20 @@ User Dashboard
 
 
 
+/*
+request modal
 
+*/
+
+.request-modal {
+  border: 3px solid #3e5859;
+  background: #fff;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50% )
+
+}
 
 
 /*
@@ -625,6 +638,10 @@ Subcategories
 .left {
   display: flex;
   align-items: center;
+}
+
+.left >h5 {
+  color: #93bf00;
 }
 .right {
   display: flex;

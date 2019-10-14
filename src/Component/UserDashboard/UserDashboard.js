@@ -32,6 +32,7 @@ class UserDashboard extends Component {
             modalLoading: false,
             modalErrorMsg: "",
             requestSent: false,
+            dashDisplayId: 0,
             pickupDate: "",
             address1: "",
             address2: "",
@@ -248,7 +249,7 @@ class UserDashboard extends Component {
                         
                         <div className="company-dash-cont">
                             {this.state.dashboardContent}
-                            <UserTabBar changeDashboardContent={this.changeDashboardContent}/>
+                            <UserTabBar changeDashboardContent={this.changeDashboardContent} displayId={this.state.dashDisplayId}/>
                             <div className="comp-ticket-cont">
                                 
                             </div>

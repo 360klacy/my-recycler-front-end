@@ -17,10 +17,6 @@ render() {
                 return <NeedsQuote ticket={ticket} pending={this.props.pending} clickFunc={this.props.clickFunc}/>
             })}
         </div>
-        <div className="app-container">
-
-        </div>
-        {/* <h1>hellllllllloooooo pending quotes?</h1> */}
  </>)
 }
 }

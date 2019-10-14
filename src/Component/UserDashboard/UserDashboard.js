@@ -210,16 +210,13 @@ class UserDashboard extends Component {
                             </section>
                         
                         </div>
-                    
-                        {/* <div className="ticket-cont"> 
-                            {tickets}
-                      </div> */}
+                
                 </div>
             </section> 
             </div>
             {/* NEW QUOTE FORM BEGIN  */}
-             <div className="login-modal" style={this.state.showModal ? {"display": "block"} : {}} >
-                 <button className="submit-btn" onClick={this.closeModal}>x</button>
+             <div className="container" style={this.state.showModal ? {"display": "block"} : {}} >
+                 <button className="btn btn-2" onClick={this.closeModal}>x</button>
                 {showItems}
             <div className="wrapper">
                 <div>
@@ -243,16 +240,13 @@ class UserDashboard extends Component {
                                 </div>
                             </div>
                             <div className="box">
-                                <button className="submit-btn" onClick={this.showItemModalEvent}>Submit</button>
+                                <button className="btn btn-2" onClick={this.showItemModalEvent}>Submit</button>
                             </div>
                     </div>
                 </form>
             </div>
            {modal}
              </div>          
-
-            {/* <Item getItemsFunc={this.getItems}/> */}
-           {/* {modal} */}
        </> )
        
     }

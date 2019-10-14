@@ -389,9 +389,9 @@ Categories
   justify-content: center;
   align-items: center
 }
-.deliveryForm{
-  /* border:solid */
-}
+/* .deliveryForm{
+  border:solid
+} */
 .order-label-cont{
   width: 90%
 }
@@ -489,6 +489,44 @@ User Dashboard
   background: #FFF;
   padding: 2rem 0;
   border: 2px solid #eee;
+}
+.user-dash-cont{
+  display:flex;
+  background-color:white;
+  height: 90vh;
+  margin: 20px;
+  border: solid;
+}
+.user-ticket-cont{
+  display: flex;
+  width: 77%;
+}
+.user-nav{
+  display: flex;
+  flex-flow: column;
+  width: 25%;
+  background-color: green;
+  position: relative;
+  justify-content: space-around
+}
+.user-nav > div{
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 1;
+  margin: 0;
+  border-right: solid;
+  background-color: green;
+}
+.user-nav > div.active{
+  background-color: gold;
+  border-right: none
+}
+.comp-ticket-cont{
+  display:flex;
+  width:77%
+
 }
 
 

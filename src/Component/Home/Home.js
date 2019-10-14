@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-// import NavBar from '../NavBar/NavBar'
-// import './Home.css'
+import { Link } from 'react-router-dom'
 import Categories from '../Categories/Categories'
 import Login from '../Auth/Login'
 import SignUp from '../Auth/Signup'
@@ -18,7 +17,7 @@ class Home extends Component {
                         <h1 className="title">Like Uber for your Recyclables</h1>
                         <div className="spacer"></div>
                         <div>
-                            <button className="btn"><a href="/">Get Started</a></button>
+                            <button className="btn btn-2"><a href="/">Get Started</a></button>
                         </div>   
                     </div>
                 </div>
@@ -44,7 +43,7 @@ class Home extends Component {
                             ut aliquip ex eadolor sit amet.
                         </p>
                         <div className="spacer"></div>
-                        <a href="/">Learn more &rarr;</a>
+                        <Link to="/">Learn more &rarr; </Link>
                 </div>
             </section>
 

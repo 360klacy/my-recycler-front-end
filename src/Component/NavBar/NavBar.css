@@ -10,9 +10,8 @@ a {
 }
 
 .logo-img {
-    width: 100px;
+    width: 80px;
     max-width: 100;
-
 }
 
 .nav{
@@ -30,12 +29,12 @@ a {
     margin-top: 20px;
 }
 
-button {
+/* button {
     padding: 1rem 0;
     width: 200px;
     font-size: 0.9rem;
     margin: 1rem;
-}
+} */
 
 .btn-border{
     max-width: 100%;
@@ -48,14 +47,31 @@ button {
 }
 
 
+
 .btn {
-    max-width: 100%;
+    width: 150px;
     padding: 1rem;
     background: #93BF00;
     border: 2px solid #93BF00;
-    border-radius: 30px;
+    border-radius: 5px;
     border: none;
     margin-left: 0;
+    color: #fff;
+    font-weight: bolder;
+    height: fit-content;
+}
+
+.btn-1 {
+    background: transparent;
+    border: 2px solid #deecf1;
+    color: #3E5959;
+    margin-right: 10px;
+}
+
+.btn-2 {
+    background: #93BF00;
+    border: 2px solid #93BF00;
+    color: #deecf1;;
 }
 
 ul li {
@@ -64,11 +80,11 @@ ul li {
 }
 
 .nav{
-    /*  */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
+
+    flex-direction: row;
+    margin-top: none;
+    margin-left: auto;
+    align-items: baseline;
 }
 .nav nav{
     box-shadow: none;
@@ -202,11 +218,13 @@ ul li {
     background: rgb(255, 90, 95);
     border-color: transparent;
 }    
+
 .login-modal{
     border: 1px black solid;
     height: 300px;
     width: 400px;
 }
+
 .login-modal span{
     margin: 20px 0px;
     display: inline-block;
@@ -339,8 +357,6 @@ ul li {
 
 
 @media screen and (min-width: 640px  ){
-
-    
     
     .btn-container {
         flex-direction: row;
@@ -369,8 +385,6 @@ ul li {
     .mobile-container {
         display: none;
     }
-
-
 
 
     .logo {

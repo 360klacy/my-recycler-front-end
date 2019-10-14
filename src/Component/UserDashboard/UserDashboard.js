@@ -140,7 +140,7 @@ class UserDashboard extends Component {
 
 
     submitForm = async (e)=>{
-        e.preventDefault()
+        // e.preventDefault()
         console.log('I SUBMITTED!')
         this.setState({
             modalLoading: true
@@ -161,11 +161,9 @@ class UserDashboard extends Component {
         })
         
 
-
+        console.log(postResp)
         if(postResp.msg === 'success'){
             console.log('SUCCESSSSS')
-            this.thankYouMsg(e)
-
             this.setState({
                 requestSent:true,
             })

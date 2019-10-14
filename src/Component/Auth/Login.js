@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios'
+import './../../App.css'
+import { Link } from 'react-router-dom'
 
 class Login extends React.Component{
     constructor(){
@@ -32,15 +34,40 @@ class Login extends React.Component{
 
     render(){
 
-        return(
-            <div>
+        return(<>
+
+<div className="modal">
+              <div className="logo">
+                <img className="logo-img" src="./012-van.png" alt="logo" />
+              <p>MyRecycler</p>
+              </div>
+                  
+              <div className="container">
+                  <div className="details">
+                      <h2>Please log into your account.</h2>
+                      <div className="spacer"></div>
+                      <form onSubmit={this.submitLoginForm}> 
+                        <input className="input-bottom-border" onChange={this.changeEmail} value={this.state.email} placeholder="Email address" />
+                        <input className="input-bottom-border" type="password" onChange={this.changePass} value={this.state.password} placeholder="Password" />
+                        <button className="action-btn">Log In</button>
+                        <div className="spacer"></div>
+                        <div className="spacer"></div>
+                        <div className="spacer"></div>
+                        <div className="spacer"></div>
+                        <Link to="/">Forgot Password?</Link>
+                    </form>
+                </div>
+              </div>
+          </div>
+
+            {/* <div>
                 <form onSubmit={this.submitLoginForm}> 
-                    <input onChange={this.changeEmail} value={this.state.email} className="email-signup" placeholder="Email address" />
-                    <input type="password" onChange={this.changePass} value={this.state.password}  className="password-signup" placeholder="Password" />
+                    <input className="input-bottom-border" onChange={this.changeEmail} value={this.state.email} className="email-signup" placeholder="Email address" />
+                    <input className="input-bottom-border" type="password" onChange={this.changePass} value={this.state.password}  className="password-signup" placeholder="Password" />
                     <button className="sign-up-button">Log In</button>
                 </form>
-            </div>
-        )
+            </div> */}
+        </>)
     }
 }
 

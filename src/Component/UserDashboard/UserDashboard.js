@@ -9,10 +9,7 @@ import ItemModal from './ItemModal'
 import { subTickets, ticketInfo } from '../../connection/connection';
 import { thisTypeAnnotation } from '@babel/types';
 import axios from 'axios'
-
-
-
-
+import Status from './Status'
 
 class UserDashboard extends Component {
     constructor(){
@@ -28,7 +25,8 @@ class UserDashboard extends Component {
             pickupDate: "",
             address1: "",
             address2: "",
-            time: ""
+            time: "",
+            msg: false
 
         }
         // subTickets((err, ticketInfo)=>this.setState({
@@ -48,7 +46,6 @@ class UserDashboard extends Component {
 
     
     async componentDidMount(){
-        console.log('this.ran')
         if(this.isEmpty(this.state.categories)){
             console.log('finding categories')
             const catResp = await axios.get(`${window.apiHost}/recycle`);
@@ -80,7 +77,6 @@ class UserDashboard extends Component {
 
         }
 
-    
         
 
     addBtn =  (e)=>{
@@ -141,14 +137,17 @@ class UserDashboard extends Component {
         this.setState({time: e.target.value})
     }
 
+
+
     submitForm = async (e)=>{
         e.preventDefault()
         console.log('I SUBMITTED!')
         this.setState({
-            modalLoading: false
+            modalLoading: true
         })
 
         
+       
         let payload = JSON.stringify(this.state.subCategoryQuantity)
         let {data : postResp} = await axios.post(`${window.apiHost}/ticket/create-ticket`,{
             token: '321',
@@ -160,20 +159,24 @@ class UserDashboard extends Component {
             time: this.state.time,
             userid: '1'
         })
-
-        console.log("data: ",postResp)
         
 
         if(postResp.msg === 'success'){
+            console.log('SUCCESSSSS')
+            this.thankYouMsg(e)
+
             this.setState({
-                requestSent:true
+                requestSent:true,
             })
+
         }else{
             this.setState({
                 modalLoading: false,
                 modalErrorMsg: postResp.msg
             })
         }
+
+    
     }
     render(){
 
@@ -183,11 +186,10 @@ class UserDashboard extends Component {
         var tickets = this.state.tickets.map(ticket=><TicketProp progress={ticket.progress} company={ticket.company} detail={ticket.details} />)
         // console.log(tickets);
         var modal = this.state.showItemModal ? <ItemModal date={this.state.pickupDate} address1={this.state.address1} address2={this.state.address2} time={this.state.time} items={this.state.subCategoryQuantity} closeModal={this.closeModal} submit={this.submitForm} modalLoading={this.state.modalLoading}/> : ""
-        // if(this.state.requestSent){
-        //     return(<Redirect to="/userdashboard"/>)
-        // }
+        if(this.state.requestSent){
+            return(<Redirect to="/"/>)
+        }
         return(<>
-            
             <div className="container">
                 {/* <UserNavBar /> */}
 
@@ -237,6 +239,7 @@ class UserDashboard extends Component {
 
             {/* <Item getItemsFunc={this.getItems}/> */}
            {modal}
+           {<Status />}
        </> )
        
     }

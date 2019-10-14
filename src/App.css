@@ -287,17 +287,33 @@ Categories
 .ticket-modal{
   position: fixed;
   display: flex;
+  flex-wrap: wrap;
   left: 50%;
   top:50%;
   transform: translate(-50%,-50%);
   background-color: white;
   border:solid;
   width:60%;
-  height:50%
+  height:74%
 }
-
+.close-modal-btn{
+  position : relative;
+  width: 50px;
+  height: 50px;
+}
+.form-top-cont{
+  width: 100%;
+  height:10%;
+  display: flex;
+  justify-content: flex-end;
+}
 .form-field > *{
   height: 30px
+}
+.table-container{
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
 }
 .company-nav{
   display: flex;
@@ -338,6 +354,7 @@ Categories
   flex-wrap:wrap;
   /* border:solid; */
   overflow-y: scroll;
+  width:100%;
 }
 .company-ticket-table{
   display: flex;
@@ -346,14 +363,72 @@ Categories
   width: 44%;
   margin: 3%;
   height:200px;
+  background-color: lightgray
 
+}
+.form-left-side{
+  width: 50%;
+  height: 70%;
+  padding-left: 20px
+  /* border:solid */
+}
+.form-right-side{
+  width: 50%;
+  height: 70%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column
+  /* border:solid */
+}
+.form-btn-cont{
+  width:100%;
+  height: 20%;
+  /* border:solid; */
+  display: flex;
+  justify-content: center;
+  align-items: center
+}
+.deliveryForm{
+  /* border:solid */
+}
+.order-label-cont{
+  width: 90%
+}
+.modal-order-cont{
+  width: 90%;
+  height: 90%;
+  border:solid;
+  overflow-y: scroll
+}
+.modal-order-item{
+  width: 100%;
+  display: flex;
+}
+.modal-order-item > *{
+  width: 50%;
+  border-bottom: solid
+}
+.company-ticket-table-overlay{
+  width: 0px;
+  height: 0px;
 }
 .company-ticket-table-header{
   display: block;
-  width: 70%;
+  width: 70%;  
   background-color: #93BF00;
- 
-
+}
+.status-row{
+  display: flex;
+}
+.text-orange{
+  color:orange
+}
+.text-red{
+  color:red
+}
+.text-green{
+  color:green
 }
 .company-ticket-table-id{
   display: block;
@@ -380,8 +455,19 @@ Categories
   margin-left: 5%;
   background-color: #93BF00;
 }
+/* .company-ticket-table-details-bottom-cont{
+  display:flex;
+  justify-content: space-evenly;
+  width: 100%
+}
+.company-ticket-table-details-bottom-cont > *{
+  width: 40%
+} */
+.company-ticket-table-details-btn.pending{
+  background-color: orange
+}
 .company-ticket-table-details-btn:hover{
-  cursor: hand
+  cursor: pointer;
 }
 
 .border-left{border-left:solid;}

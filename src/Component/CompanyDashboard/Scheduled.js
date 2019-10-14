@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import './../../App.css'
+import './../../App.css';
+import ScheduledTicket from './ticketStructures/ScheduledTickets'
 
 
 class Scheduled extends Component {
@@ -20,16 +21,12 @@ class Scheduled extends Component {
     render() {
         console.log(this.props.tickets)
         const filterTicket = this.props.tickets.filter((ticket)=>{
-            return ticket.progress === 2
+            return ticket.progress >= 3
         })
         return (<>
             <div className="table-container">
                 {filterTicket.map((ticket)=>{ 
-                    return <div class="divTableCell">Customer Name: {ticket.name} 
-                    <div class="divTableCell">Order: {ticket.id}</div>
-                    <div class="divTableCell">Address: {ticket.address}</div>
-                    <div class="divTableCell">Time: {ticket.time}</div>
-                </div>
+                    return <ScheduledTicket ticket={ticket}/>
                 })}
             </div>
             <div className="app-container">

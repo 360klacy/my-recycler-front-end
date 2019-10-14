@@ -1,32 +1,28 @@
-import React, { Component } from 'react'
-import './../../App.css'
+import React, {Component} from 'react';
+import './../../App.css';
+import NeedsQuote from './ticketStructures/NeedsQuote'
 
 
-class PendingQuotes extends Component {
 
-   
+class PendingQuotes extends Component{
+    
+render() {
+    const filterTicket = this.props.tickets.filter((ticket)=>{
+        return ticket.progress === 1
+    })
+    console.log('filterTickets',filterTicket)
+    return (<>
+        <div className="table-container">
+            {filterTicket.map((ticket)=>{
+                return <NeedsQuote ticket={ticket} pending={this.props.pending} clickFunc={this.props.clickFunc}/>
+            })}
+        </div>
+        <div className="app-container">
 
-    render() {
-        console.log(this.props.tickets)
-        const filterTicket = this.props.tickets.filter((ticket)=>{
-            return ticket.progress === 1
-
-        })
-        return (<>
-            <div className="table-container">
-                {filterTicket.map((ticket)=>{ 
-                    return <div class="divTable">Customer Name: {ticket.name} 
-                    <div class="divTableCell">Order: {ticket.id}</div>
-                    <div class="divTableCell">Address: {ticket.address}</div>
-                    <div class="divTableCell">Product: {ticket.order_items}</div>
-                </div>
-                })}
-            </div>
-            <div className="app-container">
-            {/* <h1>Yall good home company page</h1> */}
-            </div>
-     </>)
-    }
+        </div>
+        {/* <h1>hellllllllloooooo pending quotes?</h1> */}
+ </>)
+}
 }
 
 export default PendingQuotes

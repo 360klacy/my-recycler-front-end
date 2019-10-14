@@ -3,13 +3,16 @@ import React, { Component } from 'react'
 import Item from './../Item/Item'
 import './../../App.css';
 import { Redirect } from "react-router";
-import UserNavBar from '../NavBar/UserNavBar';
 import TicketProp from './TicketProp'
 import ItemModal from './ItemModal'
 import { subTickets, ticketInfo } from '../../connection/connection';
-import { thisTypeAnnotation } from '@babel/types';
 import axios from 'axios'
-import Status from './Status'
+import DisplayUserTickets from './DisplayUserTickets';
+import UserNav from './../NavBar/UserNav'
+
+
+
+
 
 class UserDashboard extends Component {
     constructor(){
@@ -26,7 +29,8 @@ class UserDashboard extends Component {
             address1: "",
             address2: "",
             time: "",
-            msg: false
+            msg: false,
+            showModal: false
 
         }
         // subTickets((err, ticketInfo)=>this.setState({
@@ -46,15 +50,20 @@ class UserDashboard extends Component {
 
     
     async componentDidMount(){
+        console.log('this.ran')
+        subTickets(this.props.userInfo.id)
+        ticketInfo((err, ticketInfo)=>{
+            this.setState({
+                tickets: ticketInfo
+            })
+        })
         if(this.isEmpty(this.state.categories)){
-            console.log('finding categories')
             const catResp = await axios.get(`${window.apiHost}/recycle`);
             // console.log("+++++",catResp.data);
             const preState = {categories:{}}
             catResp.data.forEach((subCategory)=>{
                 return preState.categories[subCategory.name]= subCategory.sub_categories
             })
-            console.log(preState)
             this.setState({
                 categories: preState
             })
@@ -69,7 +78,6 @@ class UserDashboard extends Component {
                     })
                     // console.log(newRows)
                     })
-                console.log(this.state)
                 this.setState({
                     subCategoryQuantity: tmpStateObj
                 })
@@ -82,7 +90,6 @@ class UserDashboard extends Component {
     addBtn =  (e)=>{
         let newState = Object.assign(this.state.subCategoryQuantity)
         let subCatVal = e.target.name
-        console.log(newState)
         newState[subCatVal]++        
         this.setState({
             subCategoryQuantity: newState
@@ -91,20 +98,17 @@ class UserDashboard extends Component {
     subtractBtn =  (e)=>{
         let newState = Object.assign(this.state.subCategoryQuantity)
         let subCatVal = e.target.name
-        console.log(newState)
         newState[subCatVal]--        
         this.setState({
             subCategoryQuantity: newState
         })
     }  
     getItems = (items)=>{
-        console.log(items)
         if(items !== this.state.subCatItems){
             this.setState({
                 subCatItems: items
             })
         }
-        console.log(items)
     }
     showItemModalEvent = (e)=>{
         this.setState({
@@ -118,22 +122,18 @@ class UserDashboard extends Component {
     }
 
     changeDate = (e) => {
-        console.log(e.target.value)
         this.setState({pickupDate: e.target.value})
     }
 
     changeAddress1 = (e) => {
-        console.log(e.target.value)
         this.setState({address1: e.target.value})
     }
 
     changeAddress2 = (e) => {
-        console.log(e.target.value)
         this.setState({address2: e.target.value})
     }
 
     changeTime = (e) => {
-        console.log(e.target.value)
         this.setState({time: e.target.value})
     }
 
@@ -150,16 +150,17 @@ class UserDashboard extends Component {
        
         let payload = JSON.stringify(this.state.subCategoryQuantity)
         let {data : postResp} = await axios.post(`${window.apiHost}/ticket/create-ticket`,{
-            token: '321',
-            progress:0,
+            token: this.props.userInfo.authToken,
+            progress:1,
             payload,
             pickupDate: this.state.pickupDate,
             address1: this.state.address1,
             address2: this.state.address2,
             time: this.state.time,
-            userid: '1'
+            userid: this.props.userInfo.id
         })
         
+
 
         if(postResp.msg === 'success'){
             console.log('SUCCESSSSS')
@@ -178,9 +179,20 @@ class UserDashboard extends Component {
 
     
     }
-    render(){
+    openModal = (e)=>{
+        this.setState({
+            showModal:true
+        })
+    }
+    closeModal = (e)=>{
+        this.setState({
+            showModal:false
+        })
+    }
 
-        console.log(this.state.subCategoryQuantity)
+
+    render(){
+        console.log("0000", this.props.userInfo)
         var showItems = this.isEmpty(this.state.categories) || this.isEmpty(this.state.subCategoryQuantity) ? "" :  <Item getItemsFunc={this.getItems} fnAdd={this.addBtn} fnSubtract={this.subtractBtn} categories={this.state.categories} quantity={this.state.subCategoryQuantity}/>
 
         var tickets = this.state.tickets.map(ticket=><TicketProp progress={ticket.progress} company={ticket.company} detail={ticket.details} />)
@@ -191,7 +203,6 @@ class UserDashboard extends Component {
         }
         return(<>
             <div className="container">
-                {/* <UserNavBar /> */}
 
             <section className="top">
                 <div className="container">
@@ -199,16 +210,25 @@ class UserDashboard extends Component {
 
                         <div className="title">
                             <h1>Hello, {this.props.userInfo.name}.</h1>
+                            <DisplayUserTickets userInfo={{...this.props.userInfo}}/>
+            {/* OPEN CREATE NEW QUOTE MODAL */}
+              
+                            <section>
+                                PUT MY PENDING ORDERS HERE!! <button className="submit-btn" onClick={this.openModal}>+</button> 
+                            </section>
+                        
                         </div>
+                    
                         {/* <div className="ticket-cont"> 
                             {tickets}
                       </div> */}
                 </div>
             </section> 
             </div>
-
-            {showItems}
-
+            {/* NEW QUOTE FORM BEGIN  */}
+             <div className="login-modal" style={this.state.showModal ? {"display": "block"} : {}} >
+                 <button className="submit-btn" onClick={this.closeModal}>x</button>
+                {showItems}
             <div className="wrapper">
                 <div>
                     <h1>Time Available for Pick-up</h1>
@@ -236,10 +256,11 @@ class UserDashboard extends Component {
                     </div>
                 </form>
             </div>
+           {modal}
+             </div>          
 
             {/* <Item getItemsFunc={this.getItems}/> */}
            {modal}
-           {<Status />}
        </> )
        
     }

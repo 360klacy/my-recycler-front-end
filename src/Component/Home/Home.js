@@ -14,7 +14,7 @@ class Home extends Component {
                     <div className="intro">
                         <h2>Got Waste? We'll pick it up!</h2>
                         <div className="spacer"></div>
-                        <h1 className="title">Like Uber for your Recyclables</h1>
+                        <h1 className="light">Like Uber for your Recyclables</h1>
                         <div className="spacer"></div>
                         <div>
                             <button className="btn btn-2"><a href="/">Get Started</a></button>

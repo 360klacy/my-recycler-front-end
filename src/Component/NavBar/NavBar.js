@@ -80,48 +80,46 @@ class NavBar extends Component {
         return(<>
 
 <div className="mobile-container">
-
-<div className="topnav">
-  <div className="logo">
-        <img className="logo-img" src="./012-van.png" alt="logo" />
-        <p>MyRycycler</p>
+  <div className="mobile-content">
+  <div className="topnav">
+    <div className="logo">
+          <img className="logo-img" src="./012-van.png" alt="logo" />
+          <p>MyRycycler</p>
     </div>
-  <div id="myLinks">
-    {navLinks}
-    <button className="mobile-btn" onClick={()=>{}}  >Log in</button>
+
+    <div className="icon" onClick={this.displayMobile}>
+      <div className="hamburger"></div>
+      <div className="hamburger"></div>
+      <div className="hamburger"></div>
+    </div>
+  </div>
+  </div>
+
+    <div id="myLinks">
+      {navLinks}
+    </div>
     
-  </div>
-  <div className="icon" onClick={this.displayMobile}>
-    <div className="hamburger"></div>
-    <div className="hamburger"></div>
-    <div className="hamburger"></div>
-  </div>
-</div>
 
 </div>
         
-            <div className="container">
+            {/* <div className="container"> */}
                 <nav className="nav-container">
                     <div className="logo">
                         <img className="logo-img" src="./012-van.png" alt="logo" />
                         <p>MyRycycler</p>
                     </div>
                     <div className="nav">
-
                         {navLinks}
-
                     </div>
                 </nav>
-            </div>
+            {/* </div> */}
 
 {/* LOGIN AND SIGN-UP PROCESS */}
             <div className="login-modal" style={this.state.showModal ? {"display": "block"} : {}} >
               <button id="close-modal" onClick={this.closeModal}>x</button>
-              <div className="modal-content">
 
                 {this.state.modalContent}
-              
-              </div>
+    
             </div>
 
 

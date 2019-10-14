@@ -47,10 +47,11 @@ class Signup extends React.Component{
     return(<>
 
 
-            <div className="modal">
-              <div className="logo">
-                <img className="logo-img" src="./012-van.png" alt="logo" />
-              <p>MyRecycler</p>
+              <div className="logo-container">
+                <div className="logo">
+                  <img className="logo-img" src="./012-van.png" alt="logo" />
+                  <p>MyRecycler</p>
+                </div>
               </div>
                   
               <div className="container">
@@ -63,24 +64,14 @@ class Signup extends React.Component{
                       <input className="input-bottom-border" required onChange={this.changeUsername} value={this.state.username} placeholder="Username" />
                       <input className="input-bottom-border" required type="password" onChange={this.changePass} value={this.state.password} placeholder="Password" />
                       <button className="action-btn">Sign up</button>
+                      <div className="spacer"></div>
+                        <div className="spacer"></div>
+                        <div className="spacer"></div>
+                        <div className="spacer"></div>
                       <div className="login-text align-left">Already have a Wasted account? <span className="link" onClick={()=>{this.props.changeModalContent('login')}}>Log in</span></div>
                   </form>
                 </div>
               </div>
-          </div>
-
-                
-            {/* <div className="register-form">
-                <form onSubmit={this.submitSignupForm}>
-                    <input required onChange={this.changeEmail} value={this.state.email} className="email-signup" placeholder="Email Address" />
-                    <input required onChange={this.changeName} value={this.state.name}  className="name-signup" placeholder='Full Name' />
-                    <input required onChange={this.changeUsername} value={this.state.username}  className="username-signup" placeholder="Username" />
-                    <input required type="password" onChange={this.changePass} value={this.state.password} className="password-signup" placeholder="Password" />
-                    <button className="sign-up-button">Sign up</button>
-                    <div className="border-rule"></div>
-                    <div className="login-text align-left">Already have a Wasted account? <span onClick={()=>{this.props.changeModalContent('login')}}>Log in</span></div>
-                </form>
-            </div>  */}
            </> )
   }
 }

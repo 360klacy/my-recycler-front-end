@@ -33,12 +33,7 @@ class UserDashboard extends Component {
             showModal: false
 
         }
-        // subTickets((err, ticketInfo)=>this.setState({
-        //     tickets : ticketInfo
-        // }))
-        // ticketInfo((err, ticketInfo)=>this.setState({
-        //     tickets : ticketInfo
-        // }))
+            
     }
     isEmpty = function(obj) {
     for(var key in obj) {
@@ -140,7 +135,6 @@ class UserDashboard extends Component {
 
 
     submitForm = async (e)=>{
-        // e.preventDefault()
         console.log('I SUBMITTED!')
         this.setState({
             modalLoading: true
@@ -258,7 +252,7 @@ class UserDashboard extends Component {
              </div>          
 
             {/* <Item getItemsFunc={this.getItems}/> */}
-           {modal}
+           {/* {modal} */}
        </> )
        
     }

@@ -11,7 +11,7 @@ function HomeNav(props){
                 </ul>
                 {/* <div className="btn-container"> */}
                     <button className="btn btn-1" onClick={props.signup}>Login</button>
-                    <button className="btn btn-2" onClick={props.signup}>Create Account</button>
+                    <button className="btn btn-2" onClick={props.signup}>Sign Up</button>
                 {/* </div> */}
 
   </>)

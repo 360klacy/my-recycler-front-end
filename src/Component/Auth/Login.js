@@ -36,7 +36,7 @@ class Login extends React.Component{
 
         return(<>
 
-<div className="modal">
+          
               <div className="logo">
                 <img className="logo-img" src="./012-van.png" alt="logo" />
               <p>MyRecycler</p>
@@ -58,15 +58,7 @@ class Login extends React.Component{
                     </form>
                 </div>
               </div>
-          </div>
-
-            {/* <div>
-                <form onSubmit={this.submitLoginForm}> 
-                    <input className="input-bottom-border" onChange={this.changeEmail} value={this.state.email} className="email-signup" placeholder="Email address" />
-                    <input className="input-bottom-border" type="password" onChange={this.changePass} value={this.state.password}  className="password-signup" placeholder="Password" />
-                    <button className="sign-up-button">Log In</button>
-                </form>
-            </div> */}
+       
         </>)
     }
 }

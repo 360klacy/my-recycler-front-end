@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import "./../../App.css"
 
 function ModalDefault(props){
   return(<>
@@ -15,21 +16,15 @@ function ModalDefault(props){
                     <div className="spacer"></div>
                     <div className="spacer"></div>
                 {/* <button className="exit-btn" onClick={this.props.closeModal}>X</button> */}
-                <button onClick={()=>{props.changeModalContent('signup')}} className="action-btn">Sign up with email</button>
-                <button onClick={()=>{props.changeModalContent('login')}} className="action-btn">Log in</button>
+                <div className="btn-container">
+                  <button className="btn" onClick={()=>{props.changeModalContent('signup')}} className="action-btn">Sign up with email</button>
+                  <button className="btn" onClick={()=>{props.changeModalContent('login')}} className="action-btn">Log in</button>
+                  </div>
                 </div>
             </div>
                 </div>
 
 
-
-
-{/* 
-    <div className="modal">
-        <button onClick={()=>{props.changeModalContent('signup')}} className="center email-login">Sign up with email</button>
-        <div className="border-rule"></div>
-        <button onClick={()=>{props.changeModalContent('login')}} className="center email-login">Log in</button>
-    </div> */}
 
   </>)
 }

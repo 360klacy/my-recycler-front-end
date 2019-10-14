@@ -8,7 +8,6 @@ class Home extends Component {
     
     render (){
         return(<>
-        <div className="hero-bkg">
             <div className="main-container">
                 <div className="main">
                     <div className="intro">
@@ -24,6 +23,7 @@ class Home extends Component {
                         {/* <img className="hero-img" src="./recycle-truck.png" alt="recycle-truck" /> */}
             </div>
 
+            <div className="hero-bkg">
         </div>
 
                  

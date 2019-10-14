@@ -29,6 +29,7 @@ class UserDashboard extends Component {
             address1: "",
             address2: "",
             time: "",
+            msg: false,
             showModal: false
 
         }
@@ -84,7 +85,6 @@ class UserDashboard extends Component {
 
         }
 
-    
         
 
     addBtn =  (e)=>{
@@ -137,14 +137,17 @@ class UserDashboard extends Component {
         this.setState({time: e.target.value})
     }
 
+
+
     submitForm = async (e)=>{
         e.preventDefault()
         console.log('I SUBMITTED!')
         this.setState({
-            modalLoading: false
+            modalLoading: true
         })
 
         
+       
         let payload = JSON.stringify(this.state.subCategoryQuantity)
         let {data : postResp} = await axios.post(`${window.apiHost}/ticket/create-ticket`,{
             token: this.props.userInfo.authToken,
@@ -156,19 +159,25 @@ class UserDashboard extends Component {
             time: this.state.time,
             userid: this.props.userInfo.id
         })
+        
 
-        console.log("data: ",postResp)
-    
+
         if(postResp.msg === 'success'){
+            console.log('SUCCESSSSS')
+            this.thankYouMsg(e)
+
             this.setState({
-                requestSent:true
+                requestSent:true,
             })
+
         }else{
             this.setState({
                 modalLoading: false,
                 modalErrorMsg: postResp.msg
             })
         }
+
+    
     }
     openModal = (e)=>{
         this.setState({
@@ -189,11 +198,10 @@ class UserDashboard extends Component {
         var tickets = this.state.tickets.map(ticket=><TicketProp progress={ticket.progress} company={ticket.company} detail={ticket.details} />)
         // console.log(tickets);
         var modal = this.state.showItemModal ? <ItemModal date={this.state.pickupDate} address1={this.state.address1} address2={this.state.address2} time={this.state.time} items={this.state.subCategoryQuantity} closeModal={this.closeModal} submit={this.submitForm} modalLoading={this.state.modalLoading}/> : ""
-        // if(this.state.requestSent){
-        //     return(<Redirect to="/userdashboard"/>)
-        // }
+        if(this.state.requestSent){
+            return(<Redirect to="/"/>)
+        }
         return(<>
-            
             <div className="container">
 
             <section className="top">
@@ -252,6 +260,7 @@ class UserDashboard extends Component {
              </div>          
 
             {/* <Item getItemsFunc={this.getItems}/> */}
+           {modal}
        </> )
        
     }

@@ -10,9 +10,11 @@ import axios from 'axios'
 import DisplayUserTickets from './DisplayUserTickets';
 import UserNav from './../NavBar/UserNav'
 import UserTabBar from './UserTabBar';
-// import AllTickets from './AllTickets';
-// import PendingQuotes from './PendingQuotes';
-// import Scheduled from './Scheduled';
+import AllTickets from '../CompanyDashboard/AllTickets';
+import PendingQuotes from '../CompanyDashboard/PendingQuotes';
+import Scheduled from '../CompanyDashboard/Scheduled';
+import AddOrder from './AddOrder';
+import PendingOrders from './PendingOrders';
 
 
 
@@ -35,7 +37,8 @@ class UserDashboard extends Component {
             address2: "",
             time: "",
             msg: false,
-            showModal: false
+            showModal: false,
+            dashboardContent: null
 
         }
             
@@ -54,6 +57,7 @@ class UserDashboard extends Component {
         subTickets(this.props.userInfo.id)
         ticketInfo((err, ticketInfo)=>{
             this.setState({
+                dashboardContent: this.state.dashboardContent,
                 tickets: ticketInfo
             })
         })
@@ -186,26 +190,29 @@ class UserDashboard extends Component {
             showModal:false
         })
     }
-    // changeDashboardContent = (newContent)=>{
-    //     //  console.log(newContent)
+    changeDashboardContent = (newContent)=>{
+        //  console.log(newContent)
         
-    //      let dashDisplayId = 0
-    //      let dashboardContent = <AllTickets tickets={this.state.tickets} changeDashboardContent={this.changeDashboardContent} setToken={this.props.token} clickFunc={this.pendingQuotesClickEvent} pending={this.state.pendingTickets}/>
-    //      if (newContent === 'pending-approvals' || newContent === 1){
-    //         dashDisplayId = 1
-    //         dashboardContent = <PendingQuotes tickets={this.state.tickets} setToken={this.props.token} clickFunc={this.pendingQuotesClickEvent} pending={this.state.pendingTickets} />
-    //      } else if(newContent === 'scheduled-approvals' || newContent === 2 ){
-    //          dashDisplayId = 2
-    //         dashboardContent = <Scheduled tickets={this.state.tickets} changeDashboardContent={this.changeDashboardContent} />
-    //      }
-    //      this.setState({
-    //         dashboardContent,
-    //         dashDisplayId
-    //      },()=>{
-    //         //  console.log("CHANGEDASHBOARDCONTENT: ",this.state.tickets, this.state.dashboardContent)
-    //      })
+         let dashDisplayId = 0
+         let dashboardContent = <AddOrder tickets={this.state.tickets} changeDashboardContent={this.changeDashboardContent} userInfo={this.props.userInfo}/>
+         
+         if (newContent === 'pending-approvals' || newContent === 1){
+            dashDisplayId = 1
+            console.log('helllllloo')
+            dashboardContent = <PendingOrders tickets={this.state.tickets} />
+         } else if(newContent === 'scheduled-approvals' || newContent === 2 ){
+             dashDisplayId = 2
+             console.log('helllllllll2222222')
+            dashboardContent = <Scheduled tickets={this.state.tickets} changeDashboardContent={this.changeDashboardContent} />
+         }
+         this.setState({
+            dashboardContent,
+            dashDisplayId
+         },()=>{
+            //  console.log("CHANGEDASHBOARDCONTENT: ",this.state.tickets, this.state.dashboardContent)
+         })
 
-    //    }
+       }
 
 
     render(){
@@ -221,6 +228,7 @@ class UserDashboard extends Component {
         console.log(this.state.tickets)
 
         return(<>
+    
             <div className="container">
 
             <section className="top">
@@ -239,6 +247,7 @@ class UserDashboard extends Component {
                         </div>
                         
                         <div className="company-dash-cont">
+                            {this.state.dashboardContent}
                             <UserTabBar changeDashboardContent={this.changeDashboardContent}/>
                             <div className="comp-ticket-cont">
                                 

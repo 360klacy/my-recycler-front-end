@@ -10,9 +10,11 @@ import axios from 'axios'
 import DisplayUserTickets from './DisplayUserTickets';
 import UserNav from './../NavBar/UserNav'
 import UserTabBar from './UserTabBar';
-// import AllTickets from './AllTickets';
-// import PendingQuotes from './PendingQuotes';
-// import Scheduled from './Scheduled';
+import AllTickets from '../CompanyDashboard/AllTickets';
+import PendingQuotes from '../CompanyDashboard/PendingQuotes';
+import Scheduled from '../CompanyDashboard/Scheduled';
+import AddOrder from './AddOrder';
+import PendingOrders from './PendingOrders';
 
 
 
@@ -36,7 +38,8 @@ class UserDashboard extends Component {
             address2: "",
             time: "",
             msg: false,
-            showModal: false
+            showModal: false,
+            dashboardContent: null
 
         }
             
@@ -191,6 +194,31 @@ class UserDashboard extends Component {
             showItemModal:false
         })
     }
+    changeDashboardContent = (newContent)=>{
+        //  console.log(newContent)
+        
+         let dashDisplayId = 0
+         let dashboardContent = <AddOrder tickets={this.state.tickets} changeDashboardContent={this.changeDashboardContent} userInfo={this.props.userInfo}/>
+         
+         if (newContent === 'pending-approvals' || newContent === 1){
+            dashDisplayId = 1
+            console.log('helllllloo')
+            dashboardContent = <PendingOrders tickets={this.state.tickets} />
+         } else if(newContent === 'scheduled-approvals' || newContent === 2 ){
+             dashDisplayId = 2
+             console.log('helllllllll2222222')
+            dashboardContent = <Scheduled tickets={this.state.tickets} changeDashboardContent={this.changeDashboardContent} />
+         }
+         this.setState({
+            dashboardContent,
+            dashDisplayId
+         },()=>{
+            //  console.log("CHANGEDASHBOARDCONTENT: ",this.state.tickets, this.state.dashboardContent)
+         })
+
+       }
+
+
 
     render(){
         console.log("0000", this.props.userInfo)
@@ -204,6 +232,7 @@ class UserDashboard extends Component {
         console.log(this.state.tickets)
 
         return(<>
+    
             <div className="container">
 
             <section className="top">
@@ -220,6 +249,27 @@ class UserDashboard extends Component {
                         
                         </div>                       
                         
+                        <div className="company-dash-cont">
+                            {this.state.dashboardContent}
+                            <UserTabBar changeDashboardContent={this.changeDashboardContent}/>
+                            <div className="comp-ticket-cont">
+                                
+                            </div>
+                                {/* console.log(this.state.tickets) */}
+                        </div>
+                    
+                        {/* <div className="user-dash-cont">
+                                <div className="user-nav"onClick>All Orders</div>
+                                <div className="user-nav"onClick>Pending Quotes</div>
+                                <div className="user-nav"onClick>Scheduled</div>
+                            </div> 
+                            <div className="user-ticket-cont">
+                                <h1>Yall good</h1>
+                            </div> */}
+                        {/* <div className="ticket-cont"> 
+                            {tickets}
+                      </div> */}
+
                 </div>
             </section> 
             </div>

@@ -57,7 +57,7 @@ class ItemModal extends React.Component{
                                 )}       
                                 </ul> 
                             </div>
-                            <div className="">
+                            <div className="request-btn-div">
                                 <button id="close-modal" onClick={this.props.closeModal}>X</button>
                                 <button className="btn btn-2" onClick={this.handleClick}>Request Quote</button>
                             </div>

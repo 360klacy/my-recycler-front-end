@@ -80,64 +80,46 @@ class NavBar extends Component {
         return(<>
 
 <div className="mobile-container">
-
-<div className="topnav">
-  <div className="logo">
-        <img className="logo-img" src="./012-van.png" alt="logo" />
-        <p>MyRycycler</p>
+  <div className="mobile-content">
+  <div className="topnav">
+    <div className="logo">
+          <img className="logo-img" src="./012-van.png" alt="logo" />
+          <p>MyRycycler</p>
     </div>
-  <div id="myLinks">
-    {/* <a href="/">Home</a>
-    <a href="/">Our Story</a>
-    <a href="/">Blog</a>
 
-    <a href="/">Contact Us</a> */}
-    {navLinks}
-    <button className="mobile-btn" onClick={()=>{}}  >Log in</button>
+    <div className="icon" onClick={this.displayMobile}>
+      <div className="hamburger"></div>
+      <div className="hamburger"></div>
+      <div className="hamburger"></div>
+    </div>
+  </div>
+  </div>
+
+    <div id="myLinks">
+      {navLinks}
+    </div>
     
-  </div>
-  <div className="icon" onClick={this.displayMobile}>
-    <div className="hamburger"></div>
-    <div className="hamburger"></div>
-    <div className="hamburger"></div>
-  </div>
-</div>
 
 </div>
         
-            <div className="container">
+            {/* <div className="container"> */}
                 <nav className="nav-container">
                     <div className="logo">
                         <img className="logo-img" src="./012-van.png" alt="logo" />
                         <p>MyRycycler</p>
                     </div>
                     <div className="nav">
-
-                        {/* <ul className="links">
-                            <li><a href="/">Home</a></li>
-                            <li><a href="/">Our Story</a></li>
-                            <li><a href="/">Blog</a></li>
-                            <li><a href="/">Contact Us</a></li> */}
-                            {/* <div className="btn-container"
-                                <button className="btn-border"><a href="/">Log in</a></button>
-                                {/* <button className="btn"><a href="/">Create Account</a></button> */}
-                            {/* </div> */}
-                        {/* </ul> */}
-
                         {navLinks}
-
                     </div>
                 </nav>
-            </div>
+            {/* </div> */}
 
 {/* LOGIN AND SIGN-UP PROCESS */}
             <div className="login-modal" style={this.state.showModal ? {"display": "block"} : {}} >
               <button id="close-modal" onClick={this.closeModal}>x</button>
-              <div className="modal-content">
 
                 {this.state.modalContent}
-              
-              </div>
+    
             </div>
 
 

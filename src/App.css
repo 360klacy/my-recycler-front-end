@@ -142,6 +142,11 @@ input {
 Home Page
 *********************************/
 
+.light {
+  color: #deecf1;
+  font-size: 2.3rem;
+}
+
 h2 {
   color: #93BF00;
   font-size: 1.3rem;
@@ -262,8 +267,6 @@ Categories
   padding: 1.5rem 0;
 }
 
-
-
 .bottom-text{
   line-height: 1.8;
   display: flex;
@@ -319,7 +322,7 @@ Categories
   display: flex;
   flex-flow: column;
   width: 25%;
-  background-color: green;
+  background-color: pink;
   position: relative;
   justify-content: space-around
 }
@@ -330,19 +333,21 @@ Categories
   align-items: center;
   flex-grow: 1;
   margin: 0;
-  border-right: solid;
-  background-color: green;
+  border: none;
+  background-color: #3e5959;
+  color: #fff;
 }
 .company-nav > div.active{
-  background-color: gold;
-  border-right: none
+  background-color: #deecf1;
+  border:none;
+  color: #3e5859;
 }
 .company-dash-cont{
   display:flex;
   background-color:white;
   height: 90vh;
-  margin: 20px;
-  border: solid;
+  margin-top: 100px;
+  /* border: solid; */
 }
 .comp-ticket-cont{
   display:flex;
@@ -477,19 +482,37 @@ Categories
 
 
 /********************************
+Sign up & Login Modal
+*********************************/
+.action-btn{
+    background: #deecf1;
+    border: none;
+    margin: 0;
+    color: #3e5959;
+    font-size: 1.1rem;
+    font-weight: bold;
+    margin-top: 20px;
+    border-radius: 5px;
+    padding: 1rem 2rem;
+}
+
+.input-bottom-border {
+  width: 100%;
+  margin-left: 0;
+  padding: 1rem;
+}
+
+.link {
+  color: #3e5859;
+  font-weight: bold;
+}
+
+
+/********************************
 User Dashboard
 *********************************/
 
-.item-confirmation-modal{
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  width: 500px;
-  background: #FFF;
-  padding: 2rem 0;
-  border: 2px solid #eee;
-}
+
 
 
 .modal-logo {
@@ -525,7 +548,7 @@ User Dashboard
   height: 10px;
 }
 
-.order-details {
+.details {
   padding: 2rem;
 }
 

@@ -28,14 +28,6 @@ class CompanyDashboard extends Component {
                 pendingTickets: {}
                 
             }
-            // subTickets((err, ticketInfo)=>this.setState({
-            //     tickets : ticketInfo
-            // }))
-            // ticketInfo((err, ticketInfo)=>{
-            //     console.log('it did it')
-            //     this.setState({
-            //     tickets : ticketInfo
-            // })})
         }
 
         componentDidMount(){
@@ -130,12 +122,12 @@ class CompanyDashboard extends Component {
             <div className="title">
                 <h1>Hello, {this.props.userInfo.name}. </h1>
             </div>
+        </div>
             <div className="company-dash-cont">
                 <CompanyTabs displayId={this.state.dashDisplayId} changeDashboardContent={this.changeDashboardContent} />
                 <div className="comp-ticket-cont">
                     {this.state.dashboardContent}
                 </div>
-            </div>
             </div>            
             {ticketModal}
        </> )

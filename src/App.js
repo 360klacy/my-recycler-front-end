@@ -40,6 +40,7 @@ class App extends React.Component{
 		})
 	}
 	_logout = ()=>{
+		window.sessionStorage.removeItem('state')
 		this.setState({
 			authToken: null
 		})

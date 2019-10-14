@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import './../../App.css'
-import CompanyNavBar from '../NavBar/CompanyNavBar'
+import CompanyTabs from '../NavBar/CompanyTabs'
 import { subTickets, ticketInfo, getTicket, setTicket } from '../../connection/connection';
 import { thisTypeAnnotation } from '@babel/types';
 import axios from 'axios'
@@ -125,54 +125,17 @@ class CompanyDashboard extends Component {
     render(){
         let ticketModal = this.state.showTicketModal ?this.state.ticketModalData: "";
         return(<>
+        <div className="container">
         <h5>Dashboard —</h5>
             <div className="title">
-                <h1>Hello {this.props.userInfo.name}</h1>
+                <h1>Hello, {this.props.userInfo.name}. </h1>
             </div>
             <div className="company-dash-cont">
-                <CompanyNavBar displayId={this.state.dashDisplayId} changeDashboardContent={this.changeDashboardContent} />
+                <CompanyTabs displayId={this.state.dashDisplayId} changeDashboardContent={this.changeDashboardContent} />
                 <div className="comp-ticket-cont">
                     {this.state.dashboardContent}
                 </div>
-{/* //         console.log(this.state.tickets)
-//         if(this.state.tickets.length === 0){
-//             console.log('loading')
-//             return <div>Loadiing</div>
-//         }else{
-
-        
-//         return(
-//             <div className="container">
-//                 <CompanyNavBar changeDashboardContent={this.changeDashboardContent} />
-
-//             <section className="top">
-//                 <div className="container">
-//                     <h5>Dashboard —</h5>
-
-//                         <div className="title">
-//                             <h1>Hello Company</h1>
-//                         </div>
-//                 </div>
-//             </section> 
-//             {this.state.dashboardContent}
-            {/* <div className="current-orders">
-                <div className="container">
-                    <h2>Pending Quotes</h2>
-                    <AllTickets tickets = {this.state.tickets} />
-                </div>
             </div>
-            <div className="current-orders">
-                <div className="container">
-                    <h2>Pending Approvals</h2>
-                    <es tickets = {this.state.tickets} />
-                </div>
-            </div>
-            <div className="current-orders">
-                <div className="container">
-                    <h2>Scheduled</h2>
-                    <Scheduled tickets = {this.state.tickets} />
-                </div>
-            </div> */}
             </div>            
             {ticketModal}
        </> )

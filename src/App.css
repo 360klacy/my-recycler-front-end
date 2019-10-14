@@ -550,8 +550,6 @@ User Dashboard
 *********************************/
 
 
-
-
 .modal-logo {
   display: flex;
   justify-content: center;
@@ -600,10 +598,9 @@ User Dashboard
 
 
 
-/*
+/*****************************
 request modal
-
-*/
+*****************************/
 
 .request-modal {
   border: 3px solid #3e5859;
@@ -622,9 +619,9 @@ request modal
 }
 
 
-/*
+/******************************
 Subcategories
-*/
+******************************/
 
 .subcategory-flex {
   display: flex;
@@ -752,22 +749,19 @@ Subcategories
 }
 
 @media only screen and (min-width: 1024px) {
-  /* .categories-section {
-    padding: 100px 0;
-  } */
-
-  .hero-img {
-    display: block;
-    position: absolute;
-    right: 0;
-    bottom: 150px;
-    width: 40%;
-  }
-  
 
   .bottom-text {
     width: 90%;
   }
 
+
+}
+
+@media only screen and (min-width : 1024px) and (orientation : portrait) {
+
+.main-container,
+.hero-bkg {
+  height: 60vh; 
+}
 
 }

@@ -257,19 +257,6 @@ class UserDashboard extends Component {
                             </div>
                                 {/* console.log(this.state.tickets) */}
                         </div>
-                    
-                        {/* <div className="user-dash-cont">
-                                <div className="user-nav"onClick>All Orders</div>
-                                <div className="user-nav"onClick>Pending Quotes</div>
-                                <div className="user-nav"onClick>Scheduled</div>
-                            </div> 
-                            <div className="user-ticket-cont">
-                                <h1>Yall good</h1>
-                            </div> */}
-                        {/* <div className="ticket-cont"> 
-                            {tickets}
-                      </div> */}
-
                 </div>
             </section> 
             </div>

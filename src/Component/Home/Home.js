@@ -15,12 +15,9 @@ class Home extends Component {
                         <div className="spacer"></div>
                         <h1 className="light">Like Uber for your Recyclables</h1>
                         <div className="spacer"></div>
-                        <div>
-                            <button className="btn btn-2"><a href="/">Get Started</a></button>
-                        </div>   
+                        <div><button className="btn btn-2"><Link to="/">Get Started</Link></button></div>   
                     </div>
                 </div>
-                        {/* <img className="hero-img" src="./recycle-truck.png" alt="recycle-truck" /> */}
             </div>
 
             <div className="hero-bkg">
@@ -50,7 +47,7 @@ class Home extends Component {
                 <Categories />
 
             <footer className="footer"> 
-            Copyright &copy; 2019 MyRecycler All Rights Reserved.
+            Copyright &copy; 2019 R-Waste All Rights Reserved.
             </footer>
         </>)
     }

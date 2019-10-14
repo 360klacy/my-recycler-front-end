@@ -134,11 +134,9 @@ ul li {
 
 }
 
-
-
-
 #myLinks {
     padding: 1rem;
+    display: none;
 }
 
 .mobile-content {
@@ -213,6 +211,14 @@ ul li {
         flex-direction: row;
     }
 
+    .nav-container {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        padding: 1rem;
+    }
+
+
 }
 
 @media screen and (min-width: 768px){
@@ -237,15 +243,11 @@ ul li {
         margin-left: auto;
     }
 
-    .nav-container {
-        width: 100%;
-        display: flex;
-        align-items: center;
-        padding: 1rem;
-    }
-
 }
 
+/* .logo {
+    text-align: center;
+} */
 
 
 

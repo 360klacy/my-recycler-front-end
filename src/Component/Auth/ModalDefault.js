@@ -7,7 +7,7 @@ function ModalDefault(props){
           <div className="modal">
             <div className="logo">
               <img className="logo-img" src="./012-van.png" alt="logo" />
-            <p>MyRecycler</p>
+            <p>R-Waste</p>
             </div>
                 
             <div className="container">

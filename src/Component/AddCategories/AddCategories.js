@@ -48,18 +48,17 @@ class AddCategories extends Component{
         }
         
         return(<>
-        <div className="container">
+        
              <div className="table">
-                {/* <div className="title1"> */}
+
                     {rows.map((row)=>
+                    <div className="subcategory-flex">                    
                         <div className="category-cont">
                             {row}
                         </div>
+                    </div>
                     )}
                 </div>
-        </div>
-                {/* </div> */}
-
         </>)
 
     }

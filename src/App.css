@@ -283,9 +283,7 @@ Categories
 }
 
 /**********************************
-
       Ticket Modal
-
 ***********************************/
 .ticket-modal{
   position: fixed;
@@ -357,20 +355,19 @@ Categories
 .table-container{
   display: flex;
   flex-wrap:wrap;
-  /* border:solid; */
   overflow-y: scroll;
   width:100%;
 }
 .ticket-table{
   display: flex;
-  border:solid;
-  flex-wrap: wrap;
-  width: 44%;
+  border: solid;
+  flex-direction: column;
   margin: 3%;
-  height:200px;
-  background-color: lightgray
-
+  height: 200px;
+  width: auto;
+  padding: 1rem;
 }
+
 .form-left-side{
   width: 50%;
   height: 70%;
@@ -420,14 +417,12 @@ Categories
 }
 .ticket-table-header{
   display: block;
-  width: 70%;  
-  background-color: #93BF00;
 }
 .status-row{
   display: flex;
 }
 .text-orange{
-  color:orange
+  color:#93BF00;
 }
 .text-red{
   color:red
@@ -475,10 +470,10 @@ Categories
   cursor: pointer;
 }
 
-.border-left{border-left:solid;}
+/* .border-left{border-left:solid;}
 .border-right{border-right:solid;}
 .border-top{border-top:solid;}
-.border-bottom{border-bottom: solid;}
+.border-bottom{border-bottom: solid;} */
 
 
 /********************************
@@ -598,6 +593,53 @@ User Dashboard
   display: flex;
   justify-content: space-between;
 }
+
+
+
+
+
+
+/*
+Subcategories
+*/
+
+.subcategory-flex {
+  display: flex;
+  margin: 1rem;
+}
+
+.table {
+  display: flex;
+  width: 90VW;
+  flex-wrap: wrap;
+}
+.left,
+.right {
+  padding: 1rem;
+}
+.subcat-container {
+  display: flex;
+  border-bottom: 2px solid #eee;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+}
+.right {
+  display: flex;
+  align-items: center;
+}
+
+.add-button,
+.subtract-button {
+  border: none;
+  background: none;
+  color: #3e5859;
+  font-weight: bolder;
+}
+
+
 
 @media screen and (min-width: 640px  ){
 

@@ -7,12 +7,12 @@ function ModalDefault(props){
           <div className="modal">
             <div className="logo">
               <img className="logo-img" src="./012-van.png" alt="logo" />
-            <p>R-Waste</p>
+              <p className="light-color">R-Waste</p>
             </div>
                 
             <div className="container">
                 <div className="details">
-                    <h2>Please log into your account or sign up.</h2>
+                    <h2 className="light-color">Please log into your account or sign up.</h2>
                     <div className="spacer"></div>
                     <div className="spacer"></div>
                 {/* <button className="exit-btn" onClick={this.props.closeModal}>X</button> */}

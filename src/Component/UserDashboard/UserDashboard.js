@@ -14,6 +14,7 @@ import AllTickets from '../CompanyDashboard/AllTickets';
 import PendingQuotes from '../CompanyDashboard/PendingQuotes';
 import Scheduled from '../CompanyDashboard/Scheduled';
 import AddOrder from './AddOrder';
+import OrderHistory from './OrderHistory';
 import PendingOrders from './PendingOrders';
 
 
@@ -208,7 +209,7 @@ class UserDashboard extends Component {
          } else if(newContent === 'scheduled-approvals' || newContent === 2 ){
              dashDisplayId = 2
              console.log('helllllllll2222222')
-            dashboardContent = <Scheduled tickets={this.state.tickets} changeDashboardContent={this.changeDashboardContent} />
+            dashboardContent = <OrderHistory tickets={this.state.tickets} changeDashboardContent={this.changeDashboardContent} />
          }
          this.setState({
             dashboardContent,
@@ -251,9 +252,9 @@ class UserDashboard extends Component {
                         </div>                       
                         
                         <div className="company-dash-cont">
-                            {this.state.dashboardContent}
                             <UserTabBar changeDashboardContent={this.changeDashboardContent} displayId={this.state.dashDisplayId}/>
                             <div className="comp-ticket-cont">
+                            {this.state.dashboardContent}
                                 
                             </div>
                                 {/* console.log(this.state.tickets) */}

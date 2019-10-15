@@ -6,7 +6,7 @@ class PendingOrders extends Component{
     render(){
         return(<>
             <div className="user-order">
-                <h1>Pending Orders</h1>
+                {this.state.tickets}
             </div>
         </>)
     }

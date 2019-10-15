@@ -279,37 +279,28 @@ class UserDashboard extends Component {
                            
                         </div>                       
                         
+                </div>
+            </section> 
+            </div>
+
                         <div className="company-dash-cont">
 
-                            <UserTabBar changeDashboardContent={this.changeDashboardContent} displayId={this.state.dashDisplayId}/>/>
+                            <UserTabBar changeDashboardContent={this.changeDashboardContent} displayId={this.state.dashDisplayId}/>
                             <div className="user-ticket-cont">
                                 {dashboardContent}
                             </div>
                                 {/* console.log(this.state.tickets) */}
                         </div>
-                    
-                        {/* <div className="user-dash-cont">
-                                <div className="user-nav"onClick>All Orders</div>
-                                <div className="user-nav"onClick>Pending Quotes</div>
-                                <div className="user-nav"onClick>Scheduled</div>
-                            </div> 
-                            <div className="user-ticket-cont">
-                                <h1>Yall good</h1>
-                            </div> */}
-                        {/* <div className="ticket-cont"> 
-                            {tickets}
-                      </div> */}
 
-                </div>
-            </section> 
-            </div>
-
+                        <footer className="footer"> 
+                        Copyright &copy; 2019 R-Waste All Rights Reserved.
+                        </footer>
 
 
             {/* NEW QUOTE FORM BEGIN  */}
              <div className="container" style={this.state.showModal ? {"display": "block"} : {}} >
-                 <button className="btn btn-2" onClick={this.closeModal}>x</button>
-            
+                 {/* <button className="btn btn-2" onClick={this.closeModal}>x</button>
+         */}
            {modal}
              </div>          
        </> )

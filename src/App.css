@@ -340,7 +340,7 @@ Categories
   color: #fff;
 }
 .company-nav > div.active{
-  background-color: #deecf1;
+  background-color: #93bf00;
   border:none;
   color: #3e5859;
 }
@@ -355,6 +355,18 @@ Categories
   display:flex;
   width:77%
 
+}
+.user-ticket-cont{
+  display:flex;
+  width:77%;
+  border:solid
+
+}
+.user-order{
+  display:flex;
+  width: 100%;
+  border:solid;
+  flex-wrap: wrap
 }
 .table-container{
   display: flex;

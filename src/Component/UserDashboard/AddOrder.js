@@ -24,7 +24,7 @@ class AddOrder extends Component{
         })
     }
     componentDidUpdate(prevProps, prevState){
-        let {pickupDate: pickupDatePrev, address1:address1Prev,address2:address2Prev,time:timePrev} = prevProps
+        let {pickupDate: pickupDatePrev, address1:address1Prev,address2:address2Prev,time:timePrev} = this.props
         let {pickupDate, address1, address2, time} = this.state
         console.log(prevProps)
         if(pickupDatePrev!== pickupDate||address1Prev!==address1|| address2Prev !== address2||timePrev!==time ){

@@ -12,7 +12,7 @@ import UserNav from './../NavBar/UserNav'
 import UserTabBar from './UserTabBar';
 import AllTickets from '../CompanyDashboard/AllTickets';
 import PendingQuotes from '../CompanyDashboard/PendingQuotes';
-import Scheduled from '../CompanyDashboard/Scheduled';
+import Scheduled from './Scheduled';
 import AddOrder from './AddOrder';
 import PendingOrders from './PendingOrders';
 
@@ -149,15 +149,9 @@ class UserDashboard extends Component {
         this.setState(newObj)
     }
     acceptDeclinebtn =async (e) =>{
-        let userValue 
-        console.log(e.target.id)
-        switch(e.target.value){
-          case 'accept':
-            userValue = true
-            break;
-          case 'decline':
-            userValue = false
-        }
+        var userValue = e.target.getAttribute('value') === 'accept' ? true : false
+        console.log(e.target)
+        console.log(userValue, e.target.getAttribute('value'))
         let url =`${window.apiHost}/ticket/confirm-ticket-quote`
         let axiosResponse = await axios.put(url,{
           userValue,
@@ -281,7 +275,7 @@ class UserDashboard extends Component {
                         
                         <div className="company-dash-cont">
 
-                            <UserTabBar changeDashboardContent={this.changeDashboardContent} displayId={this.state.dashDisplayId}/>/>
+                            <UserTabBar changeDashboardContent={this.changeDashboardContent} displayId={this.state.dashDisplayId}/>
                             <div className="user-ticket-cont">
                                 {dashboardContent}
                             </div>
@@ -308,7 +302,6 @@ class UserDashboard extends Component {
 
             {/* NEW QUOTE FORM BEGIN  */}
              <div className="container" style={this.state.showModal ? {"display": "block"} : {}} >
-                 <button className="btn btn-2" onClick={this.closeModal}>x</button>
             
            {modal}
              </div>          

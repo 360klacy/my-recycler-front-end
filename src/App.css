@@ -377,11 +377,10 @@ Categories
 .ticket-table{
   display: flex;
   border: solid;
-  flex-direction: column;
+  flex-wrap: wrap;
   margin: 3%;
   height: 200px;
-  width: auto;
-  padding: 1rem;
+  width: 44%;
 }
 
 .form-left-side{
@@ -433,9 +432,13 @@ Categories
 }
 .ticket-table-header{
   display: block;
+  width: 70%;
+  background-color: #93BF00;
+
 }
 .status-row{
   display: flex;
+  
 }
 .text-orange{
   color:#93BF00;
@@ -471,14 +474,14 @@ Categories
   margin-left: 5%;
   background-color: #93BF00;
 }
-/* .ticket-table-details-bottom-cont{
+.ticket-table-details-bottom-cont{
   display:flex;
   justify-content: space-evenly;
   width: 100%
 }
 .ticket-table-details-bottom-cont > *{
   width: 40%
-} */
+}
 .ticket-table-details-btn.pending{
   background-color: orange
 }
@@ -486,10 +489,10 @@ Categories
   cursor: pointer;
 }
 
-/* .border-left{border-left:solid;}
+.border-left{border-left:solid;}
 .border-right{border-right:solid;}
 .border-top{border-top:solid;}
-.border-bottom{border-bottom: solid;} */
+.border-bottom{border-bottom: solid;}
 
 
 /********************************

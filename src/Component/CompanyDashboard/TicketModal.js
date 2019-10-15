@@ -125,7 +125,7 @@ class TicketModal extends React.Component{
             <button onClick={this.changeTimeEvent}> Make Changes </button>
             <div className="form-field"> 
                 <label htmlFor="quotes">Quote</label>
-                <input name="quotes" id='quotes' value={this.state.value} onChange={this.handleInputChange} />
+                <input name="quotes" id='quotes' value={this.state.quotes} onChange={this.handleInputChange} />
             </div>
         </div>
         if(this.state.modalData === "loading"){

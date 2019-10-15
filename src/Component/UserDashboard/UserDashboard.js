@@ -14,6 +14,7 @@ import AllTickets from '../CompanyDashboard/AllTickets';
 import PendingQuotes from '../CompanyDashboard/PendingQuotes';
 import Scheduled from './Scheduled';
 import AddOrder from './AddOrder';
+import OrderHistory from './OrderHistory';
 import PendingOrders from './PendingOrders';
 
 

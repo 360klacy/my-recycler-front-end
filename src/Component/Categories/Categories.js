@@ -26,7 +26,7 @@ class Categories extends Component{
                 {/* </div> */}
                     <div className="bottom-text">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex eadolor sit amet, exercitation ullamco laboris nisi ut aliquip ex eadolor sit amet.
+                            Not sure what you can recycle? We are here to save the world so we encourage you to email us at waste@gotwaste.xyz and upload your photos. Oh yeah dont forget to follow us on Twitter, Facebook, and Instagram.
                         </p>
                         <div className="spacer"></div>
                         <div className="spacer"></div>

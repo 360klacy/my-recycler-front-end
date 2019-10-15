@@ -9,8 +9,8 @@ class PendingOrders extends Component{
             return ticket.progress == 2
         })
         return(<>
-            <div className="table-container">
-                {filteredList.map((ticket)=>{return <PendingConfirmation adFn={this.props.adFn} ticket={ticket}/>})}
+            <div className="user-order">
+                {this.state.tickets}
             </div>
         </>)
     }

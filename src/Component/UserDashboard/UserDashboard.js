@@ -12,7 +12,7 @@ import UserNav from './../NavBar/UserNav'
 import UserTabBar from './UserTabBar';
 import AllTickets from '../CompanyDashboard/AllTickets';
 import PendingQuotes from '../CompanyDashboard/PendingQuotes';
-import Scheduled from '../CompanyDashboard/Scheduled';
+import Scheduled from './Scheduled';
 import AddOrder from './AddOrder';
 import OrderHistory from './OrderHistory';
 import PendingOrders from './PendingOrders';
@@ -150,15 +150,9 @@ class UserDashboard extends Component {
         this.setState(newObj)
     }
     acceptDeclinebtn =async (e) =>{
-        let userValue 
-        console.log(e.target.id)
-        switch(e.target.value){
-          case 'accept':
-            userValue = true
-            break;
-          case 'decline':
-            userValue = false
-        }
+        var userValue = e.target.getAttribute('value') === 'accept' ? true : false
+        console.log(e.target)
+        console.log(userValue, e.target.getAttribute('value'))
         let url =`${window.apiHost}/ticket/confirm-ticket-quote`
         let axiosResponse = await axios.put(url,{
           userValue,
@@ -280,36 +274,26 @@ class UserDashboard extends Component {
                            
                         </div>                       
                         
+                </div>
+            </section> 
+            </div>
+
                         <div className="company-dash-cont">
 
-                            <UserTabBar changeDashboardContent={this.changeDashboardContent} displayId={this.state.dashDisplayId}/>/>
+                            <UserTabBar changeDashboardContent={this.changeDashboardContent} displayId={this.state.dashDisplayId}/>
                             <div className="user-ticket-cont">
                                 {dashboardContent}
                             </div>
                                 {/* console.log(this.state.tickets) */}
                         </div>
-                    
-                        {/* <div className="user-dash-cont">
-                                <div className="user-nav"onClick>All Orders</div>
-                                <div className="user-nav"onClick>Pending Quotes</div>
-                                <div className="user-nav"onClick>Scheduled</div>
-                            </div> 
-                            <div className="user-ticket-cont">
-                                <h1>Yall good</h1>
-                            </div> */}
-                        {/* <div className="ticket-cont"> 
-                            {tickets}
-                      </div> */}
 
-                </div>
-            </section> 
-            </div>
-
+                        <footer className="footer"> 
+                        Copyright &copy; 2019 R-Waste All Rights Reserved.
+                        </footer>
 
 
             {/* NEW QUOTE FORM BEGIN  */}
-             <div className="container" style={this.state.showModal ? {"display": "block"} : {}} >
-                 <button className="btn btn-2" onClick={this.closeModal}>x</button>
+             <div className="container" style={this.state.showModal ? {"display": "block"} : {}} > 
             
            {modal}
              </div>          

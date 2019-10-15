@@ -130,6 +130,10 @@ class CompanyDashboard extends Component {
                 </div>
             </div>            
             {ticketModal}
+
+            <footer className="footer"> 
+                Copyright &copy; 2019 R-Waste All Rights Reserved.
+            </footer>
        </> )
 
     }

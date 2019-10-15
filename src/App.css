@@ -630,13 +630,25 @@ request modal
 
 .request-modal {
   border: 3px solid #3e5859;
-  background: #fff;
+  background: #3e5859;
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50% );
   padding: 2rem 0;
   width: 500px;
+}
+
+.request-modal > p {
+  color: #deecf1;
+}
+
+.details > p {
+  color: #deecf1;
+}
+
+.list > ul li {
+  color: #deecf1;
 }
 
 .request-btn-div{

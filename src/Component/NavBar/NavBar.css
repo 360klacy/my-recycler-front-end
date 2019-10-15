@@ -204,6 +204,13 @@ ul li {
         flex-direction: row;
     }
 
+
+
+}
+
+@media screen and (min-width: 768px){
+
+
     .nav-container {
         width: 100%;
         display: flex;
@@ -212,12 +219,6 @@ ul li {
         margin-top: 20px;
         margin-bottom: 20px;
     }
-
-
-}
-
-@media screen and (min-width: 768px){
-
 
     .links {
         flex-direction: row;

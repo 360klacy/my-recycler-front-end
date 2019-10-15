@@ -28,7 +28,6 @@ class NavBar extends Component {
          })
        }
        closeModal=()=>{
-        //  document.querySelector('body').className = ''
          this.setState({
            showModal: false,
            modalContent: <ModalDefault changeModalContent={this.changeModalContent}/>
@@ -53,7 +52,7 @@ class NavBar extends Component {
 
            if(!this.props.userInfo.authToken){
             navBarLinks =
-              <HomeNav signup={this.signup}/>   
+            <HomeNav signup={this.signup}/>   
            } else if ((this.props.userInfo.authToken) && (this.props.userInfo.isCompany)) {
             navBarLinks =  
             <CompanyNav logout={this.props.logout}/>
@@ -84,7 +83,7 @@ class NavBar extends Component {
   <div className="topnav">
     <div className="logo">
           <img className="logo-img" src="./012-van.png" alt="logo" />
-          <p>MyRycycler</p>
+          <p>R-Waste</p>
     </div>
 
     <div className="icon" onClick={this.displayMobile}>
@@ -99,20 +98,17 @@ class NavBar extends Component {
       {navLinks}
     </div>
     
-
 </div>
         
-            {/* <div className="container"> */}
                 <nav className="nav-container">
                     <div className="logo">
                         <img className="logo-img" src="./012-van.png" alt="logo" />
-                        <p>MyRycycler</p>
+                        <p>R-Waste</p>
                     </div>
                     <div className="nav">
                         {navLinks}
                     </div>
                 </nav>
-            {/* </div> */}
 
 {/* LOGIN AND SIGN-UP PROCESS */}
             <div className="login-modal" style={this.state.showModal ? {"display": "block"} : {}} >

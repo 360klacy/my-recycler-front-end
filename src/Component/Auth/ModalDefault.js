@@ -17,8 +17,8 @@ function ModalDefault(props){
                     <div className="spacer"></div>
                 {/* <button className="exit-btn" onClick={this.props.closeModal}>X</button> */}
                 <div className="btn-container">
-                  <button className="btn" onClick={()=>{props.changeModalContent('signup')}} className="action-btn">Sign up with email</button>
-                  <button className="btn" onClick={()=>{props.changeModalContent('login')}} className="action-btn">Log in</button>
+                  <button onClick={()=>{props.changeModalContent('signup')}} className="action-btn">Sign up with email</button>
+                  <button onClick={()=>{props.changeModalContent('login')}} className="btn btn-1">Log in</button>
                   </div>
                 </div>
             </div>

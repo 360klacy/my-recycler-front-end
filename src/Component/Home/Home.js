@@ -29,15 +29,11 @@ class Home extends Component {
                 <div className="our-story-details">
                         <h1 className="title">Our Story</h1>
                         <div className="spacer"></div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                            nisi ut aliquip ex eadolor sit amet, exercitation ullamco laboris nisi 
-                            ut aliquip ex eadolor sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit, 
-                            sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-                            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                            nisi ut aliquip ex eadolor sit amet, exercitation ullamco laboris nisi 
-                            ut aliquip ex eadolor sit amet.
+                        <p>
+                        R-Waste was developed and founded in Atlanta, GA by four young engineers in the south’s largest tech hub, Atlanta Tech Village. The idea started off as
+                        a class project but soon became OUR way of saving the earth. Many of us would like to recycle more often but questions like where, what, and how holds us back from doing so.
+                        Have no fear, R-Waste is here! Simply sign up, choose your desired recyclables, pick up time, and there you have it, you just saved the world!
+                        All superheroes don’t wear capes but with R-Waste you can save OUR world!
                         </p>
                         <div className="spacer"></div>
                         <Link to="/">Learn more &rarr; </Link>

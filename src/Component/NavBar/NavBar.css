@@ -10,8 +10,8 @@ a {
 }
 
 .logo-img {
-    width: 80px;
-    max-width: 100;
+    width: 50px;
+    max-width: 100%;
 }
 
 .nav{
@@ -25,7 +25,6 @@ a {
     display: flex;
     align-content: center;
     flex-direction: column;
-
     margin-top: 20px;
 }
 
@@ -49,8 +48,7 @@ a {
 
 
 .btn {
-    width: 150px;
-    padding: 1rem;
+    padding: 10px 32px;
     background: #93BF00;
     border: 2px solid #93BF00;
     border-radius: 5px;
@@ -58,12 +56,11 @@ a {
     margin-left: 0;
     color: #fff;
     font-weight: bolder;
-    font-size: 1rem;
 }
 
 .btn-1 {
     background: transparent;
-    border: 2px solid #deecf1;
+    border: 2px solid #3E5959;
     color: #3E5959;
     margin-right: 10px;
 }
@@ -71,7 +68,8 @@ a {
 .btn-2 {
     background: #93BF00;
     border: 2px solid #93BF00;
-    color: #deecf1;;
+    color: #deecf1;
+    box-shadow: 0 2px 5px 0 hsla(0,0%,0%,0.2)
 }
 
 ul li {
@@ -106,9 +104,8 @@ ul li {
 }
 
 .login-modal{
-    border: 3px solid #3E5959;
     display: none;
-    background-color: white;
+    background-color: #f8fcfd;
     width: auto;
     max-width: 568px !important;
     position: absolute;
@@ -118,8 +115,9 @@ ul li {
     margin-right: auto;
     margin-top: 20vh;
     z-index: 100;
-    box-sizing: border-box !important;
     padding: 32px !important;
+    color: #3e5959;
+    box-shadow: 0 2px 5px 0 hsla(0,0%,0%,0.2);
 }
 
 #close-modal{
@@ -141,10 +139,14 @@ ul li {
 
 .mobile-content {
     padding: 1rem 1.5rem;
+    margin-top: 30px;
 }
   
 .links > li {
     padding: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
 }
   .topnav {
     overflow: hidden;
@@ -169,34 +171,17 @@ ul li {
     flex-direction: column;
   }
 
-
-  /* .mobile-btn {
-    padding: 0.2rem 1rem;
-    background: #93BF00;
-    border-radius: 50px;
-    border: none;
-    margin: 0;
-    height: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  } */
-
-  /* .mobile-btn > a {
-      color: #fff;
-  } */
   
 
   .icon {
     position: absolute;
     right: 0;
-    top: 10%;
+    top: 20%;
   }
 
   .hamburger {
-        width: 35px;
-        height: 5px;
+        width: 30px;
+        height: 3px;
         background-color: #93BF00;
         margin: 6px 0;
       }
@@ -215,7 +200,9 @@ ul li {
         width: 100%;
         display: flex;
         align-items: center;
-        padding: 1rem;
+        padding: 0 40px;
+        margin-top: 20px;
+        margin-bottom: 20px;
     }
 
 
@@ -230,6 +217,8 @@ ul li {
 
     .links > li {               
         padding: 0 1rem;
+        margin-left: 0;
+        flex-direction: row;
     }
 
     .mobile-container {
@@ -243,11 +232,11 @@ ul li {
         margin-left: auto;
     }
 
-}
+    .btn {
+        font-size: 0.9rem;
+    }
 
-/* .logo {
-    text-align: center;
-} */
+}
 
 
 
@@ -267,10 +256,10 @@ ul li {
     }
 
     .btn-container {
-        padding-top: 0;
+        /* padding-top: 0;
         margin-top: 0;
         padding-top: 0;
-        margin-top: 0;
+        margin-top: 0; */
         display: flex;
         justify-content: space-between;
     }

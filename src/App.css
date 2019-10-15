@@ -167,27 +167,32 @@ h2 {
   z-index: -1;
   position: relative;
   height: 60vh;
-  opacity: 0.9;
+  opacity: 0.8;
 }
 
 
 
 .main{
-  padding-top: 100px;
-  padding-bottom: 100px;
+  position: absolute;
+  top: 20px;
 }
 
 .intro {
-  margin-right: auto;
-  text-align: left;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  /* height: 250px; */
+  box-shadow: 0 2px 6px 0 hsla(0,0%,0%,0.2);
   position: absolute;
   padding: 2rem;
   background: #3e5959;
+  top: 50px;
 }
+
+.intro > h2 {
+  margin-bottom: 0.8rem!important;
+}
+
+.intro > .light {
+  margin-bottom: 1.5rem!important;
+}
+
 
 .title {
   font-size: 2.3rem;
@@ -241,6 +246,7 @@ Categories
 
 .categories-section {
   margin: auto;
+  padding: 40px 13px;
 }
 
 .icon-img{
@@ -282,9 +288,6 @@ Categories
   width: 90%;
 }
 
-.btn-1{
-  margin-top: 3rem;
-}
 
 /**********************************
       Ticket Modal
@@ -340,28 +343,22 @@ Categories
   color: #fff;
 }
 .company-nav > div.active{
-  background-color: #93bf00;
-  border:none;
-  color: #3e5859;
+  border-right: none;
+  background: #325959;
+  box-shadow: 0 2px 6px 0 hsla(0,0%, 0%, 0.2);
 }
 .company-dash-cont{
   display:flex;
   background-color:white;
   height: 90vh;
   margin-top: 100px;
-  /* border: solid; */
 }
 .comp-ticket-cont{
   display:flex;
   width:77%
 
 }
-.user-ticket-cont{
-  display:flex;
-  width:77%;
-  border:solid
 
-}
 .user-order{
   display:flex;
   width: 100%;
@@ -449,7 +446,6 @@ Categories
 .ticket-table-id{
   display: block;
   width: 30%;
-  /* border-left:solid; */
 
 }
 .ticket-table-cell{
@@ -471,26 +467,6 @@ Categories
   margin-left: 5%;
   background-color: #93BF00;
 }
-/* .ticket-table-details-bottom-cont{
-  display:flex;
-  justify-content: space-evenly;
-  width: 100%
-}
-.ticket-table-details-bottom-cont > *{
-  width: 40%
-} */
-.ticket-table-details-btn.pending{
-  background-color: orange
-}
-.ticket-table-details-btn:hover{
-  cursor: pointer;
-}
-
-/* .border-left{border-left:solid;}
-.border-right{border-right:solid;}
-.border-top{border-top:solid;}
-.border-bottom{border-bottom: solid;} */
-
 
 /********************************
 Sign up & Login Modal
@@ -502,7 +478,6 @@ Sign up & Login Modal
     color: #deecf1;
     font-size: 1.1rem;
     font-weight: bold;
-    margin-top: 20px;
     border-radius: 5px;
     padding: 1rem 2rem;
 }
@@ -511,48 +486,63 @@ Sign up & Login Modal
   width: 100%;
   margin-left: 0;
   padding: 1rem;
+  box-shadow: inset 0 2px 4px 0 hsla(0,0%,0%,0.1);
+  border-radius: 5px;
+}
+
+.value {
+  padding: 1rem;
 }
 
 .link {
   color: #3e5859;
   font-weight: bold;
 }
+
+.top {
+  margin-top: 50px;
+}
 .user-dash-cont{
   display:flex;
   background-color:white;
   height: 90vh;
   margin: 20px;
-  border: solid;
+  border-top: solid;
 }
+
 .user-ticket-cont{
   display: flex;
-  width: 77%;
+  width: 75%;
+  /* border-top: 25px solid; */
+  box-shadow: inset 0 2px 6px 0 hsla(0,0%,0%,0.2);
 }
 .user-nav{
   display: flex;
   flex-flow: column;
   width: 25%;
-  background-color: green;
   position: relative;
   justify-content: space-around
 }
 .user-nav > div{
   display: flex;
-  flex-flow: column;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   flex-grow: 1;
   margin: 0;
-  border-right: solid;
-  background-color: green;
+  background-color: #3e5859;
+  color: #deecf1;
+  box-shadow: 0 2px 6px 0 hsla(0,0%,0%,0.2);
 }
 .user-nav > div.active{
-  background-color: gold;
-  border-right: none
+  /* background-color: #93BF00; */
+  border-right: none;
+  background: #325959;
 }
 .comp-ticket-cont{
   display:flex;
-  width:77%
+  width:77%;
+  box-shadow: inset 0 2px 6px 0 hsla(0,0%,0%,0.2);
 
 }
 
@@ -675,13 +665,14 @@ Subcategories
   font-weight: bolder;
 }
 
-
-
 @media screen and (min-width: 640px  ){
 
-  .mobile-container {
-    display: none;
-}
+  .main {
+    padding-top: 100px;
+    padding-bottom: 100px;
+    left: 10%;
+  }
+
 
   h2 {
     color: #93BF00;
@@ -693,12 +684,12 @@ Subcategories
   }
 
   .intro {
-      padding: 2rem;
-      margin-bottom: 150px;
-      width: 500px;
-      height: 400px;
+      width: 450px;
+      height: 380px;
       background: #3e5959;
       left: 10%;
+      padding: 70px 2rem;
+      top: 90px;
   }
 
   .bottom-text {
@@ -709,13 +700,6 @@ Subcategories
 
 
 
-
-
-@media only screen and (min-width : 768px) and (max-width : 1024px) and (orientation : portrait) {
-
-
-
-}
 
 @media only screen and (min-width : 768px) and (max-width : 1024px) and (orientation : landscape) {
 
@@ -753,7 +737,7 @@ Subcategories
 
   .main-container,
   .hero-bkg {
-    height: 80vh;
+    height: 440px;
   }
 
 
@@ -769,11 +753,18 @@ Subcategories
 
 }
 
-@media only screen and (min-width : 1024px) and (orientation : portrait) {
+@media only screen and (min-width : 1024px) {
 
-.main-container,
-.hero-bkg {
-  height: 60vh; 
+  .our-story-section {
+    padding: 190px 0;
+  }
+
+
+
 }
-
+@media only screen and (min-width: 1366px) {
+  .intro {
+    top: 100px;
+    left: 30px;
+  }
 }

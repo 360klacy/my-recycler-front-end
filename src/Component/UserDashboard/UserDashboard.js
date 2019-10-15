@@ -279,24 +279,28 @@ class UserDashboard extends Component {
                            
                         </div>                       
                         
+                </div>
+            </section> 
+            </div>
+
                         <div className="company-dash-cont">
 
-                            <UserTabBar changeDashboardContent={this.changeDashboardContent} displayId={this.state.dashDisplayId}/>/>
+                            <UserTabBar changeDashboardContent={this.changeDashboardContent} displayId={this.state.dashDisplayId}/>
                             <div className="user-ticket-cont">
                                 {dashboardContent}
                             </div>
                                 {/* console.log(this.state.tickets) */}
                         </div>
-                </div>
-            </section> 
-            </div>
 
+                        <footer className="footer"> 
+                        Copyright &copy; 2019 R-Waste All Rights Reserved.
+                        </footer>
 
 
             {/* NEW QUOTE FORM BEGIN  */}
              <div className="container" style={this.state.showModal ? {"display": "block"} : {}} >
-                 <button className="btn btn-2" onClick={this.closeModal}>x</button>
-            
+                 {/* <button className="btn btn-2" onClick={this.closeModal}>x</button>
+         */}
            {modal}
              </div>          
        </> )

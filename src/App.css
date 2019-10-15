@@ -496,14 +496,14 @@ Categories
 Sign up & Login Modal
 *********************************/
 .action-btn{
-    background: #3e5959 ;
-    border: none;
-    margin: 0;
-    color: #deecf1;
-    font-size: 1.1rem;
-    font-weight: bold;
-    border-radius: 5px;
-    padding: 1rem 2rem;
+  background: #93bf12;
+  border: none;
+  margin: 0;
+  color: #deecf1;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 1rem 2rem;
 }
 
 .input-bottom-border {

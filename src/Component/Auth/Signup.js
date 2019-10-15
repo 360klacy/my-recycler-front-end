@@ -50,7 +50,7 @@ class Signup extends React.Component{
               <div className="logo-container">
                 <div className="logo">
                   <img className="logo-img" src="./012-van.png" alt="logo" />
-                  <p>R-Waste</p>
+                  <p className="light-color">R-Waste</p>
                 </div>
               </div>
                   
@@ -68,7 +68,7 @@ class Signup extends React.Component{
                         <div className="spacer"></div>
                         <div className="spacer"></div>
                         <div className="spacer"></div>
-                      <div className="login-text align-left">Already have a R-Wasted account? <span className="link" onClick={()=>{this.props.changeModalContent('login')}}>Log in</span></div>
+                      <div className="login-text align-left light-color">Already have a R-Wasted account? <span className="link light-color" onClick={()=>{this.props.changeModalContent('login')}}>Log in</span></div>
                   </form>
                 </div>
               </div>

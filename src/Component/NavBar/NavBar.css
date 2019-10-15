@@ -60,8 +60,8 @@ a {
 
 .btn-1 {
     background: transparent;
-    border: 2px solid #3E5959;
-    color: #3E5959;
+    border: 2px solid #93BF00;
+    color: #93BF00;
     margin-right: 10px;
 }
 
@@ -103,9 +103,17 @@ ul li {
     background-color: initial;    
 }
 
+.login-text align-left {
+    color: #FFF;
+}
+
+.light-color {
+    color: #deecf1;
+}
+
 .login-modal{
     display: none;
-    background-color: #f8fcfd;
+    background-color: rgb(62, 88, 89);
     width: auto;
     max-width: 568px !important;
     position: absolute;
@@ -127,7 +135,7 @@ ul li {
     font-weight: bold;
     font-size: 24px;
     background-color: transparent;
-    color: #3e5959;
+    color: #f8fcfd;
     border: none;
 
 }

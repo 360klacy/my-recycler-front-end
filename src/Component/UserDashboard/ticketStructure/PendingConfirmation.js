@@ -7,6 +7,7 @@ function PendingConfirmation(props){
         <div className="ticket-table-id border-bottom">Order #: {props.ticket.ticket_id}</div>
         <div className="ticket-table-user-pref border-right">
             <div className="status-row">Status: <div className="text-orange">Pending Confirmation</div></div>                        
+            <div className="status-row">Price: <div className="text-orange">{props.ticket.price}</div></div>                        
         </div>
         <div className="ticket-table-user-pref">
             <div>Address: {props.ticket.pickup_address} {props.ticket.pickup_address2}</div>

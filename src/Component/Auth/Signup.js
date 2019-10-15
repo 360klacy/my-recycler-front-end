@@ -18,6 +18,7 @@ class Signup extends React.Component{
 
   submitSignupForm = async (e)=>{
     let tmpState = {...this.state}
+    let { email, password } = tmpState
     e.preventDefault();
     //   let formValid = true; 
     //   for(let key in this.state){
@@ -30,14 +31,24 @@ class Signup extends React.Component{
         email: '', 
         password:''
     })
-    this.props.setToken(axiosResp.data.token,axiosResp.data.name,axiosResp.data.email,axiosResp.data.id)
-    
-    
-    if(axiosResp.data.token){
+    console.log(axiosResp)
+    if(axiosResp.data.msg === 'userAdded'){
+      const url = `${window.apiHost}/users/login`
+      const axiosResp = await axios.post(url, {email, password});
+        
+        console.log("LOGIN IN RESPONSE",axiosResp.data)
+        this.props.setToken(
+            axiosResp.data.token,
+            axiosResp.data.name,
+            axiosResp.data.email,
+            axiosResp.data.id, 
+            axiosResp.data.is_company
+        )
+       if(axiosResp.data.token){
         this.props.closeModal()
-    }
-
       }
+    }
+  }
 
  
   

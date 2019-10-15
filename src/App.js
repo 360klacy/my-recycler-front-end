@@ -59,8 +59,7 @@ class App extends React.Component{
 					:
 					(this.state.authToken) ?
 						<Route path="/userdashboard" render={(props)=><UserDashboard {...props} userInfo={{...this.state}}/>} />
-					:
-						<Route component={Unauth} />
+					: null
 			}
 			</div>
 		</Router>
